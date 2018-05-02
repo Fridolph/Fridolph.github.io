@@ -1,0 +1,167 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【面试】首次作为面试官（一）"><meta name="keywords" content="面试"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【面试】首次作为面试官（一） | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.3"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?66f25c24596db799ce091d9b434b9495";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  localSearch: {"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}"},"path":"search.xml"}
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#加分题：对弹出的盒子进行简易拖拽（能说下思路就好…-这个写出来有好多）"><span class="toc-number">1.</span> <span class="toc-text">加分题：对弹出的盒子进行简易拖拽（能说下思路就好… 这个写出来有好多）</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://blog.fueson.top/avatar/me.jpg?imageMogr2/thumbnail/200x200&gt;/gravity/Center/crop/200x200/format/jpg/blur/1x0/quality/75|imageslim"></div><div class="author-info__name text-center">Fridolph</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">48</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">38</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">20</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://blog.fueson.top/bg/saber.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">霪霖笙箫的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/books">Books</a><a class="site-page" href="/demo">Demo</a><a class="site-page" href="/gallery">gallery</a></span></div><div id="post-info"><div id="post-title">【面试】首次作为面试官（一）</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-07-07</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/面试/">面试</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2017/07/07/【面试】首次作为面试官（一）/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2017/07/07/【面试】首次作为面试官（一）/"></span></a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">2,208</span><span class="post-meta__separator">|</span><span>阅读时长: 7 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><hr>
+<p><a href="https://www.zhihu.com/question/62110803" target="_blank" rel="noopener">知乎</a></p>
+<blockquote>
+<p>首先， 实际面试流程优化。 之前公司都是先让候选人填写资料，再做面试题，填表什么的很费时间，所以我提出建议倒杯水给别人然后先做题，之后再填表。填表的时间我们可以看看笔试情况更进一步观察候选人。在知乎搜索前端面试题等关键词后，找到很多篇参考，从里面筛选和修改最后罗列了20道题，但实际笔试只会抽出5道让人去做。</p>
+</blockquote>
+<a id="more"></a>
+<p>然后就是这道上机实践题：</p>
+<p><strong>1. 请制作一个按钮，并实现hover效果</strong></p>
+<p>加分点：圆角 阴影 使用过渡 class复用</p>
+<p><a href="https://jsfiddle.net/hw9Lmoyc/" target="_blank" rel="noopener">https://jsfiddle.net/hw9Lmoyc/</a></p>
+<p>这是我自己模拟的，首先能写出来就行了，如果没写到加分点会针对性去问，看是否有相关了解</p>
+<p>如果宽度是写死的我也会指出来与之讨论。用padding适应性好些，如果是定制宽度可以抽离class这样复用性更好</p>
+<p><strong>2. 按钮点击后弹出遮罩，里面有一个水平垂直居中的盒子</strong></p>
+<p>加分点：遮罩半透明，水平垂直的几种方式</p>
+<p><strong>3. 在弹出的盒子右上角添加一个x按钮，点击可关闭弹出层</strong></p>
+<p><a href="https://jsfiddle.net/batbhwez/" target="_blank" rel="noopener">https://jsfiddle.net/batbhwez/</a></p>
+<h3 id="加分题：对弹出的盒子进行简易拖拽（能说下思路就好…-这个写出来有好多）"><a href="#加分题：对弹出的盒子进行简易拖拽（能说下思路就好…-这个写出来有好多）" class="headerlink" title="加分题：对弹出的盒子进行简易拖拽（能说下思路就好… 这个写出来有好多）"></a>加分题：对弹出的盒子进行简易拖拽（能说下思路就好… 这个写出来有好多）</h3><p><strong>4. 对以上所写内容进行优化</strong></p>
+<p>提到或能对以下关键词有些了解的加分~</p>
+<p>不限于 … 设计模式，策略类，观察者模式，代码规范等，方法的进一步封装与扩展，健壮性，业务逻辑和ui解耦等等</p>
+<hr>
+<p>当然，能完成那5道笔试题， 对3，实践能完成前3就可以推给老大了</p>
+<p>然后我对老大可能面试的点进行了一些罗列和挖坑……   </p>
+<p>于是我又补充了下面这张（  一来让候选人不要被老大以各种刁钻的问话方式展开… 二来也有心理准备</p>
+<p>三嘛…也当作是自己这半年学习的总结了</p>
+<hr>
+<p>XXX面谈话题</p>
+<blockquote>
+<p>为节约彼此的时间，请认真阅读，您所勾选的都将纳入我们面试时的交流话题。</p>
+</blockquote>
+<p>（废话无视掉就好。。。我自己加的 ）</p>
+<hr>
+<p><strong>1. 您了解过的HTML5新特性？</strong></p>
+<p>A. 更规范的web标准</p>
+<p>B. 更实用的API</p>
+<p>C. 表单扩展</p>
+<p>D. 其他请补充 <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>相关参考：（对于这些问题都没有正确标准，在此基础上，能有其他补充可适当加分）</p>
+<p>A 语义化(新标签) form表单的新增等 </p>
+<p>B 拖拽drag Canvas media相关(video audio) 客户端持久化存储 SessionStorage LocalStorage History 文档消息跨域</p>
+<p><strong>2. 您已了解过的CSS3特性？</strong></p>
+<p>A. 新增扩展选择器、伪类</p>
+<p>B. 一些实用属性</p>
+<p>C. 过渡与动画</p>
+<p>D. 其他请补充 <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>A 选择器   nth-child </p>
+<p> 伪类  ::target ::select   </p>
+<p> 属性 display: flex background-size border-radius box-sizing text-overflow</p>
+<p>B transition 与 animation的区别 animation用法 </p>
+<p>C 过渡Transition 与 动画Animation的使用场景及用法等</p>
+<p><strong>3. 您对 BFC 块级格式化上下文的理解？</strong></p>
+<p>A. 一”块”渲染区域</p>
+<p>B. 外边距折叠</p>
+<p>C. 解决浮动</p>
+<p>D. 其他请补充 <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>A 块级格式化上下文，它是指一个独立的块级渲染区域，只有Block-level BOX参与，该区域拥有一套渲染规则来约束块级盒子的布局，且与区域外部无关。</p>
+<p>B 准确来说是垂直方向的外边距折叠，不会影响水平方向</p>
+<p>C BFC的区域不会与float的元素区域重叠，因为float的元素脱离了正常文档流，所以还需要overflow: hidden来产生</p>
+<p>D 延伸 IFC~ 能彻底理解BFC，即能搞定布局相关问题，读得懂设计稿，知道如何制造正常文档流向，解决边距，css模块等</p>
+<p><strong>4. 您对RWD（响应式设计）有过哪些了解？ </strong></p>
+<p>A. 灵活布局，从移动端到PC端，适用于多个设备</p>
+<p>B. Media Query</p>
+<p>C. 栅格化、响应式图片</p>
+<p>D. 其他请补充 <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>ABC都是实现方式，需要参考人理解media query及适用场景。 我司pc端用了bootstrap但移动端部分更小，手动实现即可，可延伸问一下viewport，移动端下 rem em vh vw 等一些使用场景和方案，酌情加分</p>
+<p><strong>5. 以下对于闭包的说法你觉得哪种更好？</strong></p>
+<p>A. 定义在一个函数内部的函数</p>
+<p>B. 够读取其他函数内部变量的函数</p>
+<p>C. 一个拥有变量和绑定了这些变量环境的表达式</p>
+<p>D. 其他请补充 <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>其实这三种都是标准答案，不同书上的定义不同，但只要理解了闭包的使用场景、变量作用域及用途，垃圾回收等知识点，闭包是什么就已不重要了</p>
+<p><strong>6. 对于this的说法下面哪一项是正确的？</strong></p>
+<p>A. this对象是在运行时基于函数的执行环境绑定的</p>
+<p>B. 用new调用构造函数，this会绑定到新对象实例上</p>
+<p>C. 通过call或者apply可绑定this到指定的对象上</p>
+<p>D. 箭头函数就是常规function的语法糖</p>
+<p>可补充优雅使用this的方法，或场景等（加分） <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>ABC都是对的，而D嘛 ~  我们来看看下面：</p>
+<blockquote>
+<p>Dave Herman：”箭头函数 =&gt; 所改变的并非把 this 局部化，而是完全不把 this 绑定到里面”。 事实上 =&gt;箭头函数并不绑定 this，arguments，super(ES6)，抑或 new.target(ES6)。</p>
+</blockquote>
+<p><strong>7. 你是否关注过ES6？ 对此有哪些认识？</strong></p>
+<p>A. ECMAScript的实现和扩展</p>
+<p>B. （即将）普及的JavaScript核心语言标准</p>
+<p>C. 改变了JavaScript的编写方式，更多的语法糖</p>
+<p>D. 其他请补充 <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>看候选人以什么点来答，选项都是引导候选人去思考的，若答新增特性，提及ES6关键词10个就合格，往上加分。</p>
+<p>相关关键词：（为老大列的，  = = 哈哈哈哈）</p>
+<ol>
+<li><p>箭头函数 及使用场景，this指向的坑</p>
+</li>
+<li><p>类的支持 class关键字 extends constructor super </p>
+</li>
+<li><p>Math，Number，Array，String，Object等扩展API </p>
+</li>
+<li><p>增强的对象字面量 </p>
+</li>
+<li><p>模版字符串 </p>
+</li>
+<li><p>解构赋值 </p>
+</li>
+<li><p>函数参数 默认值 不定参数 拓展参数</p>
+</li>
+<li><p>块级作用域 let const</p>
+</li>
+<li><p>for of遍历 Iterator Generator</p>
+</li>
+<li><p>模块 Module</p>
+</li>
+<li><p>集合类型 Map, Set, WeakMap, WeakSet 及使用场景</p>
+</li>
+<li><p>Proxy代理 </p>
+</li>
+<li><p>基本数据类型扩展 Symbol</p>
+</li>
+<li><p>Promise</p>
+</li>
+</ol>
+<p>了解es7，能说什么 :: @修饰符 async await 加分</p>
+<p><strong>8. 您对于React框架有哪些认识，请勾选你赞同的说法？</strong></p>
+<p>A 一个高效的解决前端V层的 MVVM 框架</p>
+<p>B 比原生JS还快的Virtual DOM</p>
+<p>C React是单向数据流，数据通过Props，State进行传递</p>
+<p>D 其他请补充 <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>参考： </p>
+<blockquote>
+<p>React是一个用于构建用户界面的JavaScript库，而不是一个MVC框架，但可以使用React作为MVC架构的View层轻易的在已有项目中使用。</p>
+</blockquote>
+<p>所以说选了A直接扣分，也不用问以下的了。若提到、指正，可加分，延伸：MVVM MVC的不同。考察候选人是否了解Vue、Angular等主流框架。</p>
+<p>B Virtual DOM是React高效渲染的关键。但这问法就是有误区的 <a href="https://www.zhihu.com/question/31809713/answer/53544875" target="_blank" rel="noopener">https://www.zhihu.com/question/31809713/answer/53544875</a></p>
+<p>顺带可问问 React 的一些性能，实际场景的使用方案等。既然提到 VDOM，可顺便问问性能优化方案相关</p>
+<p>C 单向数据流没问题，是通过props传递。state只存在于组件内部。可顺便问组件间的传递 父子 子父 非相关组件 React声明周期等。</p>
+<p><strong>9. 您对于Redux有哪些理解，下面的说法你认同吗？</strong></p>
+<p>A 数据状态管理的一种有效解决方案之一</p>
+<p>B Redux是一个比较薄的数据层，同时把View的同步刷新也做了</p>
+<p>C Redux应用最大的挑战更多来自设计层面</p>
+<p>D 其他请补充 <strong><strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong></strong></p>
+<p>A 描述事实，其他方案比如 Mobx Flux 是否有过了解，相比于其他的Redux的优势在哪</p>
+<p>B store的变化会反映到组件内部state上来，而this.setState的会触发render重新渲染组件</p>
+<p>C 看个人理解和掌握的深度了，在实际项目中如何设计action，设计state树形结构</p>
+<p>面谈话题——您是通过怎样的方式来精进自己的技术？方便的话，请谈谈你目前的职业生涯规划。（这个话题就留给老大去谈了）</p>
+<hr>
+<p>知乎上的第一个多字回答… 算是施工完成了</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.wang/2017/07/07/【面试】首次作为面试官（一）/">http://blog.fridolph.wang/2017/07/07/【面试】首次作为面试官（一）/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.wang" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/面试/">面试</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2017/07/08/【面试】首次作为面试官（二）/"><i class="fa fa-chevron-left">  </i><span>【面试】首次作为面试官（二）</span></a></div><div class="next-post pull-right"><a href="/2017/06/09/【源码】underscore源码学习（三）——Array方法/"><span>【源码】underscore源码学习（三）——Array方法</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'http://blog.fridolph.wang/2017/07/07/【面试】首次作为面试官（一）/';
+  this.page.identifier = '2017/07/07/【面试】首次作为面试官（一）/';
+  this.page.title = '【面试】首次作为面试官（一）';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'fridolph' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://fridolph.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2018 By Fridolph</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.3"></script><script src="/js/fancybox.js?version=1.5.3"></script><script src="/js/sidebar.js?version=1.5.3"></script><script src="/js/copy.js?version=1.5.3"></script><script src="/js/fireworks.js?version=1.5.3"></script><script src="/js/transition.js?version=1.5.3"></script><script src="/js/scroll.js?version=1.5.3"></script><script src="/js/head.js?version=1.5.3"></script></body></html>
