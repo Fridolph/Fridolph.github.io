@@ -63,6 +63,13 @@
     </url>
 
     <url>
+        <loc>http://blog.fridolph.wang/categories/webpack/</loc>
+        <lastmod>2018-04-27T09:38:27.320Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://blog.fridolph.wang/categories/vue/%E9%85%8D%E7%BD%AE/</loc>
         <lastmod>2018-04-27T09:38:27.320Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -71,13 +78,6 @@
 
     <url>
         <loc>http://blog.fridolph.wang/categories/vue/%E5%9B%BD%E9%99%85%E5%8C%96/</loc>
-        <lastmod>2018-04-27T09:38:27.320Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.fridolph.wang/categories/webpack/</loc>
         <lastmod>2018-04-27T09:38:27.320Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
