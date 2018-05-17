@@ -114,14 +114,14 @@
     </url>
 
     <url>
-        <loc>http://blog.fridolph.wang/tags/webpack/</loc>
+        <loc>http://blog.fridolph.wang/tags/vue-i18n/</loc>
         <lastmod>2018-04-27T09:38:27.320Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.fridolph.wang/tags/vue-i18n/</loc>
+        <loc>http://blog.fridolph.wang/tags/webpack/</loc>
         <lastmod>2018-04-27T09:38:27.320Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -226,14 +226,14 @@
     </url>
 
     <url>
-        <loc>http://blog.fridolph.wang/tags/eslint/</loc>
+        <loc>http://blog.fridolph.wang/tags/%E9%9D%A2%E8%AF%95/</loc>
         <lastmod>2018-04-27T09:38:27.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.fridolph.wang/tags/%E9%9D%A2%E8%AF%95/</loc>
+        <loc>http://blog.fridolph.wang/tags/eslint/</loc>
         <lastmod>2018-04-27T09:38:27.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -276,14 +276,14 @@
 
     <url>
         <loc>http://blog.fridolph.wang/tags/mpvue/</loc>
-        <lastmod>2018-05-09T16:16:17.613Z</lastmod>
+        <lastmod>2018-05-17T02:01:47.729Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://blog.fridolph.wang/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
-        <lastmod>2018-05-09T16:16:17.613Z</lastmod>
+        <lastmod>2018-05-17T02:01:47.729Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
