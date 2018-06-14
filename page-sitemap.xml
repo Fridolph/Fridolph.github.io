@@ -28,14 +28,14 @@
     </url>
     
     <url>
-        <loc>http://blog.fridolph.wang/demo/</loc>
+        <loc>http://blog.fridolph.wang/gallery/</loc>
         <lastmod>2018-04-27T09:38:27.323Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>http://blog.fridolph.wang/gallery/</loc>
+        <loc>http://blog.fridolph.wang/demo/</loc>
         <lastmod>2018-04-27T09:38:27.323Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -49,14 +49,14 @@
     </url>
     
     <url>
-        <loc>http://blog.fridolph.wang/404/demo.html</loc>
+        <loc>http://blog.fridolph.wang//404.html</loc>
         <lastmod>2018-04-27T09:38:27.318Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>http://blog.fridolph.wang//404.html</loc>
+        <loc>http://blog.fridolph.wang/404/demo.html</loc>
         <lastmod>2018-04-27T09:38:27.318Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
