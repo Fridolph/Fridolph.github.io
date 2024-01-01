@@ -7,6 +7,13 @@
     </url>
     
     <url>
+        <loc>http://blog.fridolph.top/demo/</loc>
+        <lastmod>2024-01-01T07:25:30.436Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>http://blog.fridolph.top/gallery/</loc>
         <lastmod>2024-01-01T06:01:22.958Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -28,21 +35,14 @@
     </url>
     
     <url>
-        <loc>http://blog.fridolph.top/books/</loc>
-        <lastmod>2018-11-16T02:59:34.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://blog.fridolph.top/demo/</loc>
-        <lastmod>2018-11-16T02:59:34.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
         <loc>http://blog.fridolph.top/categories/</loc>
+        <lastmod>2018-11-16T02:59:34.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.fridolph.top/books/</loc>
         <lastmod>2018-11-16T02:59:34.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【学习】underscore源码学习（一）——核心架构"><meta name="keywords" content="源码,underscore"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【学习】underscore源码学习（一）——核心架构 | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?version=1.5.3"><meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?66f25c24596db799ce091d9b434b9495";
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?08804673a5fe37365758820497cd9fb1";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();</script><script>var GLOBAL_CONFIG = { 
@@ -78,7 +78,6 @@ arr.push(&apos;a&apos;);
 </ol>
 <p>我们先暂时跳过流程控制语句，该函数会返回一个匿名函数（闭包），该匿名函数执行并返回第一个参数func，<code>这个func就是要进行柯里化的函数</code>，此时的func作为 optimizeCb的一个参数，其this指向会上一层寻找，即整个 <code>_</code> 的内部作用域，这显然是不行的，所以func.apply的作用即是将func的作用域绑定到所传的context中，arguments为剩下的argCount</p>
 <p>参考 高级程序设计198页</p>
-<p><img src="http://blog.fueson.top/img/2017/underscore02.png" alt="活动对象1"><br><img src="http://blog.fueson.top/img/2017/underscore01.png" alt="活动对象2"></p>
 <p><code>optimizeCb</code>若执行，所传参数，都将作为optimizeCb内部的活动对象，函数执行完毕所返回的匿名函数是一个闭包，它能访问到当前活动对象上的参数，即函数传参。</p>
 <p>比如在 case 4 里的代码段</p>
 <pre><code>...

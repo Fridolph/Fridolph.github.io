@@ -63,34 +63,6 @@
     </url>
 
     <url>
-        <loc>http://blog.fridolph.top/categories/TypeScript/</loc>
-        <lastmod>2024-01-01T03:35:20.377Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.fridolph.top/categories/%E9%85%8D%E7%BD%AE/</loc>
-        <lastmod>2024-01-01T03:36:28.784Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.fridolph.top/categories/%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2024-01-01T03:52:45.661Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.fridolph.top/categories/JavaScript/</loc>
-        <lastmod>2024-01-01T06:55:16.425Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.fridolph.top/categories/%E6%80%A7%E8%83%BD/</loc>
         <lastmod>2024-01-01T07:00:03.121Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -100,6 +72,34 @@
     <url>
         <loc>http://blog.fridolph.top/categories/%E6%80%BB%E7%BB%93/</loc>
         <lastmod>2024-01-01T07:09:42.270Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.fridolph.top/categories/%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2024-01-01T07:23:01.484Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.fridolph.top/categories/JavaScript/</loc>
+        <lastmod>2024-01-01T07:23:55.153Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.fridolph.top/categories/%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2024-01-01T07:24:00.878Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.fridolph.top/categories/TypeScript/</loc>
+        <lastmod>2024-01-01T07:24:04.675Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
