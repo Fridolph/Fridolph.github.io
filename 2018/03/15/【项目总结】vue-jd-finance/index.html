@@ -1,0 +1,108 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【项目总结】vue-jd-finance"><meta name="keywords" content="vue,实战"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【项目总结】vue-jd-finance | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?version=1.5.3"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?66f25c24596db799ce091d9b434b9495";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  localSearch: {"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}"},"path":"search.xml"}
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目开始"><span class="toc-number">1.</span> <span class="toc-text">项目开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需求分析"><span class="toc-number">2.</span> <span class="toc-text">需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS模块化设计"><span class="toc-number">2.1.</span> <span class="toc-text">CSS模块化设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设计原则"><span class="toc-number">2.1.1.</span> <span class="toc-text">设计原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设计方法"><span class="toc-number">2.1.2.</span> <span class="toc-text">设计方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS组件设计原则"><span class="toc-number">2.2.</span> <span class="toc-text">JS组件设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自适应"><span class="toc-number">2.3.</span> <span class="toc-text">自适应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPA设计"><span class="toc-number">2.4.</span> <span class="toc-text">SPA设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设计意义"><span class="toc-number">2.4.1.</span> <span class="toc-text">设计意义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">2.5.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生产构建"><span class="toc-number">2.6.</span> <span class="toc-text">生产构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布部署"><span class="toc-number">2.7.</span> <span class="toc-text">发布部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建工具"><span class="toc-number">2.8.</span> <span class="toc-text">构建工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码校验-eslint"><span class="toc-number">2.9.</span> <span class="toc-text">代码校验 eslint</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/config/avatar.jpg"></div><div class="author-info__name text-center">Fridolph</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">58</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">69</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">14</span></a></div></div><div class="unit"><div class="heart"><div class="heart-piece-0"></div><div class="heart-piece-1"></div><div class="heart-piece-2"></div><div class="heart-piece-3"></div><div class="heart-piece-4"></div><div class="heart-piece-5"></div><div class="heart-piece-6"></div><div class="heart-piece-7"></div><div class="heart-piece-8"></div></div><p class="anime-title"><a href="https://github.com/fridolph" target="_blank">感谢访问本站，若喜欢请star ^_^</a></p></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/config/top-img.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">霪霖笙箫的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">个人主页</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/books">图书推荐</a><a class="site-page" href="/demo">项目实战</a><a class="site-page" href="/gallery">时光轨迹</a></span></div><div id="post-info"><div id="post-title">【项目总结】vue-jd-finance</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-15</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/总结/">总结</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2018/03/15/【项目总结】vue-jd-finance/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2018/03/15/【项目总结】vue-jd-finance/"></span></a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">718</span><span class="post-meta__separator">|</span><span>阅读时长: 2 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><blockquote>
+<p>今年3月做的一个小项目，虽然不难，但有很多值得思考和回味的地方，加上自己写东西一向不勤快，趁着小项目完工，思路方法热情都还历历在目，赶紧开篇记录下这些点点滴滴。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="项目开始"><a href="#项目开始" class="headerlink" title="项目开始"></a>项目开始</h2><p>这是在慕课实战的一个小项目，我觉得自己最大的进步在于，以前做黄老师的Vue是手把手跟着视频敲代码，而现在是看了两节知道了整体思路后，模块、目录、结构都是由自己进行了拆分和重构，自己折腾出来了，再对比视频，更多的是看老师实现的思路，当然，因项目不复杂才有了上述操作吧。</p>
+<p>在实战过程中，提出了很多问题，这个也是我想写博客的原因，问题的回答也是自己慢慢摸索进行了总结</p>
+<p><img src="/2018/03/15/【项目总结】vue-jd-finance/1.png" alt=""></p>
+<p><img src="/2018/03/15/【项目总结】vue-jd-finance/2.png" alt=""></p>
+<p><img src="/2018/03/15/【项目总结】vue-jd-finance/3.png" alt=""></p>
+<p><img src="/2018/03/15/【项目总结】vue-jd-finance/4.png" alt=""></p>
+<p><img src="/2018/03/15/【项目总结】vue-jd-finance/5.png" alt=""></p>
+<p><img src="/2018/03/15/【项目总结】vue-jd-finance/6.png" alt=""></p>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>头部<br>轮播图<br>新手特权<br>极速借贷<br>理财精选<br>精品推荐<br>生活服务<br>在线客服<br>公司介绍<br>导航条</p>
+<p><strong>项目目录</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- src</span><br><span class="line">  - assets            <span class="comment">// 静态资源</span></span><br><span class="line">  - components        <span class="comment">// 可拆分的组件</span></span><br><span class="line">  - layout            <span class="comment">// 布局相关组件</span></span><br><span class="line">  - lib               <span class="comment">// 公共方法等，请求，计算等</span></span><br><span class="line">  - routes            <span class="comment">// 路由相关</span></span><br><span class="line">  - views             <span class="comment">// container 页面容器 其相关子组件也放到对应文件夹中</span></span><br><span class="line">  - App.vue           <span class="comment">// 起始文件</span></span><br><span class="line">  - main.js           <span class="comment">// 入口</span></span><br></pre></td></tr></table></figure>
+<h3 id="CSS模块化设计"><a href="#CSS模块化设计" class="headerlink" title="CSS模块化设计"></a>CSS模块化设计</h3><h4 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h4><ul>
+<li>可复用、能继承、要完整</li>
+<li>周期性迭代</li>
+</ul>
+<h4 id="设计方法"><a href="#设计方法" class="headerlink" title="设计方法"></a>设计方法</h4><ul>
+<li>先整体再后部再颗粒化</li>
+</ul>
+<p>布局 -&gt; 页面 -&gt; 功能 -&gt; 业务</p>
+<ul>
+<li>先抽象再具体</li>
+</ul>
+<h3 id="JS组件设计原则"><a href="#JS组件设计原则" class="headerlink" title="JS组件设计原则"></a>JS组件设计原则</h3><ul>
+<li>高内聚、低耦合</li>
+<li>尽可能抽象</li>
+<li>周期性迭代</li>
+</ul>
+<h3 id="自适应"><a href="#自适应" class="headerlink" title="自适应"></a>自适应</h3><ol>
+<li>基本概念</li>
+</ol>
+<ul>
+<li>CSS像素、设备像素、逻辑像素、设备像素比</li>
+<li>viewport</li>
+<li>rem</li>
+</ul>
+<p>css里的 1px px就是css像素了，和逻辑单位一致。<br>设备像素比：css像素和物理像素的比值</p>
+<ol>
+<li>原理</li>
+</ol>
+<ul>
+<li>利用viewport和设备像素比调整基准像素</li>
+<li>利用px2rem自动转换CSS单位</li>
+</ul>
+<h3 id="SPA设计"><a href="#SPA设计" class="headerlink" title="SPA设计"></a>SPA设计</h3><h4 id="设计意义"><a href="#设计意义" class="headerlink" title="设计意义"></a>设计意义</h4><ul>
+<li>前后端分离</li>
+<li>减轻服务器压力</li>
+<li>增强用户体验</li>
+<li>Prerender预渲染优化SEO</li>
+</ul>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>History API</li>
+<li>Hash</li>
+</ul>
+<h3 id="生产构建"><a href="#生产构建" class="headerlink" title="生产构建"></a>生产构建</h3><ul>
+<li>合并 style javascript</li>
+<li>抽取 样式要从 javascript中抽取出来</li>
+<li>压缩 js、css、图片等</li>
+<li>调试 开启sourceMap</li>
+</ul>
+<h3 id="发布部署"><a href="#发布部署" class="headerlink" title="发布部署"></a>发布部署</h3><ul>
+<li>提交 使用git提交代码 管理线上版本</li>
+<li>部署 从git仓库拉取代码，通过小流量、跨机房、全量部署</li>
+<li>开启Gzip 开启gzip压缩</li>
+<li>更新CDN</li>
+</ul>
+<h3 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h3><ul>
+<li>babel</li>
+<li>webpack</li>
+<li>dev-server</li>
+</ul>
+<h3 id="代码校验-eslint"><a href="#代码校验-eslint" class="headerlink" title="代码校验 eslint"></a>代码校验 eslint</h3><ul>
+<li>eslint-plugin-vue</li>
+<li>mystaticatea.github.op/vue-eslint-demo</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>windows <a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows</a><br>mac <a href="https://github.com/creationix/nvm#install-script" target="_blank" rel="noopener">https://github.com/creationix/nvm#install-script</a></p>
+<p><strong>构建环境相关</strong></p>
+<p>webpack 4.10.0<br><a href="https://doc.webpack-china.org" target="_blank" rel="noopener">https://doc.webpack-china.org</a></p>
+<p>npm scripts<br><a href="http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html</a></p>
+<p>babel<br><a href="https://babeljs.cn/docs/usage/polyfill" target="_blank" rel="noopener">https://babeljs.cn/docs/usage/polyfill</a><br><a href="https://www.imooc.com/article/21866" target="_blank" rel="noopener">https://www.imooc.com/article/21866</a></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2018/03/15/【项目总结】vue-jd-finance/">http://blog.fridolph.top/2018/03/15/【项目总结】vue-jd-finance/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/vue/">vue</a><a class="post-meta__tags" href="/tags/实战/">实战</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/03/29/【解决方案】移动端布局解决hotcss/"><i class="fa fa-chevron-left">  </i><span>【调研】移动端布局解决hotcss</span></a></div><div class="next-post pull-right"><a href="/2018/02/26/【JS】应用正则表达式（二）/"><span>【JS】应用正则表达式（一）</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'http://blog.fridolph.top/2018/03/15/【项目总结】vue-jd-finance/';
+  this.page.identifier = '2018/03/15/【项目总结】vue-jd-finance/';
+  this.page.title = '【项目总结】vue-jd-finance';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'fridolph' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://fridolph.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2024 By Fridolph</div><div class="framework-info"><span>driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.3"></script><script src="/js/fancybox.js?version=1.5.3"></script><script src="/js/sidebar.js?version=1.5.3"></script><script src="/js/copy.js?version=1.5.3"></script><script src="/js/fireworks.js?version=1.5.3"></script><script src="/js/transition.js?version=1.5.3"></script><script src="/js/scroll.js?version=1.5.3"></script><script src="/js/head.js?version=1.5.3"></script></body></html>

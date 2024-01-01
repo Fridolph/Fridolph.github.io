@@ -1,0 +1,212 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【JS】脚本错误及错误捕获"><meta name="keywords" content="JS,Error"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【JS】脚本错误及错误捕获 | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?version=1.5.3"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?66f25c24596db799ce091d9b434b9495";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  localSearch: {"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}"},"path":"search.xml"}
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是脚本错误"><span class="toc-number">1.</span> <span class="toc-text">什么是脚本错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#产生原因：跨源脚本"><span class="toc-number">2.</span> <span class="toc-text">产生原因：跨源脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#但这并不坏"><span class="toc-number">3.</span> <span class="toc-text">但这并不坏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修复：CORS-attributes-amp-headers"><span class="toc-number">4.</span> <span class="toc-text">修复：CORS attributes &amp; headers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#另一种解决方案：try-catch"><span class="toc-number">5.</span> <span class="toc-text">另一种解决方案：try / catch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#window-onerror"><span class="toc-number">6.</span> <span class="toc-text">window.onerror</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Error对象和error-stack"><span class="toc-number">6.1.</span> <span class="toc-text">Error对象和error.stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器兼容性"><span class="toc-number">6.2.</span> <span class="toc-text">浏览器兼容性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用try-catch-兼容-window-onerror"><span class="toc-number">6.3.</span> <span class="toc-text">使用try / catch 兼容 window.onerror</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将错误传输到你的服务器"><span class="toc-number">6.4.</span> <span class="toc-text">将错误传输到你的服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">7.</span> <span class="toc-text">参考文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/config/avatar.jpg"></div><div class="author-info__name text-center">Fridolph</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">58</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">69</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">14</span></a></div></div><div class="unit"><div class="heart"><div class="heart-piece-0"></div><div class="heart-piece-1"></div><div class="heart-piece-2"></div><div class="heart-piece-3"></div><div class="heart-piece-4"></div><div class="heart-piece-5"></div><div class="heart-piece-6"></div><div class="heart-piece-7"></div><div class="heart-piece-8"></div></div><p class="anime-title"><a href="https://github.com/fridolph" target="_blank">感谢访问本站，若喜欢请star ^_^</a></p></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/config/top-img.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">霪霖笙箫的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">个人主页</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/books">图书推荐</a><a class="site-page" href="/demo">项目实战</a><a class="site-page" href="/gallery">时光轨迹</a></span></div><div id="post-info"><div id="post-title">【JS】脚本错误及错误捕获</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-07-14</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/JavaScript/">JavaScript</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2018/07/14/【JS】脚本错误及错误捕获/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2018/07/14/【JS】脚本错误及错误捕获/"></span></a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">3,338</span><span class="post-meta__separator">|</span><span>阅读时长: 13 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><blockquote>
+<p>从脚本错误开始，了解脚本为什么会报错以及抛出错误，最后介绍了用window.onerror、try catch捕获错误。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="什么是脚本错误"><a href="#什么是脚本错误" class="headerlink" title="什么是脚本错误"></a>什么是脚本错误</h2><p>如果您以前使用过JavaScript onerror事件做过任何工作，您可能会遇到以下情况：</p>
+<p>“Script error.”</p>
+<p>“脚本错误”是当错误源自从不同来源（不同域，端口或协议）提供的JavaScript文件时，浏览器发送到onerror回调的内容。这很痛苦，因为即使出现错误，您也不知道错误是什么，也不知道它来自哪个代码。这就是window.onerror的全部目的 - 深入了解应用程序中未捕获的错误。</p>
+<h2 id="产生原因：跨源脚本"><a href="#产生原因：跨源脚本" class="headerlink" title="产生原因：跨源脚本"></a>产生原因：跨源脚本</h2><p>为了更好地了解正在发生的事情，请考虑以下示例HTML文档，假设从<a href="http://example.com/test提供：" target="_blank" rel="noopener">http://example.com/test提供：</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>example.com/test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://another-domain.com/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">message, url, line, column, error</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(message, url, line, column, error);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    foo(); <span class="comment">// call function declared in app.js</span></span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这是<a href="http://another-domain.com/app.js的内容。它声明了一个函数foo，其调用将始终抛出ReferenceError。" target="_blank" rel="noopener">http://another-domain.com/app.js的内容。它声明了一个函数foo，其调用将始终抛出ReferenceError。</a></p>
+<p>在浏览器中加载此文档并执行JavaScript时，会将以下内容输出到控制台（通过window.onerror回调记录）：</p>
+<p>“Script error.”, “”, 0, 0, undefined</p>
+<p>这不是JavaScript错误 - 出于安全原因，浏览器故意隐藏源自不同来源的脚本文件的错误。这是为了避免脚本无意中将潜在敏感信息泄露给它无法控制的onerror回调。出于这个原因，浏览器只允许window.onerror洞察来自同一域的错误。我们所知道的是发生了一个错误 - 没有别的！</p>
+<h2 id="但这并不坏"><a href="#但这并不坏" class="headerlink" title="但这并不坏"></a>但这并不坏</h2><p>尽管浏览器有良好的意图，但是有一些很好的理由可以让您深入了解从不同来源提供的脚本引发的错误：</p>
+<ol>
+<li>您的应用程序JavaScript文件是从不同的主机名提供的，例如static.sentry.io/app.js</li>
+<li>您正在使用社区CDN提供的库，例如cdnjs或Google的托管库</li>
+<li>您正在使用商业第三方JavaScript库，该库仅由外部服务器提供</li>
+</ol>
+<p>但不要担心 - 深入了解这些文件所提供的JavaScript错误只需要进行一些简单的调整。</p>
+<h2 id="修复：CORS-attributes-amp-headers"><a href="#修复：CORS-attributes-amp-headers" class="headerlink" title="修复：CORS attributes &amp; headers"></a>修复：CORS attributes &amp; headers</h2><p>为了了解源自不同来源的脚本引发的JavaScript异常，您必须做两件事:</p>
+<ol>
+<li>添加 crossorigin=”anonymous” 脚本属性</li>
+</ol>
+<p><code>&lt;script src=&quot;http://another-domain.com/app.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</code></p>
+<p>这告诉浏览器应该“anonymous”(匿名)获取目标文件。这意味着在请求此文件时，浏览器不会将任何潜在的用户识别信息（如cookie或HTTP凭据）传输到服务器。</p>
+<ol>
+<li>添加Cross Origin HTTP header</li>
+</ol>
+<p><code>Access-Control-Allow-Origin: *</code></p>
+<p>CORS是“跨源资源共享”的缩写，它是一组API（主要是HTTP标头），它们规定了文件应该如何从源头下载和提供。</p>
+<p>通过设置Access-Control-Allow-Origin：*，服务器向浏览器指示任何源可以获取此文件。或者，您可以将其限制为您控制的已知来源，例如</p>
+<p><code>Access-Control-Allow-Origin: https://www.example.com</code></p>
+<p>注意：大多数社区CDN正确设置了Access-Control-Allow-Origin标头。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl --head https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.js | \</span><br><span class="line">  grep -i <span class="string">"access-control-allow-origin"</span></span><br><span class="line"></span><br><span class="line">Access-Control-Allow-Origin: *</span><br></pre></td></tr></table></figure>
+<p>完成这两个步骤后，此脚本触发的任何错误都将向window.onerror报告，就像任何常规的同域脚本一样。因此，代替“脚本错误”，从一开始的onerror示例将产生：</p>
+<p><code>&quot;ReferenceError: bar is not defined&quot;, &quot;http://another-domain.com/app.js&quot;, 2, 1, [Object Error]</code></p>
+<h2 id="另一种解决方案：try-catch"><a href="#另一种解决方案：try-catch" class="headerlink" title="另一种解决方案：try / catch"></a>另一种解决方案：try / catch</h2><p>有时，我们并不总是能够调整Web应用程序正在使用的脚本的HTTP头。在这些情况下，有一种替代方法：使用try / catch。</p>
+<p>再次考虑原始示例，这次使用try / catch：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- <span class="doctag">note:</span> crossorigin="anonymous" intentionally absent --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://another-domain.com/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">message, url, line, column, error</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(message, url, line, column, error);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="javascript">    foo(); <span class="comment">// call function declared in app.js</span></span></span><br><span class="line"><span class="javascript">  &#125; <span class="keyword">catch</span> (e) &#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(e);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">throw</span> e; <span class="comment">// intentionally re-throw (caught by window.onerror)</span></span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对于后代，some-domain.com/app.js再次看起来像这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// another-domain.com/app.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  bar(); <span class="comment">// ReferenceError: bar is not a function</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行示例HTML将向控制台输出以下2个条目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">=&gt; ReferenceError: bar is not defined</span><br><span class="line">    at foo (http://another-domain.com/b.js:2:3)</span><br><span class="line">    at http://example.com/<span class="built_in">test</span>/:15:3</span><br><span class="line"></span><br><span class="line">=&gt; <span class="string">"Script error."</span>, <span class="string">""</span>, 0, 0, undefined</span><br></pre></td></tr></table></figure>
+<p>第一个控制台语句 - 来自try / catch - 设法获取一个错误对象，包括类型，消息和堆栈跟踪，包括文件名和行号。来自window.onerror的第二个控制台语句再一次只能输出“脚本错误”。</p>
+<p>现在，这是否意味着您需要尝试/捕获所有代码？可能不是 - 如果您可以轻松更改HTML并在CDN上指定CORS标题，则最好这样做并坚持使用window.onerror。但是，如果您不控制这些资源，使用try / catch包装第三方代码是一种可靠的（虽然是乏味的）方式，可以深入了解跨源脚本引发的错误。</p>
+<p>注意：默认情况下，Raven.js - Sentry的JavaScript SDK - 仔细设备内置方法，尝试自动将代码包装在try / catch块中。它这样做是为了尝试捕获所有脚本中的错误消息和堆栈跟踪，无论它们来自哪个来源。如果可能，仍建议设置CORS属性和标头。</p>
+<h2 id="window-onerror"><a href="#window-onerror" class="headerlink" title="window.onerror"></a>window.onerror</h2><p>onerror是一个特殊的浏览器事件，只要抛出未捕获的JavaScript错误就会触发该事件。这是记录客户端错误并将其报告给服务器的最简单方法之一。它也是Sentry的客户端JavaScript集成（raven-js）工作的主要机制之一。</p>
+<p>你通过向window.onerror分配一个函数来监听onerror事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">msg, url, lineNo, columnNo, error</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... handle error ...</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抛出错误时，以下参数将传递给函数：</p>
+<ul>
+<li>msg - 与错误相关的消息，例如“未捕获的ReferenceError：foo未定义”</li>
+<li>url - 与错误关联的脚本或文档的URL，例如“/dist/app.js”</li>
+<li>lineNo - 行号（如果有）</li>
+<li>columnNo - 列号（如果可用）</li>
+<li>error - 与此错误关联的Error对象（如果可用）</li>
+</ul>
+<p>前四个参数告诉你错误发生在哪个脚本，行和列中。最后一个参数Error对象可能是最有价值的。让我们来了解原因。</p>
+<h3 id="Error对象和error-stack"><a href="#Error对象和error-stack" class="headerlink" title="Error对象和error.stack"></a>Error对象和error.stack</h3><p>乍一看，Error对象不是很特别。它包含3个标准化属性：message，fileName和lineNumber。已通过window.onerror提供给你的冗余值。</p>
+<p>有价值的部分是非标准属性：Error.prototype.stack。此堆栈属性告诉你错误发生时程序的每个帧的源位置。错误堆栈跟踪可能是调试的关键部分。尽管不标准，但每个现代浏览器都提供此属性。</p>
+<p>以下是Chrome 46中Error对象的堆栈属性的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Error: foobar\n    at new bar (&lt;anonymous&gt;:241:11)\n    at foo (&lt;anonymous&gt;:245:5)\n    at &lt;anonymous&gt;:250:5\n    at &lt;anonymous&gt;:251:3\n    at &lt;anonymous&gt;:267:4\n    at callFunction (&lt;anonymous&gt;:229:33)\n    at &lt;anonymous&gt;:239:23\n    at &lt;anonymous&gt;:240:3\n    at Object.InjectedScript._evaluateOn (&lt;anonymous&gt;:875:140)\n    at Object.InjectedScript._evaluateAndWrap (&lt;anonymous&gt;:808:34)"</span></span><br></pre></td></tr></table></figure>
+<p>难以阅读，对吗？stack属性实际上只是一个未格式化的字符串。这是格式化的样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Error: foobar</span></span><br><span class="line"><span class="string">    at new bar (&lt;anonymous&gt;:241:11)</span></span><br><span class="line"><span class="string">    at foo (&lt;anonymous&gt;:245:5)</span></span><br><span class="line"><span class="string">    at &lt;anonymous&gt;:250:5</span></span><br><span class="line"><span class="string">    at &lt;anonymous&gt;:251:3</span></span><br><span class="line"><span class="string">    at &lt;anonymous&gt;:267:4</span></span><br><span class="line"><span class="string">    at callFunction (&lt;anonymous&gt;:229:33)</span></span><br><span class="line"><span class="string">    at &lt;anonymous&gt;:239:23</span></span><br><span class="line"><span class="string">    at &lt;anonymous&gt;:240:3</span></span><br><span class="line"><span class="string">    at Object.InjectedScript._evaluateOn (&lt;anonymous&gt;:875:140)</span></span><br><span class="line"><span class="string">    at Object.InjectedScript._evaluateAndWrap (&lt;anonymous&gt;:808:34)"</span></span><br></pre></td></tr></table></figure>
+<p>一旦格式化，就很容易看出堆栈属性如何在帮助调试错误时起到关键作用。只有一个障碍：堆栈属性是非标准的，它的实现在浏览器之间有所不同。例如，这是来自Internet Explorer 11的相同堆栈跟踪：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Error</span>: foobar</span><br><span class="line">   at bar (Unknown script code:<span class="number">2</span>:<span class="number">5</span>)</span><br><span class="line">   at foo (Unknown script code:<span class="number">6</span>:<span class="number">5</span>)</span><br><span class="line">   at Anonymous <span class="function"><span class="keyword">function</span> (<span class="params">Unknown script code:<span class="number">11</span>:<span class="number">5</span></span>)</span></span><br><span class="line"><span class="function">   <span class="title">at</span> <span class="title">Anonymous</span> <span class="title">function</span> (<span class="params">Unknown script code:<span class="number">10</span>:<span class="number">2</span></span>)</span></span><br><span class="line"><span class="function">   <span class="title">at</span> <span class="title">Anonymous</span> <span class="title">function</span> (<span class="params">Unknown script code:<span class="number">1</span>:<span class="number">73</span></span>)</span></span><br></pre></td></tr></table></figure>
+<p>不仅每个帧的格式不同，帧也具有较少的细节。例如，Chrome会识别出已使用新关键字，并且对eval调用有更深入的了解。这只是IE 11与Chrome的比较 - 其他类似的浏览器具有不同的格式和细节。</p>
+<p>幸运的是，有一些工具可以规范化堆栈属性，使其在浏览器中保持一致。例如，raven-js使用TraceKit来规范化错误字符串。还有stacktrace.js和其他一些项目。</p>
+<h3 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><p>window.onerror已经在浏览器中出现了一段时间 - 你会在浏览器中找到它与IE6和Firefox 2一样古老的版本。</p>
+<p>问题是每个浏览器都以不同的方式实现window.onerror。特别是，将多少个参数发送给onerror侦听器，以及这些参数的结构。</p>
+<p>这是一个在大多数浏览器中将参数传递给onerror的表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Browser</th>
+<th style="text-align:center">Message</th>
+<th style="text-align:center">URL</th>
+<th style="text-align:center">lineNo</th>
+<th style="text-align:center">colNo</th>
+<th style="text-align:center">errorObj</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Firefox</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:center">Chrome</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:center">Edge</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:center">IE 11</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:center">IE 10</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:center">IE 9, 8</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:center">Safari 10 and up</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:center">Safari 9</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:center">Android Browser 4.4</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+</tbody>
+</table>
+<p>Internet Explorer 8,9和10对onerror的支持有限，这可能不足为奇。但是你可能会惊讶于Safari只在Safari 10中添加了对错误对象的支持（2016年发布）。此外，仍旧使用现有Android浏览器（现已替换为Chrome Mobile）的旧手机版仍然在那里，并且不会传递错误对象。</p>
+<p>没有错误对象，就没有堆栈跟踪属性。这意味着这些浏览器无法从错误捕获的错误中检索有价值的堆栈信息。</p>
+<h3 id="使用try-catch-兼容-window-onerror"><a href="#使用try-catch-兼容-window-onerror" class="headerlink" title="使用try / catch 兼容 window.onerror"></a>使用try / catch 兼容 window.onerror</h3><p>但是有一种解决方法 - 你可以将应用程序中的代码包装在try / catch中并自己捕获错误。这个错误对象将在每个现代浏览器中包含我们令人垂涎的堆栈属性。</p>
+<p>考虑以下帮助器方法invoke，它使用参数数组调用对象上的函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invoke</span>(<span class="params">obj, method, args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj[method].apply(<span class="keyword">this</span>, args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">invoke(<span class="built_in">Math</span>, <span class="string">'max'</span>, [<span class="number">1</span>, <span class="number">2</span>]); <span class="comment">// returns 2</span></span><br></pre></td></tr></table></figure>
+<p>这里再次调用，这次包装在try / catch中，以捕获任何抛出的错误：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invoke</span>(<span class="params">obj, method, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> obj[method].apply(<span class="keyword">this</span>, args);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    captureError(e); <span class="comment">// report the error</span></span><br><span class="line">    <span class="keyword">throw</span> e; <span class="comment">// re-throw the error</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">invoke(<span class="built_in">Math</span>, <span class="string">'highest'</span>, [<span class="number">1</span>, <span class="number">2</span>]); <span class="comment">// throws error, no method Math.highest</span></span><br></pre></td></tr></table></figure>
+<p>当然，在任何地方手动执行此操作非常麻烦。你可以通过创建通用包装器实用程序函数来使其更容易：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapErrors</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// don't wrap function more than once</span></span><br><span class="line">  <span class="keyword">if</span> (!fn.__wrapped__) &#123;</span><br><span class="line">    fn.__wrapped__ = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        captureError(e); <span class="comment">// report the error</span></span><br><span class="line">        <span class="keyword">throw</span> e; <span class="comment">// re-throw the error</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> fn.__wrapped__;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> invoke = wrapErrors(<span class="function"><span class="keyword">function</span>(<span class="params">obj, method, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> obj[method].apply(<span class="keyword">this</span>, args);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">invoke(<span class="built_in">Math</span>, <span class="string">'highest'</span>, [<span class="number">1</span>, <span class="number">2</span>]); <span class="comment">// no method Math.highest</span></span><br></pre></td></tr></table></figure>
+<p>因为JavaScript是单线程的，所以你不需要在任何地方使用wrap  - 只是在每个新堆栈的开头。</p>
+<p>这意味着你需要包装函数声明：</p>
+<ul>
+<li>在你的应用程序开始时（例如，如果你使用jQuery，请在$（document）.ready中）</li>
+<li>在事件处理程序中，例如addEventListener或$ .fn.click</li>
+<li>基于计时器的回调，例如setTimeout或requestAnimationFrame</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$(wrapErrors(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// application start</span></span><br><span class="line">  doSynchronousStuff1(); <span class="comment">// doesn't need to be wrapped</span></span><br><span class="line"></span><br><span class="line">  setTimeout(wrapErrors(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    doSynchronousStuff2(); <span class="comment">// doesn't need to be wrapped</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  $(<span class="string">'.foo'</span>).click(wrapErrors(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    doSynchronousStuff3(); <span class="comment">// doesn't need to be wrapped</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>如果这看起来像是很多工作，请不要担心！大多数错误报告库都具有增强内置函数（如addEventListener和setTimeout）的机制，因此你不必每次都调用包装实用程序。是的，raven-js也这样做。</p>
+<h3 id="将错误传输到你的服务器"><a href="#将错误传输到你的服务器" class="headerlink" title="将错误传输到你的服务器"></a>将错误传输到你的服务器</h3><p>好的，所以你已经完成了你的工作 - 你已经插入window.onerror，并且你还在try / catch中包装函数，以便捕获尽可能多的错误信息。</p>
+<p>最后一步是：将错误信息传输到你的服务器。为了实现这一点，你需要设置某种报告Web服务，该服务将通过HTTP接受你的错误数据，将其记录到文件和/或将其存储在数据库中。</p>
+<p>如果此Web服务与Web应用程序位于同一个域中，则可以使用XMLHttpRequest轻松实现。在下面的示例中，我们使用jQuery的AJAX函数将数据传输到我们的服务器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">captureError</span>(<span class="params">ex</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> errorData = &#123;</span><br><span class="line">    name: ex.name, <span class="comment">// e.g. ReferenceError</span></span><br><span class="line">    message: ex.line, <span class="comment">// e.g. x is undefined</span></span><br><span class="line">    url: <span class="built_in">document</span>.location.href,</span><br><span class="line">    stack: ex.stack <span class="comment">// stacktrace string; remember, different per-browser!</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  $.post(<span class="string">'/logger/js/'</span>, &#123;</span><br><span class="line">    data: errorData</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请注意，如果必须跨源传输错误，则报告端点需要支持CORS（跨源资源共享）。</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
+<li><a href="https://blog.sentry.io/2016/05/17/what-is-script-error" target="_blank" rel="noopener">什么是脚本错误</a></li>
+<li><a href="https://blog.sentry.io/2016/01/04/client-javascript-reporting-window-onerror.html" target="_blank" rel="noopener">window.onerror捕获错误</a></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你已经做到这一点，那么你现在可以拥有所需的所有工具来推送自己的基本错误报告库并将其与你的应用程序集成：</p>
+<ul>
+<li>window.onerror的工作原理以及它支持的浏览器</li>
+<li>如何使用try / catch来捕获缺少window.onerror的堆栈跟踪</li>
+<li>将错误数据传输到你的服务器</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2018/07/14/【JS】脚本错误及错误捕获/">http://blog.fridolph.top/2018/07/14/【JS】脚本错误及错误捕获/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a><a class="post-meta__tags" href="/tags/Error/">Error</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/07/20/【数据结构】栈、队列、链表及其区别/"><i class="fa fa-chevron-left">  </i><span>【数据结构】栈、队列、链表及其区别</span></a></div><div class="next-post pull-right"><a href="/2018/07/07/【跨域】理解跨域及相关解决方案/"><span>【JS】理解跨域及相关解决方案</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'http://blog.fridolph.top/2018/07/14/【JS】脚本错误及错误捕获/';
+  this.page.identifier = '2018/07/14/【JS】脚本错误及错误捕获/';
+  this.page.title = '【JS】脚本错误及错误捕获';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'fridolph' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://fridolph.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2024 By Fridolph</div><div class="framework-info"><span>driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.3"></script><script src="/js/fancybox.js?version=1.5.3"></script><script src="/js/sidebar.js?version=1.5.3"></script><script src="/js/copy.js?version=1.5.3"></script><script src="/js/fireworks.js?version=1.5.3"></script><script src="/js/transition.js?version=1.5.3"></script><script src="/js/scroll.js?version=1.5.3"></script><script src="/js/head.js?version=1.5.3"></script></body></html>

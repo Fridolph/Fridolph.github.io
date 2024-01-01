@@ -1,0 +1,103 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【面试】知识点查缺补漏系列1——从几道面试题开始"><meta name="keywords" content="面试"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【面试】知识点查缺补漏系列1——从几道面试题开始 | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?version=1.5.3"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?66f25c24596db799ce091d9b434b9495";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  localSearch: {"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}"},"path":"search.xml"}
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思考问题的结论"><span class="toc-number">1.</span> <span class="toc-text">思考问题的结论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单思考"><span class="toc-number">1.1.</span> <span class="toc-text">简单思考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量类型与变量计算"><span class="toc-number">2.</span> <span class="toc-text">变量类型与变量计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#typeof-运算符"><span class="toc-number">2.1.</span> <span class="toc-text">typeof 运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量计算-强制类型转换"><span class="toc-number">2.2.</span> <span class="toc-text">变量计算 - 强制类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题"><span class="toc-number">3.</span> <span class="toc-text">解题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">4.</span> <span class="toc-text">小结</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/config/avatar.jpg"></div><div class="author-info__name text-center">Fridolph</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">58</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">69</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">14</span></a></div></div><div class="unit"><div class="heart"><div class="heart-piece-0"></div><div class="heart-piece-1"></div><div class="heart-piece-2"></div><div class="heart-piece-3"></div><div class="heart-piece-4"></div><div class="heart-piece-5"></div><div class="heart-piece-6"></div><div class="heart-piece-7"></div><div class="heart-piece-8"></div></div><p class="anime-title"><a href="https://github.com/fridolph" target="_blank">感谢访问本站，若喜欢请star ^_^</a></p></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/config/top-img.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">霪霖笙箫的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">个人主页</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/books">图书推荐</a><a class="site-page" href="/demo">项目实战</a><a class="site-page" href="/gallery">时光轨迹</a></span></div><div id="post-info"><div id="post-title">【面试】知识点查缺补漏系列1——从几道面试题开始</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-07-23</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/面试/">面试</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/面试/JavaScript/">JavaScript</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2017/07/23/【面试】知识点查缺补漏系列1——从几道面试题开始/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2017/07/23/【面试】知识点查缺补漏系列1——从几道面试题开始/"></span></a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">973</span><span class="post-meta__separator">|</span><span>阅读时长: 4 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><blockquote>
+<p>最近整理公司文档，对前段时间的面试经验也算作了些总结，从中也很有多体会，毕竟是人生中的第一次经历嘛（一直都是被面试，现在是面试别人，那感觉还不错…）作为纪念于是就把这些记录下来 … ps 也算为之后作点铺垫… 咳咳你们懂的</p>
+</blockquote>
+<p>系列暂拟了大纲（不确定，随时会改，但最终会统一整理）：</p>
+<p>1——从几道面试题开始<br>2——JS必知(原型相关、作用域、执行环境、闭包等等)<br>3——JS异步相关<br>4——JS 常用API与DOM相关<br>5——JS DOM操作与Event事件<br>6——Ajax、跨域与本地存储<br>7——性能优化与安全相关<br>8——前端自动化相关</p>
+<a id="more"></a>
+<p>好的，欢迎回来，这是本系列的第一篇，作为引子，想先从几道常见的面试题入手由浅入不那么浅。。(误)~</p>
+<h2 id="思考问题的结论"><a href="#思考问题的结论" class="headerlink" title="思考问题的结论"></a>思考问题的结论</h2><p>拿到面试题 -&gt; 看考点</p>
+<p>看不完的题海 -&gt; 以不变应万变</p>
+<p>面对面试题 -&gt; 由题目到知识再回归题目本身</p>
+<h3 id="简单思考"><a href="#简单思考" class="headerlink" title="简单思考"></a>简单思考</h3><ul>
+<li><p>js总使用typeof能得到的变量类型？ 考点：js变量类型</p>
+</li>
+<li><p>何时用 === 何时用 == ？ 考点：强制类型转换</p>
+</li>
+<li><p>window.onload和 DOMContentLoaded 区别？ 考点：浏览器渲染过程</p>
+</li>
+<li><p>用js创建10个<a>标签，点击时弹出对应序号？ 考点：作用域</a></p>
+</li>
+<li><p>实现数组的随机排序？ 考点：JS基础算法</p>
+</li>
+</ul>
+<p>先看几道题:</p>
+<ol>
+<li><p>js总使用typeof能得到的变量类型？ 考点：js变量类型</p>
+</li>
+<li><p>何时用 === 何时用 == ？ 考点：强制类型转换</p>
+</li>
+<li><p>js有哪些内置函数</p>
+</li>
+<li><p>js变量按照存储方式区分为哪些类型，并描述其特点</p>
+</li>
+<li><p>如何理解JSON</p>
+</li>
+</ol>
+<hr>
+<h2 id="变量类型与变量计算"><a href="#变量类型与变量计算" class="headerlink" title="变量类型与变量计算"></a>变量类型与变量计算</h2><p>*值类型</p>
+<p>*引用类型  -  对象、数组、函数</p>
+<h3 id="typeof-运算符"><a href="#typeof-运算符" class="headerlink" title="typeof 运算符"></a>typeof 运算符</h3><h3 id="变量计算-强制类型转换"><a href="#变量计算-强制类型转换" class="headerlink" title="变量计算 - 强制类型转换"></a>变量计算 - 强制类型转换</h3><ul>
+<li>字符串拼接</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">100</span> + <span class="number">10</span> <span class="comment">// 110</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">100</span> + <span class="string">'10'</span> <span class="comment">// 10010</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>== 运算符</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">100</span> == <span class="string">'100'</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">0</span> == <span class="string">''</span>  <span class="comment">// true</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span>  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>if语句</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span></span><br><span class="line"><span class="keyword">if</span> (a) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">100</span></span><br><span class="line"><span class="keyword">if</span> (b) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = <span class="string">''</span></span><br><span class="line"><span class="keyword">if</span> (c) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>逻辑运算</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span> &amp;&amp; <span class="number">0</span>) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">''</span> || <span class="string">'abc'</span>) <span class="comment">// 'abc'</span></span><br><span class="line"><span class="built_in">console</span>.log(!<span class="built_in">window</span>.abc) <span class="comment">// true</span></span><br><span class="line"><span class="comment">//判断一个变量会被当作true还是false</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">100</span></span><br><span class="line"><span class="built_in">console</span>.log(!!a)</span><br></pre></td></tr></table></figure>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><ol>
+<li>typeof类型</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">'abc'</span>  <span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">123</span>  <span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span> <span class="comment">// boolean</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125;  <span class="comment">// object</span></span><br><span class="line"><span class="keyword">typeof</span> []  <span class="comment">// object</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">// object</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">console</span>.log  <span class="comment">// function</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>何时使用 === 和 ==</p>
+<p> if (obj.a == null) {<br>   // …<br> }</p>
+</li>
+</ol>
+<p>这里相当于 <code>obj.a === null || obj.a === undefined</code> 的简写形式<br>这是jQuery源码中推荐的写法</p>
+<ol>
+<li>JS中的内置函数 - 数据封装类对象</li>
+</ol>
+<p>Object<br>Array<br>Boolean<br>Number<br>String<br>Function<br>Date<br>RegExp<br>Error</p>
+<ol>
+<li>js变量按照存储方式区分为哪些类型，并描述其特点</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 值类型 */</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">a = <span class="number">11</span></span><br><span class="line"><span class="built_in">console</span>.log(b)  <span class="comment">// 11</span></span><br><span class="line"><span class="comment">/* 引用类型 */</span></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">x</span>: <span class="number">100</span> &#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = obj1</span><br><span class="line">obj1.x = <span class="number">200</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2.x) <span class="comment">// 200</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>如何理解JSON</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// - JSON是一个JavaScript对象，有自己的api</span></span><br><span class="line"><span class="comment">// - 数据格式</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify(&#123;<span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span>&#125;)</span><br><span class="line"><span class="built_in">JSON</span>.parse(<span class="string">`&#123;"a": 10, "b": 20&#125;`</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>我们拿到题目，首先阅读仔细要明确考点，懂得面试意图，再来针对性作答。当然，答题不是我们追求的本质，更重要的是通过面试调整好自己的心态，查缺补漏不断完善自己的知识点，如果这次不成，放好心态迎接接下来的挑战就好。</p>
+<p>通过这个引子，我们可以看到JavaScript确实有很多坑，但同时也是一门超级灵活，书写爽快的语言，作为一门很有“统治性的语言”（任何可以用JS写的程序最终都将用JS来实现）与其埋怨，不如深究下去，让我们之后的工作更从容些。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2017/07/23/【面试】知识点查缺补漏系列1——从几道面试题开始/">http://blog.fridolph.top/2017/07/23/【面试】知识点查缺补漏系列1——从几道面试题开始/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/面试/">面试</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2017/07/23/【面试】知识点查缺补漏系列2——从原型到闭包你必知的js知识点/"><i class="fa fa-chevron-left">  </i><span>【面试】知识点查缺补漏系列2——从原型到闭包你必知的js知识点</span></a></div><div class="next-post pull-right"><a href="/2017/07/18/【Axios】学习学习~ 官方readme翻译/"><span>【Axios】学习学习~ 官方readme翻译</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'http://blog.fridolph.top/2017/07/23/【面试】知识点查缺补漏系列1——从几道面试题开始/';
+  this.page.identifier = '2017/07/23/【面试】知识点查缺补漏系列1——从几道面试题开始/';
+  this.page.title = '【面试】知识点查缺补漏系列1——从几道面试题开始';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'fridolph' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://fridolph.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2024 By Fridolph</div><div class="framework-info"><span>driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.3"></script><script src="/js/fancybox.js?version=1.5.3"></script><script src="/js/sidebar.js?version=1.5.3"></script><script src="/js/copy.js?version=1.5.3"></script><script src="/js/fireworks.js?version=1.5.3"></script><script src="/js/transition.js?version=1.5.3"></script><script src="/js/scroll.js?version=1.5.3"></script><script src="/js/head.js?version=1.5.3"></script></body></html>

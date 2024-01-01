@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【性能】（二）图片优化相关"><meta name="keywords" content="图片"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【性能】（二）图片优化相关 | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.6.0/css/reveal.min.css"><link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.6.0/css/theme/black.min.css"><link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.6.0/lib/css/zenburn.min.css"></head><body><div class="reveal"><div class="slides"><section data-markdown data-separator="---" data-separator-vertical="--" data-charset="utf-8"><script type="text/template">
+<section>
+	<h2>二、图片相关知识与优化</h2>
+	<h3>核心点</h3>
+	<ul>
+		<li>超过一半的流量和时间都用来下载图片</li>
+		<li>图片优化效果明显将大大提高网站性能</li>
+	</ul>
+</section>
+
+<section>
+	<h3>有损压缩，一张JPG图片的解析过程</h3>
+	<p class="fragment">Raw Image Data -> Color Transform -> Down sampling -> Forward DCT -> Quantization -> Encoding</p>
+	<hr>
+	<p class="fragment">源数据 -> 颜色转换 -> 颜色采样（区分高频低频颜色变化） -> 对高频颜色进行压缩DCT -> 质量控制 -> 编码</p>
+</section>
+
+<section>
+	<h3>不同格式图片常用的业务场景</h3>
+	<ul>
+		<li class="fragment">1. jpg有损压缩，压缩率高，不支持透明。用于大部分不需要透明图片的业务场景</li>	
+		<li class="fragment">2. png支持透明，浏览器兼容性好。用于大部分需要透明图片的业务场景</li>	
+		<li class="fragment">3. webp压缩程度更好，在ios webview有兼容性问题。适用所有高版安卓</li>	
+		<li class="fragment">4. svg矢量图，代码内嵌，相对较小，图片样式相对简单的场景</li>	
+	</ul>
+</section>
+
+<section>
+	<h3>图片压缩</h3>
+	<ul>
+		<li class="fragment">1. CSS雪碧图 减少HTTP请求数（至少1次）整张图较大时也会存在加载慢的现象</li>	
+		<li class="fragment">2. Image inline base64 （将图片的内容内嵌到html中 -> 减少网站的HTTP请求数(0)）</li>	
+		<li class="fragment">3. 在安卓下使用webp</li>	
+		<li class="fragment">webp 优势在于更好的图像压缩压缩算法带来的更小图片体积。同时具备有损和无损压缩模式、alpha透明及动画特性，在jpg和png上转化效果都很优秀、统一和稳定</li>
+	</ul>	
+</section></script></section></div></div><script src="/js/third-party/reveal/head.min.js"></script><script src="/js/third-party/reveal/reveal.min.js"></script><script>Reveal.initialize({
+  mouseWheel: false,
+  transition: 'slide',
+  transitionSpeed: 'default',
+  parallaxBackgroundImage: '',
+  parallaxBackgroundSize: '',
+  parallaxBackgroundHorizontal: '',
+  parallaxBackgroundVertical: '',
+  markdown: {
+    smartypants: true
+  },
+  dependencies: [
+    { src: '/js/third-party/reveal/marked.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: '/js/third-party/reveal/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    // Syntax highlight for <code> elements
+    { src: '/js/third-party/reveal/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    // Zoom in and out with Alt+click
+    { src: '/js/third-party/reveal/zoom.min.js', async: true },
+    // Speaker notes
+    { src: '/js/third-party/reveal/notes.min.js', async: true },
+    // MathJax
+    { src: '/js/third-party/reveal/math.min.js', async: true }
+  ]
+});</script></body></html>

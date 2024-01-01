@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【配置】VS Code常用插件整理"><meta name="keywords" content="vscode"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【配置】VS Code常用插件整理 | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?version=1.5.3"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?66f25c24596db799ce091d9b434b9495";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  localSearch: {"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}"},"path":"search.xml"}
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户设置备份"><span class="toc-number">1.</span> <span class="toc-text">用户设置备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-code插件整理"><span class="toc-number">2.</span> <span class="toc-text">VS code插件整理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#风格"><span class="toc-number">2.1.</span> <span class="toc-text">风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#风格检查-格式化"><span class="toc-number">2.2.</span> <span class="toc-text">风格检查 格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码片段"><span class="toc-number">2.3.</span> <span class="toc-text">代码片段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动补全"><span class="toc-number">2.4.</span> <span class="toc-text">自动补全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编码效率"><span class="toc-number">2.5.</span> <span class="toc-text">编码效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能增强"><span class="toc-number">2.6.</span> <span class="toc-text">功能增强</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#辅助工具"><span class="toc-number">2.7.</span> <span class="toc-text">辅助工具</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/config/avatar.jpg"></div><div class="author-info__name text-center">Fridolph</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">58</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">69</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">14</span></a></div></div><div class="unit"><div class="heart"><div class="heart-piece-0"></div><div class="heart-piece-1"></div><div class="heart-piece-2"></div><div class="heart-piece-3"></div><div class="heart-piece-4"></div><div class="heart-piece-5"></div><div class="heart-piece-6"></div><div class="heart-piece-7"></div><div class="heart-piece-8"></div></div><p class="anime-title"><a href="https://github.com/fridolph" target="_blank">感谢访问本站，若喜欢请star ^_^</a></p></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/config/top-img.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">霪霖笙箫的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">个人主页</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/books">图书推荐</a><a class="site-page" href="/demo">项目实战</a><a class="site-page" href="/gallery">时光轨迹</a></span></div><div id="post-info"><div id="post-title">【配置】VS Code常用插件整理</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-02-20</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/配置/">配置</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2017/02/20/【配置】VS Code常用插件整理/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2017/02/20/【配置】VS Code常用插件整理/"></span></a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1,555</span><span class="post-meta__separator">|</span><span>阅读时长: 6 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><p>Visual Studio Code是个牛逼的编辑器，启动非常快，我已经抛弃WebStorm Sublime了。<br>支持各种语言，相比其他IDE，轻量级完全可配置还集成Git感觉非常的适合前端开发。 所以我仔细研究了一下文档未来可能会作为主力工具使用。</p>
+<p>虽然习惯了N久的快捷键，没法，习惯什么的是吧，习惯下就好了所以 <a href="https://code.visualstudio.com/docs/customization/keybindings" target="_blank" rel="noopener">官方快捷键大全</a> ，看看这个就好，好在现在快捷键熟悉得差不多了，不会比sublime慢多少</p>
+<a id="more"></a>
+<h2 id="用户设置备份"><a href="#用户设置备份" class="headerlink" title="用户设置备份"></a>用户设置备份</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span>,</span><br><span class="line">  <span class="attr">"workbench.colorTheme"</span>: <span class="string">"One Monokai"</span>,</span><br><span class="line">  <span class="attr">"editor.wordWrap"</span>: <span class="string">"on"</span>,</span><br><span class="line">  <span class="attr">"editor.wordWrapColumn"</span>: <span class="number">120</span>,</span><br><span class="line">  <span class="attr">"terminal.integrated.shell.windows"</span>: <span class="string">"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"</span>,</span><br><span class="line">  <span class="attr">"editor.tabSize"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">"vetur.format.defaultFormatter.html"</span>: <span class="string">"js-beautify-html"</span>,</span><br><span class="line">  <span class="attr">"eslint.autoFixOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"files.autoSave"</span>: <span class="string">"afterDelay"</span>,</span><br><span class="line">  <span class="attr">"eslint.validate"</span>: [</span><br><span class="line">    <span class="string">"javascript"</span>,</span><br><span class="line">    <span class="string">"javascriptreact"</span>,</span><br><span class="line">    <span class="string">"html"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"language"</span>: <span class="string">"vue"</span>,</span><br><span class="line">      <span class="attr">"autoFix"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"eslint.options"</span>: &#123;</span><br><span class="line">    <span class="attr">"plugins"</span>: [</span><br><span class="line">      <span class="string">"html"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"extensions.autoUpdate"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"prettier.singleQuote"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"prettier.semi"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"prettier.eslintIntegration"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"files.eol"</span>: <span class="string">"\n"</span>,</span><br><span class="line">  <span class="attr">"explorer.confirmDragAndDrop"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"files.autoSaveDelay"</span>: <span class="number">5000</span>,</span><br><span class="line">  <span class="attr">"fileheader.tpl"</span>: <span class="string">"/*\n * @Author: fridolph\n*  @Date: &#123;createTime&#125;\n * @Last Modified by: fridolph\n*  @Last Modified time: &#123;updateTime&#125;\n */\n"</span>,</span><br><span class="line">  <span class="attr">"fileheader.Author"</span>: <span class="string">"fridolph"</span>,</span><br><span class="line">  <span class="attr">"fileheader.LastModifiedBy"</span>: <span class="string">"fridolph"</span>,</span><br><span class="line">  <span class="attr">"editor.fontSize"</span>: <span class="number">14</span>,</span><br><span class="line">  <span class="attr">"editor.lineHeight"</span>: <span class="number">22</span>,</span><br><span class="line">  <span class="attr">"editor.lineNumbers"</span>: <span class="string">"on"</span>,</span><br><span class="line">  <span class="attr">"editor.quickSuggestions"</span>: &#123;</span><br><span class="line">    <span class="attr">"other"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"comments"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"strings"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"files.trimFinalNewlines"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"files.trimTrailingWhitespace"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"files.insertFinalNewline"</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="VS-code插件整理"><a href="#VS-code插件整理" class="headerlink" title="VS code插件整理"></a>VS code插件整理</h2><h3 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h3><ul>
+<li>one monokai 因为我喜欢，我放在第一了</li>
+<li>vscode-icons</li>
+<li>output colorizer 让log文件变得五颜六色</li>
+</ul>
+<h3 id="风格检查-格式化"><a href="#风格检查-格式化" class="headerlink" title="风格检查 格式化"></a>风格检查 格式化</h3><ul>
+<li>vetur 用vue的必装插件</li>
+<li>prettier 代码格式化，这两个选一个就好</li>
+<li>beautify 代码格式化你值得拥有</li>
+<li>better comments 为注释增加几种风格的标注</li>
+<li>editorconfig for vscode 支持 .editorconfig</li>
+<li>ESlint 代码检查工具不解释了</li>
+<li>html snippets</li>
+<li>javascript code snippets</li>
+</ul>
+<hr>
+<p>typescript的单独拿出来了，用都可以装</p>
+<ul>
+<li>TSlint 用typescript的可以装</li>
+<li>TypeScript Hero</li>
+<li>Typescript Extension Pack</li>
+<li>typescript importer</li>
+<li>typescript react code snippets</li>
+<li>typescript toolbox</li>
+<li>vue typescript snippets</li>
+</ul>
+<h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><ul>
+<li>html snippets</li>
+<li>snippets 自己搜啦</li>
+<li>file peek 可以看到对应文件的代码片段</li>
+<li>vscode-js-console-utils 为变量增加console，调试经常用</li>
+</ul>
+<h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><ul>
+<li>Auto Close Tag，适用于 JSX、Vue、HTML，在打开标签并且键入 <code>&lt;/</code> 的时候，能自动补全要闭合的标签；</li>
+<li>Auto Rename Tag，适用于 JSX、Vue、HTML，在修改标签名时，能在你修改开始（结束）标签的时候修改对应的结束（开始）标签，帮你减少 50% 的击键；</li>
+<li>Path Intellisense，文件路径补全，在你用任何方式引入文件系统中的路径时提供智能提示和自动完成；</li>
+<li>NPM Intellisense，NPM 依赖补全，在你引入任何 node_modules 里面的依赖包时提供智能提示和自动完成；</li>
+<li>IntelliSense for CSS class names，CSS 类名补全，会自动扫描整个项目里面的 CSS 类名并在你输入类名时做智能提示；</li>
+<li>Emmet，以前叫做 Zen Coding，我发现后，也是爱不释手，可以把类 CSS 选择符的字符串展开成 HTML 标签，VSCode 已经内置，官方介绍文档参见，你需要做的就是熟悉他的语法，并勤加练习；</li>
+</ul>
+<h3 id="编码效率"><a href="#编码效率" class="headerlink" title="编码效率"></a>编码效率</h3><ul>
+<li>Document This 能够一键给代码中的类、函数加上注释，支持函数声明、函数表达式、箭头函数等</li>
+<li>Embrace 快速的在选中代码两边添加各种引号、括号，不用来回移动光标</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+<th>Notation</th>
+<th>Suggested Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extension.embraceParenthesis</td>
+<td>Surround with Parenthesis</td>
+<td>( )</td>
+<td>ctrl+k,e</td>
+</tr>
+<tr>
+<td>extension.embraceSquareBrackets</td>
+<td>Surround with Square Brackets</td>
+<td>[ ]</td>
+<td>ctrl+k,s</td>
+</tr>
+<tr>
+<td>extension.embraceCurlyBrackets</td>
+<td>Surround with Curly Brackets</td>
+<td>{ }</td>
+<td></td>
+<td>ctrl+k,l</td>
+</tr>
+<tr>
+<td>extension.embraceAngleBrackets</td>
+<td>Surround with Angle Brackets</td>
+<td>&lt; &gt;</td>
+<td>ctrl+k,a</td>
+</tr>
+<tr>
+<td>extension.embraceSingleQuotes</td>
+<td>Surround with Single Quotes</td>
+<td>‘ ‘</td>
+<td>ctrl+k,q</td>
+</tr>
+<tr>
+<td>extension.embraceDoubleQuotes</td>
+<td>Surround with Double Quotes</td>
+<td>“ “</td>
+<td>ctrl+k,o</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Bracket Pair Colorizer 更方便看括号，作用域等</li>
+<li>ECMAScript Quoets Transformer 方便在字符串和变量混搭模式（String Concat）的代码和字符串模板（Template Literals）模式间来回转换，省去手动的移动光标、修改引号等操作</li>
+<li>Code Spell Checker 检查英语拼写是否合法. 选装… 一堆报错</li>
+<li>Code Runner 名副其实的代码运行插件，支持数十种语言，在不离开代码编辑器的前提下通过命令面板可直接执行代码，并查看输出</li>
+</ul>
+<p>其他的配置：关于行末的空格、文件末尾的空行，以前需要使用插件来实现，现在直接修改 VSCode 内置配置即可实现：</p>
+<p>福利啊，不然每次eslint一堆报错</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"files.trimTrailingWhitespace"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"files.insertFinalNewline"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"files.trimFinalNewlines"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>path autocomplete 路径补全</li>
+</ul>
+<h3 id="功能增强"><a href="#功能增强" class="headerlink" title="功能增强"></a>功能增强</h3><ul>
+<li>Color Highlight，识别代码中的颜色，包括各种颜色格式；</li>
+<li>Bracket Pair Colorizer，识别代码中的各种括号，并且标记上不同的颜色，方便你扫视到匹配的括号，在括号使用非常多的情况下能环节眼部压力，编辑器快捷键固然好用，但是在临近嵌套多的情况下却有些力不从心；</li>
+<li>Project Manager，项目管理，让我们方便的在命令面板中切换项目文件夹，当然，你也可以直接打开包含多个项目的父级文件夹，但这样可能会让 VSCode 变慢；</li>
+<li>Settings Sync 基于 Gist 实现 VSCode 用户配置、快捷键配置、已安装插件列表等的备份和恢复功能，配置过程有详细精确的操作步骤文档。生成的备份 Gist 默认是私密的，如果你想设置为共享的，也可以一键切换。</li>
+<li>Git Lens 把 VSCode 结合 Git 的使用体验优化到了极致，能让我们在不离开编辑器，不执行任何命令的情况下知晓光标所在位置代码的修改时间、作者信息等。</li>
+<li>Code Outline 能在单独窗口中列出当源代码中的各种符号，比如变量名、类名、方法名等，并支持快速跳转，有点类似于 Vim 里面的 ctags，翻看老代码、开源项目代码时非常有用。</li>
+</ul>
+<h3 id="辅助工具"><a href="#辅助工具" class="headerlink" title="辅助工具"></a>辅助工具</h3><ul>
+<li>can i use 浏览器兼容性检查</li>
+<li>Debugger for Chrome 允许像chrome一样在vs code里调试</li>
+<li>partial diff 同名，可以查看文件间的差异</li>
+<li>todo highlight 待做项高亮，且可查看统计</li>
+<li>Version lens 查看package依赖，且帮更新，需要自行npm install</li>
+<li>VSCode Map Preview 地图坐标信息格式文件，就可就行预览</li>
+<li>vscode-fileheader 自行生成file header</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2017/02/20/【配置】VS Code常用插件整理/">http://blog.fridolph.top/2017/02/20/【配置】VS Code常用插件整理/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/vscode/">vscode</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2017/02/20/【CSS】纯CSS3手工打造变形金刚/"><i class="fa fa-chevron-left">  </i><span>【CSS】纯CSS3手工打造变形金刚</span></a></div><div class="next-post pull-right"><a href="/2017/01/22/【配置】ESLint常用配置，规范代码/"><span>【ESLint】配置详解，规范代码</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'http://blog.fridolph.top/2017/02/20/【配置】VS Code常用插件整理/';
+  this.page.identifier = '2017/02/20/【配置】VS Code常用插件整理/';
+  this.page.title = '【配置】VS Code常用插件整理';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'fridolph' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://fridolph.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2024 By Fridolph</div><div class="framework-info"><span>driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.3"></script><script src="/js/fancybox.js?version=1.5.3"></script><script src="/js/sidebar.js?version=1.5.3"></script><script src="/js/copy.js?version=1.5.3"></script><script src="/js/fireworks.js?version=1.5.3"></script><script src="/js/transition.js?version=1.5.3"></script><script src="/js/scroll.js?version=1.5.3"></script><script src="/js/head.js?version=1.5.3"></script></body></html>
