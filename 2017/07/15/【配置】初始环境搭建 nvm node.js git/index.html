@@ -1,39 +1,190 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【配置】初始环境搭建 nvm node.js git"><meta name="keywords" content="装机,nvm"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【配置】初始环境搭建 nvm node.js git | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?version=1.5.3"><meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【配置】初始环境搭建 nvm node.js git | 霪霖笙箫的博客</title><meta name="author" content="Fridolph"><meta name="copyright" content="Fridolph"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="嗯，家里电脑一直被当作看动漫和打游戏的工具，今天想敲下代码发现什么环境都没搭… 把我恶心惨了，于是出这篇时时铭记，至少以后换台新电脑后可以快速搭建好相关的不影响开发。  ps 我就是单纯在立flag … 陪伴了我好几年的联想，明年该让你退休了。我已经选好了，我要上船2333，windows版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【配置】初始环境搭建 nvm node.js git">
+<meta property="og:url" content="http://github.fridolph.io/2017/07/15/%E3%80%90%E9%85%8D%E7%BD%AE%E3%80%91%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%20nvm%20node.js%20git/index.html">
+<meta property="og:site_name" content="霪霖笙箫的博客">
+<meta property="og:description" content="嗯，家里电脑一直被当作看动漫和打游戏的工具，今天想敲下代码发现什么环境都没搭… 把我恶心惨了，于是出这篇时时铭记，至少以后换台新电脑后可以快速搭建好相关的不影响开发。  ps 我就是单纯在立flag … 陪伴了我好几年的联想，明年该让你退休了。我已经选好了，我要上船2333，windows版">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://github.fridolph.io/img/avatar.jpg">
+<meta property="article:published_time" content="2017-07-15T01:40:50.000Z">
+<meta property="article:modified_time" content="2024-01-03T02:37:55.439Z">
+<meta property="article:author" content="Fridolph">
+<meta property="article:tag" content="nvm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://github.fridolph.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://github.fridolph.io/2017/07/15/%E3%80%90%E9%85%8D%E7%BD%AE%E3%80%91%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%20nvm%20node.js%20git/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?08804673a5fe37365758820497cd9fb1";
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?5509b55ca488c2e0dd2885e9cc969290";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
-})();</script><script>var GLOBAL_CONFIG = { 
+})();
+</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
     noSupport: '浏览器不支持'
   },
-  localSearch: {"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}"},"path":"search.xml"}
-} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装-VS-Code"><span class="toc-number">1.</span> <span class="toc-text">1. 安装 VS Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Node-js相关环境，nvm安装"><span class="toc-number">2.</span> <span class="toc-text">2. Node.js相关环境，nvm安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nodejs在windows下的安装"><span class="toc-number">2.1.</span> <span class="toc-text">nodejs在windows下的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm的安装"><span class="toc-number">2.2.</span> <span class="toc-text">npm的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#首先-npm是什么？"><span class="toc-number">2.2.1.</span> <span class="toc-text">首先 npm是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是nrm？"><span class="toc-number">2.2.2.</span> <span class="toc-text">什么是nrm？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-安装SourceTree"><span class="toc-number">3.</span> <span class="toc-text">3. 安装SourceTree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-其他环境搭建"><span class="toc-number">4.</span> <span class="toc-text">4. 其他环境搭建</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/config/avatar.jpg"></div><div class="author-info__name text-center">Fridolph</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">58</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">69</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">14</span></a></div></div><div class="unit"><div class="heart"><div class="heart-piece-0"></div><div class="heart-piece-1"></div><div class="heart-piece-2"></div><div class="heart-piece-3"></div><div class="heart-piece-4"></div><div class="heart-piece-5"></div><div class="heart-piece-6"></div><div class="heart-piece-7"></div><div class="heart-piece-8"></div></div><p class="anime-title"><a href="https://github.com/fridolph" target="_blank">感谢访问本站，若喜欢请star ^_^</a></p></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/config/top-img.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">霪霖笙箫的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">个人主页</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/books">图书推荐</a><a class="site-page" href="/demo">项目实战</a><a class="site-page" href="/gallery">时光轨迹</a></span></div><div id="post-info"><div id="post-title">【配置】初始环境搭建 nvm node.js git</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-07-15</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/配置/">配置</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2017/07/15/【配置】初始环境搭建 nvm node.js git/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2017/07/15/【配置】初始环境搭建 nvm node.js git/"></span></a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1,798</span><span class="post-meta__separator">|</span><span>阅读时长: 6 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><blockquote>
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Fridolph","link":"链接: ","source":"来源: 霪霖笙箫的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【配置】初始环境搭建 nvm node.js git',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-03 10:37:55'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="霪霖笙箫的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="霪霖笙箫的博客" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">77</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/%E7%9B%B8%E5%86%8C/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book-bookmark"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/%E9%9F%B3%E4%B9%90/"><i class="fa-fw fas fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/%E8%A7%86%E9%A2%91/"><i class="fa-fw fa-solid fa-clapperboard"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/%E6%B8%B8%E6%88%8F/"><i class="fa-fw fa-solid fa-gamepad"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-clapperboard"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E6%88%91/"><i class="fa-fw fa-regular fa-face-laugh-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E5%8F%8B%E9%93%BE/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/"><i class="fa-fw fa-regular fa-heart"></i><span> 本站</span></a></li></ul></div></div></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa-solid fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa-solid fa-rotate-right"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa-solid fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa-solid fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('#search-button .search').click()" data-pjax-state="external"><i class="fa-solid fa-search"></i><span>站内搜索</span></a><a class="rightMenu-item" href="/tags/"><i class="fa-solid fa-tag"></i><span>文章标签</span></a><a class="rightMenu-item" href="/categories/"><i class="fa-solid fa-bars"></i><span>博客分类</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa-regular fa-copy"></i><span>复制</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('.aplayer-pic').click()"><i class="fa-solid fa-headphones"></i><span>音乐开关</span></a><a class="rightMenu-item" href="javascript:rmf.switchDarkMode();"><i class="fa-regular fa-lightbulb"></i><span>昼夜切换</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="/关于本站/"><i class="fa-solid fa-house-user"></i><span>关于本站</span></a></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/config/default_img2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="霪霖笙箫的博客"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg"/><span class="site-name">霪霖笙箫的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/%E7%9B%B8%E5%86%8C/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book-bookmark"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/%E9%9F%B3%E4%B9%90/"><i class="fa-fw fas fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/%E8%A7%86%E9%A2%91/"><i class="fa-fw fa-solid fa-clapperboard"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/%E6%B8%B8%E6%88%8F/"><i class="fa-fw fa-solid fa-gamepad"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-clapperboard"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E6%88%91/"><i class="fa-fw fa-regular fa-face-laugh-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E5%8F%8B%E9%93%BE/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/"><i class="fa-fw fa-regular fa-heart"></i><span> 本站</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【配置】初始环境搭建 nvm node.js git</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2017-07-15T01:40:50.000Z" title="发表于 2017-07-15 09:40:50">2017-07-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-03T02:37:55.439Z" title="更新于 2024-01-03 10:37:55">2024-01-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/">代码相关</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【配置】初始环境搭建 nvm node.js git"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
 <p>嗯，家里电脑一直被当作看动漫和打游戏的工具，今天想敲下代码发现什么环境都没搭… 把我恶心惨了，于是出这篇时时铭记，至少以后换台新电脑后可以快速搭建好相关的不影响开发。</p>
 </blockquote>
 <p>ps 我就是单纯在立flag … 陪伴了我好几年的联想，明年该让你退休了。我已经选好了，我要上船2333，windows版</p>
-<a id="more"></a>
+<span id="more"></span>
+
 <hr>
 <p>注：强迫症不用太在意，以下排名不分先后啦… 高兴怎么来怎么来</p>
-<h2 id="1-安装-VS-Code"><a href="#1-安装-VS-Code" class="headerlink" title="1. 安装 VS Code"></a>1. 安装 VS Code</h2><p>sublime 对不起，爱过~  2333,  <a href="http://download.csdn.net/search?keywords=vscode" target="_blank" rel="noopener">CSDN里慢慢挑</a>， 另附上 <a href="https://segmentfault.com/a/1190000007688656" target="_blank" rel="noopener">VS Code快捷键一览</a><code>少年，想要更快更高更强吗？</code></p>
+<h2 id="1-安装-VS-Code"><a href="#1-安装-VS-Code" class="headerlink" title="1. 安装 VS Code"></a>1. 安装 VS Code</h2><p>sublime 对不起，爱过~  2333,  <a target="_blank" rel="noopener" href="http://download.csdn.net/search?keywords=vscode">CSDN里慢慢挑</a>， 另附上 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007688656">VS Code快捷键一览</a><code>少年，想要更快更高更强吗？</code></p>
 <p>VS Code装了继续把相关插件也装了，嗯，另一篇博客里记载得有。这里就不贴了</p>
 <h2 id="2-Node-js相关环境，nvm安装"><a href="#2-Node-js相关环境，nvm安装" class="headerlink" title="2. Node.js相关环境，nvm安装"></a>2. Node.js相关环境，nvm安装</h2><p>我这里是windows电脑，所以就先贴nvm的相关搭建了~ <code>因为觉得很重要，所以就在这篇下写了</code>。为什么要贴这个，因为怕网上的帖子找不到了，以后要用时不哭死~~嗯，就这样</p>
 <h3 id="nodejs在windows下的安装"><a href="#nodejs在windows下的安装" class="headerlink" title="nodejs在windows下的安装"></a>nodejs在windows下的安装</h3><blockquote>
 <p>nodejs 有很多种的安装方式，下面我用一种nvm的方式，来安装nodejs，nvm(nodejs version manager)是nodejs版本管理工具的意思。详情请点击【官方说明】</p>
 </blockquote>
 <ul>
-<li>下载 nvm 包 地址：<a href="https://github.com/coreybutler/nvm-windows/releases，我们选择第一个：nvm-noinstall.zip" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows/releases，我们选择第一个：nvm-noinstall.zip</a> 下载完成后解压到一个地方，比如: C:\dev\nvm 里面的文件列表是这样的：elevate.cmd、elevate.vbs、install.cmd、LICENSE、nvm.exe</li>
+<li>下载 nvm 包 地址：<a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases%EF%BC%8C%E6%88%91%E4%BB%AC%E9%80%89%E6%8B%A9%E7%AC%AC%E4%B8%80%E4%B8%AA%EF%BC%9Anvm-noinstall.zip">https://github.com/coreybutler/nvm-windows/releases，我们选择第一个：nvm-noinstall.zip</a> 下载完成后解压到一个地方，比如: C:\dev\nvm 里面的文件列表是这样的：elevate.cmd、elevate.vbs、install.cmd、LICENSE、nvm.exe</li>
 </ul>
 <p>备注：windows下要设置显示文件类型的扩展名，这样才能看到上述文件的后缀</p>
 <ul>
 <li>双击 install.cmd 然后会让你输入”压缩文件解压或拷贝到的一个绝对路径” 先不用管它，直接回车，成功后，会在C盘的根目录生成一个settings.txt的文本文件，把这个文件剪切到C:\dev\nvm目录中，然后我们把它的内容修改成这样：</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root: C:\dev\nvm </span><br><span class="line">path: C:\dev\nodejs </span><br><span class="line">arch: <span class="number">64</span> </span><br><span class="line">proxy: none </span><br><span class="line">node_mirror: http:<span class="comment">//npm.taobao.org/mirrors/node/ </span></span><br><span class="line">npm_mirror: https:<span class="comment">//npm.taobao.org/mirrors/npm/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">root</span>: <span class="attr">C</span>:\dev\nvm </span><br><span class="line"><span class="attr">path</span>: <span class="attr">C</span>:\dev\nodejs </span><br><span class="line"><span class="attr">arch</span>: <span class="number">64</span> </span><br><span class="line"><span class="attr">proxy</span>: none </span><br><span class="line"><span class="attr">node_mirror</span>: <span class="attr">http</span>:<span class="comment">//npm.taobao.org/mirrors/node/ </span></span><br><span class="line"><span class="attr">npm_mirror</span>: <span class="attr">https</span>:<span class="comment">//npm.taobao.org/mirrors/npm/</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>然后我们开始配置环境变量了，因为刚刚点击了install.cmd的文件，那么会在环境变量的系统变量中，生成两个环境变量：<code>NVM_HOME</code> 和 <code>NVM_SYMLINK</code> 我们开始修改这两个变量名的变量值：<code>NVM_HOME</code>的变量值为：<code>C:\dev\nvm</code> <code>NVM_SYMLINK</code>的变量值为：<code>C:\dev\nodejs</code></p>
 </li>
@@ -49,25 +200,121 @@
 </li>
 </ul>
 <p>备注： 如果你的电脑系统是32 位的，那么在下载nodejs版本的时候，一定要指明 32 如： nvm install 6.11.0 32 这样在32位的电脑系统中，才可以使用，默认是64位的。</p>
-<h3 id="npm的安装"><a href="#npm的安装" class="headerlink" title="npm的安装"></a>npm的安装</h3><h4 id="首先-npm是什么？"><a href="#首先-npm是什么？" class="headerlink" title="首先 npm是什么？"></a>首先 npm是什么？</h4><p>npm有两层含义，第一是npm这个开源的模块登记和管理系统，也就是这个站点：<a href="https://www.npmjs.com。" target="_blank" rel="noopener">https://www.npmjs.com。</a><br>第二个指的是 nodejs package manager 也就是nodejs的包管理工具。我们主要说的就是这一个。<br>在每个版本的nodejs中，都会自带npm，为了统一起见，我们安装一个全局的npm工具，这个操作很有必要，因为我们需要安装一些全局的其他包，不会因为切换node版本造成原来下载过的包不可用。<br>首先我们进入命令模式，输入 <code>npm config set prefix &quot;C:\dev\nvm\npm&quot;</code> 回车，这是在配置npm的全局安装路径，然后在用户文件夹下会生成一个.npmrc的文件，用记事本打开后可以看到如下内容：</p>
+<h3 id="npm的安装"><a href="#npm的安装" class="headerlink" title="npm的安装"></a>npm的安装</h3><h4 id="首先-npm是什么？"><a href="#首先-npm是什么？" class="headerlink" title="首先 npm是什么？"></a>首先 npm是什么？</h4><p>npm有两层含义，第一是npm这个开源的模块登记和管理系统，也就是这个站点：<a target="_blank" rel="noopener" href="https://www.npmjs.com./">https://www.npmjs.com。</a><br>第二个指的是 nodejs package manager 也就是nodejs的包管理工具。我们主要说的就是这一个。<br>在每个版本的nodejs中，都会自带npm，为了统一起见，我们安装一个全局的npm工具，这个操作很有必要，因为我们需要安装一些全局的其他包，不会因为切换node版本造成原来下载过的包不可用。<br>首先我们进入命令模式，输入 <code>npm config set prefix &quot;C:\dev\nvm\npm&quot;</code> 回车，这是在配置npm的全局安装路径，然后在用户文件夹下会生成一个.npmrc的文件，用记事本打开后可以看到如下内容：</p>
 <p><code>prefix=C:\dev\nvm\npm</code></p>
 <p>然后继续在命令中输入： <code>npm install npm -g</code> 回车后会发现正在下载npm包，在C:\dev\nvm\npm目录中可以看到下载中的文件，以后我们只要用npm安装包的时候加上 -g 就可以把包安装在我们刚刚配置的全局路径下了。</p>
 <p>我们为这个npm配置环境变量： 变量名为：<code>NPM_HOME</code>，变量值为 ：<code>C:\dev\nvm\npm</code></p>
 <p>在Path的最前面添加<code>;%NPM_HOME%</code>，注意了，这个一定要添加在 <code>%NVM_SYMLINK%</code> 之前，所以我们直接把它放到Path的最前面</p>
 <p>最后我们新打开一个命令窗口，输入npm -v ,此时我们使用的就是我们统一下载的npm包了。</p>
-<p>同样的我们还可以安装cnpm工具，它是中国版的npm镜像库，地址在这里：<a href="https://cnpmjs.org/，也是npm官方的一个拷贝，因为我们和外界有一堵墙隔着，所以用这个国内的比较快，淘宝也弄了一个和npm一样的镜像库，http://npm.taobao.org/，它和官方的npm每隔10分钟同步一次。安装方式：" target="_blank" rel="noopener">https://cnpmjs.org/，也是npm官方的一个拷贝，因为我们和外界有一堵墙隔着，所以用这个国内的比较快，淘宝也弄了一个和npm一样的镜像库，http://npm.taobao.org/，它和官方的npm每隔10分钟同步一次。安装方式：</a></p>
+<p>同样的我们还可以安装cnpm工具，它是中国版的npm镜像库，地址在这里：<a target="_blank" rel="noopener" href="https://cnpmjs.org/%EF%BC%8C%E4%B9%9F%E6%98%AFnpm%E5%AE%98%E6%96%B9%E7%9A%84%E4%B8%80%E4%B8%AA%E6%8B%B7%E8%B4%9D%EF%BC%8C%E5%9B%A0%E4%B8%BA%E6%88%91%E4%BB%AC%E5%92%8C%E5%A4%96%E7%95%8C%E6%9C%89%E4%B8%80%E5%A0%B5%E5%A2%99%E9%9A%94%E7%9D%80%EF%BC%8C%E6%89%80%E4%BB%A5%E7%94%A8%E8%BF%99%E4%B8%AA%E5%9B%BD%E5%86%85%E7%9A%84%E6%AF%94%E8%BE%83%E5%BF%AB%EF%BC%8C%E6%B7%98%E5%AE%9D%E4%B9%9F%E5%BC%84%E4%BA%86%E4%B8%80%E4%B8%AA%E5%92%8Cnpm%E4%B8%80%E6%A0%B7%E7%9A%84%E9%95%9C%E5%83%8F%E5%BA%93%EF%BC%8Chttp://npm.taobao.org/%EF%BC%8C%E5%AE%83%E5%92%8C%E5%AE%98%E6%96%B9%E7%9A%84npm%E6%AF%8F%E9%9A%9410%E5%88%86%E9%92%9F%E5%90%8C%E6%AD%A5%E4%B8%80%E6%AC%A1%E3%80%82%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%EF%BC%9A">https://cnpmjs.org/，也是npm官方的一个拷贝，因为我们和外界有一堵墙隔着，所以用这个国内的比较快，淘宝也弄了一个和npm一样的镜像库，http://npm.taobao.org/，它和官方的npm每隔10分钟同步一次。安装方式：</a></p>
 <pre><code>npm install -g cnpm --registry=http://r.cnpmjs.org
-</code></pre><p>或者用淘宝的 <code>npm install -g cnpm --registry=https://registry.npm.taoba.org</code><br>安装好了cnpm后，直接执行cnpm install 包名比如：cnpm install bower -g 就可以了。-g只是为了把包安装在全局路径下。如果不全局安装，也可以在当前目录中安装，不用-g就可以了。<br>nrm 的安装</p>
+</code></pre>
+<p>或者用淘宝的 <code>npm install -g cnpm --registry=https://registry.npm.taoba.org</code><br>安装好了cnpm后，直接执行cnpm install 包名比如：cnpm install bower -g 就可以了。-g只是为了把包安装在全局路径下。如果不全局安装，也可以在当前目录中安装，不用-g就可以了。<br>nrm 的安装</p>
 <h4 id="什么是nrm？"><a href="#什么是nrm？" class="headerlink" title="什么是nrm？"></a>什么是nrm？</h4><p>nrm就是npm registry manager 也就是npm的镜像源管理工具，有时候国外资源太慢，那么我们可以用这个来切换镜像源。<br>我们只要通过这个命令: npm install -g nrm 就可以实现安装。<br>注意-g可以直接放到install的后面，我们以后也最好这样用，因为这样用，我们可以在cmd中上下箭头切换最近命令的时候，容易修改，更方便操作。安装完成后，我们就可以使用了。<br>命令：nrm ls 用于展示所有可切换的镜像地址<br>命令：nrm use cnpm 我们这样就可以直接切换到cnpm上了。当然也可以按照上面罗列的其他内容进行切换。</p>
-<h2 id="3-安装SourceTree"><a href="#3-安装SourceTree" class="headerlink" title="3. 安装SourceTree"></a>3. 安装SourceTree</h2><p><a href="http://download.csdn.net/download/wljk506/9888747" target="_blank" rel="noopener">继续安装sourcetree</a></p>
+<h2 id="3-安装SourceTree"><a href="#3-安装SourceTree" class="headerlink" title="3. 安装SourceTree"></a>3. 安装SourceTree</h2><p><a target="_blank" rel="noopener" href="http://download.csdn.net/download/wljk506/9888747">继续安装sourcetree</a></p>
 <h2 id="4-其他环境搭建"><a href="#4-其他环境搭建" class="headerlink" title="4. 其他环境搭建"></a>4. 其他环境搭建</h2><p>python2.7 python3 PHP MySQL MongoDB 什么的看着来吧，我用到了就往上面贴了…</p>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2017/07/15/【配置】初始环境搭建 nvm node.js git/">http://blog.fridolph.top/2017/07/15/【配置】初始环境搭建 nvm node.js git/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/装机/">装机</a><a class="post-meta__tags" href="/tags/nvm/">nvm</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2017/07/17/【JS】深入理解ES6——块级作用域绑定/"><i class="fa fa-chevron-left">  </i><span>【JS】深入理解ES6——块级作用域绑定</span></a></div><div class="next-post pull-right"><a href="/2017/06/09/【学习】underscore源码学习（三）——Array方法/"><span>【学习】underscore源码学习（三）——Array方法</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
-var disqus_config = function () {
-  this.page.url = 'http://blog.fridolph.top/2017/07/15/【配置】初始环境搭建 nvm node.js git/';
-  this.page.identifier = '2017/07/15/【配置】初始环境搭建 nvm node.js git/';
-  this.page.title = '【配置】初始环境搭建 nvm node.js git';
-}
-var d = document, s = d.createElement('script');
-s.src = "https://" + 'fridolph' +".disqus.com/embed.js";
-s.setAttribute('data-timestamp', '' + +new Date());
-(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://fridolph.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2024 By Fridolph</div><div class="framework-info"><span>driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.3"></script><script src="/js/fancybox.js?version=1.5.3"></script><script src="/js/sidebar.js?version=1.5.3"></script><script src="/js/copy.js?version=1.5.3"></script><script src="/js/fireworks.js?version=1.5.3"></script><script src="/js/transition.js?version=1.5.3"></script><script src="/js/scroll.js?version=1.5.3"></script><script src="/js/head.js?version=1.5.3"></script></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://github.fridolph.io">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://github.fridolph.io/2017/07/15/%E3%80%90%E9%85%8D%E7%BD%AE%E3%80%91%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%20nvm%20node.js%20git/">http://github.fridolph.io/2017/07/15/【配置】初始环境搭建 nvm node.js git/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://github.fridolph.io" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/nvm/">nvm</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="wechat, qq, weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2017/07/17/%E3%80%90JS%E3%80%91%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E2%80%94%E2%80%94%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%BB%91%E5%AE%9A/" title="【JS】深入理解ES6——块级作用域绑定"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【JS】深入理解ES6——块级作用域绑定</div></div></a></div><div class="next-post pull-right"><a href="/2017/06/09/%E3%80%90%E5%AD%A6%E4%B9%A0%E3%80%91underscore%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94Array%E6%96%B9%E6%B3%95/" title="【学习】underscore源码学习（三）——Array方法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【学习】underscore源码学习（三）——Array方法</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Fridolph</div><div class="author-info__description">阳光宅男，在成都，Web前端工程师<br/>喜欢羽毛球、棒球、唱K，ACG爱好者，愿世界和平！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">77</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fridolph"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2024年博客重新启动，加油！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-VS-Code"><span class="toc-number">1.</span> <span class="toc-text">1. 安装 VS Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Node-js%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%EF%BC%8Cnvm%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">2. Node.js相关环境，nvm安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nodejs%E5%9C%A8windows%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text">nodejs在windows下的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text">npm的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E5%85%88-npm%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.2.1.</span> <span class="toc-text">首先 npm是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFnrm%EF%BC%9F"><span class="toc-number">2.2.2.</span> <span class="toc-text">什么是nrm？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85SourceTree"><span class="toc-number">3.</span> <span class="toc-text">3. 安装SourceTree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%85%B6%E4%BB%96%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">4.</span> <span class="toc-text">4. 其他环境搭建</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/config/footer_bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2024 By Fridolph</div><div class="footer_custom_text"><div class="footer-copyright"><mark class="hl-label default"><i class="fa-solid fa-star"></i>2018-2024 By Fridolph</mark><mark class="hl-label default"><a target="_blank" title="非转载内容的CC声明：署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0)" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"><i class="fa-solid fa-closed-captioning"></i>BY-NC-ND 4.0</a></mark><mark class="hl-label default"><i class="fa-solid fa-registered"></i>Copyright © 2020-2024</mark><mark class="hl-label green"><i class="fa-solid fa-power-off"></i>Hexo</mark><mark class="hl-label purple"><i class="fa-solid fa-palette"></i>Butterfly</mark><mark class="hl-label blue"><i class="fa-solid fa-wifi"></i>jsDelivr</mark></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://my-blog-waline-eta.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !true) {
+    if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="9115784260" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-autoplay="true"> </div><script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script><script src="/js/fridolph/right-menu.js"></script><script src="/js/calendar.js"></script><script src="/js/languages.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>

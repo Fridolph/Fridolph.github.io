@@ -1,23 +1,174 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="【性能】预渲染技术"><meta name="keywords" content="预渲染,性能"><meta name="author" content="Fridolph,undefined"><meta name="copyright" content="Fridolph"><title>【性能】预渲染技术 | 霪霖笙箫的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?version=1.5.3"><meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【性能】预渲染技术 | 霪霖笙箫的博客</title><meta name="author" content="Fridolph"><meta name="copyright" content="Fridolph"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Prerender SPA Plugin 一个灵活的静态网站构建框架，让你更好地使用webpack为SPA应用打包  更多请参考官方文档 预渲染技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【性能】预渲染技术">
+<meta property="og:url" content="http://github.fridolph.io/2017/08/01/%E3%80%90%E6%80%A7%E8%83%BD%E3%80%91%E9%A2%84%E6%B8%B2%E6%9F%93%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="霪霖笙箫的博客">
+<meta property="og:description" content="Prerender SPA Plugin 一个灵活的静态网站构建框架，让你更好地使用webpack为SPA应用打包  更多请参考官方文档 预渲染技术">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://github.fridolph.io/img/avatar.jpg">
+<meta property="article:published_time" content="2017-08-01T02:49:03.000Z">
+<meta property="article:modified_time" content="2024-01-03T02:42:29.455Z">
+<meta property="article:author" content="Fridolph">
+<meta property="article:tag" content="性能">
+<meta property="article:tag" content="预渲染">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://github.fridolph.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://github.fridolph.io/2017/08/01/%E3%80%90%E6%80%A7%E8%83%BD%E3%80%91%E9%A2%84%E6%B8%B2%E6%9F%93%E6%8A%80%E6%9C%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?08804673a5fe37365758820497cd9fb1";
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?5509b55ca488c2e0dd2885e9cc969290";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
-})();</script><script>var GLOBAL_CONFIG = { 
+})();
+</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
     noSupport: '浏览器不支持'
   },
-  localSearch: {"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}"},"path":"search.xml"}
-} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Prerender-SPA-Plugin"><span class="toc-number">1.</span> <span class="toc-text">Prerender SPA Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-About-prerender-spa-plugin"><span class="toc-number">1.1.</span> <span class="toc-text">关于 About prerender-spa-plugin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples-示例"><span class="toc-number">2.</span> <span class="toc-text">Examples 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Basic-Usage"><span class="toc-number">2.1.</span> <span class="toc-text">Basic Usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Advanced-Usage"><span class="toc-number">2.2.</span> <span class="toc-text">Advanced Usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可用的渲染器"><span class="toc-number">2.3.</span> <span class="toc-text">可用的渲染器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">2.4.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#警告"><span class="toc-number">2.5.</span> <span class="toc-text">警告</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/config/avatar.jpg"></div><div class="author-info__name text-center">Fridolph</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">58</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">69</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">14</span></a></div></div><div class="unit"><div class="heart"><div class="heart-piece-0"></div><div class="heart-piece-1"></div><div class="heart-piece-2"></div><div class="heart-piece-3"></div><div class="heart-piece-4"></div><div class="heart-piece-5"></div><div class="heart-piece-6"></div><div class="heart-piece-7"></div><div class="heart-piece-8"></div></div><p class="anime-title"><a href="https://github.com/fridolph" target="_blank">感谢访问本站，若喜欢请star ^_^</a></p></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/config/top-img.png)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">霪霖笙箫的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">个人主页</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/books">图书推荐</a><a class="site-page" href="/demo">项目实战</a><a class="site-page" href="/gallery">时光轨迹</a></span></div><div id="post-info"><div id="post-title">【性能】预渲染技术</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-08-01</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/调研/">调研</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/调研/性能/">性能</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2017/08/01/【性能】预渲染技术/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2017/08/01/【性能】预渲染技术/"></span></a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1,426</span><span class="post-meta__separator">|</span><span>阅读时长: 5 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><h2 id="Prerender-SPA-Plugin"><a href="#Prerender-SPA-Plugin" class="headerlink" title="Prerender SPA Plugin"></a>Prerender SPA Plugin</h2><blockquote>
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Fridolph","link":"链接: ","source":"来源: 霪霖笙箫的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【性能】预渲染技术',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-03 10:42:29'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="霪霖笙箫的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="霪霖笙箫的博客" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">77</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/%E7%9B%B8%E5%86%8C/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book-bookmark"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/%E9%9F%B3%E4%B9%90/"><i class="fa-fw fas fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/%E8%A7%86%E9%A2%91/"><i class="fa-fw fa-solid fa-clapperboard"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/%E6%B8%B8%E6%88%8F/"><i class="fa-fw fa-solid fa-gamepad"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-clapperboard"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E6%88%91/"><i class="fa-fw fa-regular fa-face-laugh-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E5%8F%8B%E9%93%BE/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/"><i class="fa-fw fa-regular fa-heart"></i><span> 本站</span></a></li></ul></div></div></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa-solid fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa-solid fa-rotate-right"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa-solid fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa-solid fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('#search-button .search').click()" data-pjax-state="external"><i class="fa-solid fa-search"></i><span>站内搜索</span></a><a class="rightMenu-item" href="/tags/"><i class="fa-solid fa-tag"></i><span>文章标签</span></a><a class="rightMenu-item" href="/categories/"><i class="fa-solid fa-bars"></i><span>博客分类</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa-regular fa-copy"></i><span>复制</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('.aplayer-pic').click()"><i class="fa-solid fa-headphones"></i><span>音乐开关</span></a><a class="rightMenu-item" href="javascript:rmf.switchDarkMode();"><i class="fa-regular fa-lightbulb"></i><span>昼夜切换</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="/关于本站/"><i class="fa-solid fa-house-user"></i><span>关于本站</span></a></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/config/default_img2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="霪霖笙箫的博客"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg"/><span class="site-name">霪霖笙箫的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/%E7%9B%B8%E5%86%8C/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book-bookmark"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/%E9%9F%B3%E4%B9%90/"><i class="fa-fw fas fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/%E8%A7%86%E9%A2%91/"><i class="fa-fw fa-solid fa-clapperboard"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/%E6%B8%B8%E6%88%8F/"><i class="fa-fw fa-solid fa-gamepad"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-clapperboard"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E6%88%91/"><i class="fa-fw fa-regular fa-face-laugh-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E5%8F%8B%E9%93%BE/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99/"><i class="fa-fw fa-regular fa-heart"></i><span> 本站</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【性能】预渲染技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2017-08-01T02:49:03.000Z" title="发表于 2017-08-01 10:49:03">2017-08-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-03T02:42:29.455Z" title="更新于 2024-01-03 10:42:29">2024-01-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【性能】预渲染技术"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Prerender-SPA-Plugin"><a href="#Prerender-SPA-Plugin" class="headerlink" title="Prerender SPA Plugin"></a>Prerender SPA Plugin</h2><blockquote>
 <p>一个灵活的静态网站构建框架，让你更好地使用webpack为SPA应用打包</p>
 </blockquote>
-<p>更多请参考官方文档 <a href="https://github.com/chrisvfritz/prerender-spa-plugin" target="_blank" rel="noopener">预渲染技术</a></p>
-<a id="more"></a>
+<p>更多请参考官方文档 <a target="_blank" rel="noopener" href="https://github.com/chrisvfritz/prerender-spa-plugin">预渲染技术</a></p>
+<span id="more"></span>
+
 <p><strong>什么是预渲染？？</strong></p>
 <p>服务端渲染在前端界变得越来越主流。在将网页或应用程序发送给客户之前，在服务器就先呈现了我们想展示的内容。这是一个革命性的想法。</p>
 <p>然而，对于PHP、ASP、JSP（以及这样的）站点来说，同样的批评对于今天的服务器端呈现是有效的。它很慢，很容易被打破，并且很难正确地实现。问题是，尽管每个人可能会告诉你，你可能不需要SSR。您可以通过使用预先设定来获得几乎所有的优点（没有缺点）。</p>
@@ -34,36 +185,136 @@
 <p>当然，前提是其他任务是已构建好并可运行的</p>
 <h2 id="Examples-示例"><a href="#Examples-示例" class="headerlink" title="Examples 示例"></a>Examples 示例</h2><p>特定框架例子 可以在源码中找到</p>
 <h3 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic Usage"></a>Basic Usage</h3><p>基础用法 webpack.config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="comment">// 省略其他配置</span></span><br><span class="line">    <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">      <span class="comment">// 必填，填写output打包出来的路径</span></span><br><span class="line">      staticDir: path.join(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">      <span class="comment">// 必填，需要预渲染的路由</span></span><br><span class="line">      routes: [<span class="string">'/'</span>, <span class="string">'/about'</span>, <span class="string">'/some/deep/nested/route'</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">PrerenderSPAPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;prerender-spa-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// 省略其他配置</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">PrerenderSPAPlugin</span>(&#123;</span><br><span class="line">      <span class="comment">// 必填，填写output打包出来的路径</span></span><br><span class="line">      <span class="attr">staticDir</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">      <span class="comment">// 必填，需要预渲染的路由</span></span><br><span class="line">      <span class="attr">routes</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/about&#x27;</span>, <span class="string">&#x27;/some/deep/nested/route&#x27;</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="Advanced-Usage"><a href="#Advanced-Usage" class="headerlink" title="Advanced Usage"></a>Advanced Usage</h3><p>高级用法 webpack.config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> Renderer = PrerenderSPAPlugin.PuppeteerRenderer</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">      staticDir: path.join(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">      <span class="comment">// 可选, 预渲染应该输出到的路径</span></span><br><span class="line">      outputDir: path.join(__dirname, <span class="string">'prerendered'</span>),</span><br><span class="line">      <span class="comment">// 可选，根文档的路径</span></span><br><span class="line">      indexPath: path.join(__dirname, <span class="string">'dist'</span>, <span class="string">'index.html'</span>),</span><br><span class="line">      routes: [<span class="string">'/'</span>, <span class="string">'/about'</span>, <span class="string">'/some/deep/nested/route'</span>],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 可选 在写入渲染内容到文件之前 允许配置 html和输出路径</span></span><br><span class="line">      <span class="comment">// 可以修改渲染， 也可等待返回。 以下是renderedRoute 的格式：</span></span><br><span class="line">      <span class="comment">// &#123;</span></span><br><span class="line">      <span class="comment">//   route: String, // 输出文件将在何处结束（相对于outputDir)</span></span><br><span class="line">      <span class="comment">//   originalRoute: String, // 在重定向之前，传递给渲染器的路由。.</span></span><br><span class="line">      <span class="comment">//   html: String // 该路由渲染的html</span></span><br><span class="line">      <span class="comment">// &#125;</span></span><br><span class="line">      postProcess(renderedRoute) &#123;</span><br><span class="line">        <span class="comment">// 忽略任何重定向</span></span><br><span class="line">        renderedRoute.path = renderedRoute.originalPath</span><br><span class="line">        <span class="comment">// 删除空格. (建议别在生产环境中用)</span></span><br><span class="line">        renderedRoute.html = renderedRoute.html.split(<span class="regexp">/&gt;[\s]+&lt;/gmi</span>).join(<span class="string">'&gt;&lt;'</span>)</span><br><span class="line">        <span class="comment">// 返回renderedRoute, 其实就是对 传入的 对象进行了一次处理，返回的还是该对象</span></span><br><span class="line">        <span class="keyword">return</span> renderedRoute</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 可选，使用 html-minifier  它会压缩html， 更多参考官方</span></span><br><span class="line">      minify: &#123;</span><br><span class="line">        collapseBooleanAttributes: <span class="literal">true</span>,</span><br><span class="line">        collapseWhitespace: <span class="literal">true</span>,</span><br><span class="line">        decodeEntities: <span class="literal">true</span>,</span><br><span class="line">        keepClosingSlash: <span class="literal">true</span>,</span><br><span class="line">        sortAttributes: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 服务端配置选项</span></span><br><span class="line">      server: &#123;</span><br><span class="line">        <span class="comment">// 端口是自动检测的</span></span><br><span class="line">        port: <span class="number">8001</span></span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 渲染器 Renderer的实例，可自行编写</span></span><br><span class="line">      renderer: <span class="keyword">new</span> Renderer(&#123;</span><br><span class="line">        <span class="comment">// 注入到window对象 kv对   window.__PRERENDER_INJECTED 就可以访问到了</span></span><br><span class="line">        injectProperty: <span class="string">'__PRERENDER_INJECTED'</span>,</span><br><span class="line">        <span class="comment">// 可选，可配置想通过 window 对象注入的可访问值</span></span><br><span class="line">        inject: &#123;</span><br><span class="line">          foo: <span class="string">'bar'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 默认为 0 没有限制 </span></span><br><span class="line">        <span class="comment">// 由于路由是异步加载的，用该属性限制路由的数量</span></span><br><span class="line">        maxConcurrentRoutes: <span class="number">4</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ... 更多的看文档吧</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">PrerenderSPAPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;prerender-spa-plugin&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Renderer</span> = <span class="title class_">PrerenderSPAPlugin</span>.<span class="property">PuppeteerRenderer</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">PrerenderSPAPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">staticDir</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">      <span class="comment">// 可选, 预渲染应该输出到的路径</span></span><br><span class="line">      <span class="attr">outputDir</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;prerendered&#x27;</span>),</span><br><span class="line">      <span class="comment">// 可选，根文档的路径</span></span><br><span class="line">      <span class="attr">indexPath</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>, <span class="string">&#x27;index.html&#x27;</span>),</span><br><span class="line">      <span class="attr">routes</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/about&#x27;</span>, <span class="string">&#x27;/some/deep/nested/route&#x27;</span>],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 可选 在写入渲染内容到文件之前 允许配置 html和输出路径</span></span><br><span class="line">      <span class="comment">// 可以修改渲染， 也可等待返回。 以下是renderedRoute 的格式：</span></span><br><span class="line">      <span class="comment">// &#123;</span></span><br><span class="line">      <span class="comment">//   route: String, // 输出文件将在何处结束（相对于outputDir)</span></span><br><span class="line">      <span class="comment">//   originalRoute: String, // 在重定向之前，传递给渲染器的路由。.</span></span><br><span class="line">      <span class="comment">//   html: String // 该路由渲染的html</span></span><br><span class="line">      <span class="comment">// &#125;</span></span><br><span class="line">      <span class="title function_">postProcess</span>(<span class="params">renderedRoute</span>) &#123;</span><br><span class="line">        <span class="comment">// 忽略任何重定向</span></span><br><span class="line">        renderedRoute.<span class="property">path</span> = renderedRoute.<span class="property">originalPath</span></span><br><span class="line">        <span class="comment">// 删除空格. (建议别在生产环境中用)</span></span><br><span class="line">        renderedRoute.<span class="property">html</span> = renderedRoute.<span class="property">html</span>.<span class="title function_">split</span>(<span class="regexp">/&gt;[\s]+&lt;/gmi</span>).<span class="title function_">join</span>(<span class="string">&#x27;&gt;&lt;&#x27;</span>)</span><br><span class="line">        <span class="comment">// 返回renderedRoute, 其实就是对 传入的 对象进行了一次处理，返回的还是该对象</span></span><br><span class="line">        <span class="keyword">return</span> renderedRoute</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 可选，使用 html-minifier  它会压缩html， 更多参考官方</span></span><br><span class="line">      <span class="attr">minify</span>: &#123;</span><br><span class="line">        <span class="attr">collapseBooleanAttributes</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">collapseWhitespace</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">decodeEntities</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">keepClosingSlash</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">sortAttributes</span>: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 服务端配置选项</span></span><br><span class="line">      <span class="attr">server</span>: &#123;</span><br><span class="line">        <span class="comment">// 端口是自动检测的</span></span><br><span class="line">        <span class="attr">port</span>: <span class="number">8001</span></span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 渲染器 Renderer的实例，可自行编写</span></span><br><span class="line">      <span class="attr">renderer</span>: <span class="keyword">new</span> <span class="title class_">Renderer</span>(&#123;</span><br><span class="line">        <span class="comment">// 注入到window对象 kv对   window.__PRERENDER_INJECTED 就可以访问到了</span></span><br><span class="line">        <span class="attr">injectProperty</span>: <span class="string">&#x27;__PRERENDER_INJECTED&#x27;</span>,</span><br><span class="line">        <span class="comment">// 可选，可配置想通过 window 对象注入的可访问值</span></span><br><span class="line">        <span class="attr">inject</span>: &#123;</span><br><span class="line">          <span class="attr">foo</span>: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 默认为 0 没有限制 </span></span><br><span class="line">        <span class="comment">// 由于路由是异步加载的，用该属性限制路由的数量</span></span><br><span class="line">        <span class="attr">maxConcurrentRoutes</span>: <span class="number">4</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ... 更多的看文档吧</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h3 id="可用的渲染器"><a href="#可用的渲染器" class="headerlink" title="可用的渲染器"></a>可用的渲染器</h3><ul>
-<li>@prerenderer/renderer-puppeteer 已经预先准备好了几百页，并希望得到准确的结果 那就是用它吧</li>
-<li>@prerenderer/renderer-jsdom 你需要提前阅读成千上万页的内容，但是质量并不是那么重要，你愿意为更高级的案例解决问题</li>
+<li>@prerenderer&#x2F;renderer-puppeteer 已经预先准备好了几百页，并希望得到准确的结果 那就是用它吧</li>
+<li>@prerenderer&#x2F;renderer-jsdom 你需要提前阅读成千上万页的内容，但是质量并不是那么重要，你愿意为更高级的案例解决问题</li>
 </ul>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
 <li>JS 在 prerender前不运行</li>
 </ul>
 <p>如果您的代码依赖于“body”的存在，那么只需在domcontent重载事件的回调中运行它：（否则会发现在JS运行之前，预编译-spa-plugin将输出页面的内容）</p>
-<pre><code>document.addEventListener(&apos;DOMContentLoaded&apos;, function() {})
-</code></pre><p>如果使用 Vue，将 <code>&lt;div id=&quot;root&quot;&gt;</code> mounting 到 body标签上：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123; <span class="comment">/**/</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  app.$mount(<span class="string">'#root'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code>document.addEventListener(&#39;DOMContentLoaded&#39;, function() &#123;&#125;)
+</code></pre>
+<p>如果使用 Vue，将 <code>&lt;div id=&quot;root&quot;&gt;</code> mounting 到 body标签上：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123; <span class="comment">/**/</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;DOMContentLoaded&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  app.$mount(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p><strong>Inline styles 内联样式</strong></p>
 <p>如果您依赖于内联CSS，也就是说，您不会从捆绑包中提取CSS，因此，体验重复的CSS样式标签，可以考虑使用 <code>extract-text-webpack-plugin</code> 将CSS提取到单独的文件中。然后将CSS注入到模板中。使用 <code>html-webpack-plugin</code> 的html文件，或者将其称为外部CSS文件。</p>
 <p>无论哪种方式，JS中都不会有任何不必要的样式。</p>
 <h3 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h3><ul>
-<li><p>出于显而易见的原因，预安装-spa-插件只适用于使用HTML5历史API的spa。索引。不幸的是，html/hash/路由url将无法工作</p>
+<li><p>出于显而易见的原因，预安装-spa-插件只适用于使用HTML5历史API的spa。索引。不幸的是，html&#x2F;hash&#x2F;路由url将无法工作</p>
 </li>
 <li><p>vue2+ 确保你的根组件与它所替换的预先设计的元素具有相同的id。否则，您将得到重复的内容</p>
 </li>
 </ul>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2017/08/01/【性能】预渲染技术/">http://blog.fridolph.top/2017/08/01/【性能】预渲染技术/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/预渲染/">预渲染</a><a class="post-meta__tags" href="/tags/性能/">性能</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2017/08/02/【JS】深入理解ES6——JavaScript中的类/"><i class="fa fa-chevron-left">  </i><span>【JS】深入理解ES6——JavaScript中的类</span></a></div><div class="next-post pull-right"><a href="/2017/07/23/【面试】知识点查缺补漏系列2——从原型到闭包你必知的js知识点/"><span>【面试】知识点查缺补漏系列2——从原型到闭包你必知的js知识点</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
-var disqus_config = function () {
-  this.page.url = 'http://blog.fridolph.top/2017/08/01/【性能】预渲染技术/';
-  this.page.identifier = '2017/08/01/【性能】预渲染技术/';
-  this.page.title = '【性能】预渲染技术';
-}
-var d = document, s = d.createElement('script');
-s.src = "https://" + 'fridolph' +".disqus.com/embed.js";
-s.setAttribute('data-timestamp', '' + +new Date());
-(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://fridolph.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2024 By Fridolph</div><div class="framework-info"><span>driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.3"></script><script src="/js/fancybox.js?version=1.5.3"></script><script src="/js/sidebar.js?version=1.5.3"></script><script src="/js/copy.js?version=1.5.3"></script><script src="/js/fireworks.js?version=1.5.3"></script><script src="/js/transition.js?version=1.5.3"></script><script src="/js/scroll.js?version=1.5.3"></script><script src="/js/head.js?version=1.5.3"></script></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://github.fridolph.io">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://github.fridolph.io/2017/08/01/%E3%80%90%E6%80%A7%E8%83%BD%E3%80%91%E9%A2%84%E6%B8%B2%E6%9F%93%E6%8A%80%E6%9C%AF/">http://github.fridolph.io/2017/08/01/【性能】预渲染技术/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://github.fridolph.io" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%80%A7%E8%83%BD/">性能</a><a class="post-meta__tags" href="/tags/%E9%A2%84%E6%B8%B2%E6%9F%93/">预渲染</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="wechat, qq, weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2017/08/02/%E3%80%90JS%E3%80%91%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E2%80%94%E2%80%94JavaScript%E4%B8%AD%E7%9A%84%E7%B1%BB/" title="【JS】深入理解ES6——JavaScript中的类"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【JS】深入理解ES6——JavaScript中的类</div></div></a></div><div class="next-post pull-right"><a href="/2017/07/23/%E3%80%90%E9%9D%A2%E8%AF%95%E3%80%91%E7%9F%A5%E8%AF%86%E7%82%B9%E6%9F%A5%E7%BC%BA%E8%A1%A5%E6%BC%8F%E7%B3%BB%E5%88%972%E2%80%94%E2%80%94%E4%BB%8E%E5%8E%9F%E5%9E%8B%E5%88%B0%E9%97%AD%E5%8C%85%E4%BD%A0%E5%BF%85%E7%9F%A5%E7%9A%84js%E7%9F%A5%E8%AF%86%E7%82%B9/" title="【面试】知识点查缺补漏系列2——从原型到闭包你必知的js知识点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【面试】知识点查缺补漏系列2——从原型到闭包你必知的js知识点</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/01/20/%E3%80%90%E6%80%A7%E8%83%BD%E3%80%911%E8%B5%84%E6%BA%90%E5%8E%8B%E7%BC%A9%E4%B8%8E%E5%90%88%E5%B9%B6/" title="【性能】（一）资源压缩与合并"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-01-03</div><div class="title">【性能】（一）资源压缩与合并</div></div></a></div><div><a href="/2019/01/22/%E3%80%90%E6%80%A7%E8%83%BD%E3%80%912%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/" title="【性能】（二）图片优化相关"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-01-03</div><div class="title">【性能】（二）图片优化相关</div></div></a></div><div><a href="/2019/01/27/%E3%80%90%E6%80%A7%E8%83%BD%E3%80%913JS%E5%8A%A0%E8%BD%BD%E4%B8%8E%E6%89%A7%E8%A1%8C/" title="【性能】（三）JS加载与执行"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-01-03</div><div class="title">【性能】（三）JS加载与执行</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Fridolph</div><div class="author-info__description">阳光宅男，在成都，Web前端工程师<br/>喜欢羽毛球、棒球、唱K，ACG爱好者，愿世界和平！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">77</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fridolph"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2024年博客重新启动，加油！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Prerender-SPA-Plugin"><span class="toc-number">1.</span> <span class="toc-text">Prerender SPA Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-About-prerender-spa-plugin"><span class="toc-number">1.1.</span> <span class="toc-text">关于 About prerender-spa-plugin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples-%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">Examples 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Basic-Usage"><span class="toc-number">2.1.</span> <span class="toc-text">Basic Usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Advanced-Usage"><span class="toc-number">2.2.</span> <span class="toc-text">Advanced Usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%94%A8%E7%9A%84%E6%B8%B2%E6%9F%93%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">可用的渲染器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">2.4.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AD%A6%E5%91%8A"><span class="toc-number">2.5.</span> <span class="toc-text">警告</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/config/footer_bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2024 By Fridolph</div><div class="footer_custom_text"><div class="footer-copyright"><mark class="hl-label default"><i class="fa-solid fa-star"></i>2018-2024 By Fridolph</mark><mark class="hl-label default"><a target="_blank" title="非转载内容的CC声明：署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0)" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"><i class="fa-solid fa-closed-captioning"></i>BY-NC-ND 4.0</a></mark><mark class="hl-label default"><i class="fa-solid fa-registered"></i>Copyright © 2020-2024</mark><mark class="hl-label green"><i class="fa-solid fa-power-off"></i>Hexo</mark><mark class="hl-label purple"><i class="fa-solid fa-palette"></i>Butterfly</mark><mark class="hl-label blue"><i class="fa-solid fa-wifi"></i>jsDelivr</mark></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://my-blog-waline-eta.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !true) {
+    if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="9115784260" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-autoplay="true"> </div><script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script><script src="/js/fridolph/right-menu.js"></script><script src="/js/calendar.js"></script><script src="/js/languages.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
