@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【Vue】vue-i18n踩坑记录 | 霪霖笙箫的博客</title><meta name="author" content="Fridolph"><meta name="copyright" content="Fridolph"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="跟着官网来看着并不难，放项目里，这出错那不行的… 慢慢看文档一边整理一边尝试，最终得到了我想要的效果。暂时记下来写成博客，可能不是最好的，但目前先把问题解决了来后面再谈细节和优化的事儿吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Vue】vue-i18n踩坑记录">
+<meta property="og:url" content="http://blog.fridolph.top/2017/09/05/a37fcd30-af8f-11ee-afca-a154cc9cc56d/index.html">
+<meta property="og:site_name" content="霪霖笙箫的博客">
+<meta property="og:description" content="跟着官网来看着并不难，放项目里，这出错那不行的… 慢慢看文档一边整理一边尝试，最终得到了我想要的效果。暂时记下来写成博客，可能不是最好的，但目前先把问题解决了来后面再谈细节和优化的事儿吧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.fridolph.top/img/avatar.jpg">
+<meta property="article:published_time" content="2017-09-05T07:49:03.000Z">
+<meta property="article:modified_time" content="2024-02-08T16:03:17.822Z">
+<meta property="article:author" content="Fridolph">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="vue-i18n">
+<meta property="article:tag" content="国际化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.fridolph.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://blog.fridolph.top/2017/09/05/a37fcd30-af8f-11ee-afca-a154cc9cc56d/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?5509b55ca488c2e0dd2885e9cc969290";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Fridolph","link":"链接: ","source":"来源: 霪霖笙箫的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Vue】vue-i18n踩坑记录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-09 00:03:17'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="霪霖笙箫的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="霪霖笙箫的博客" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fa-solid fa-camera-retro"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa-brands fa-steam"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-star"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about_me/"><i class="fa-fw fa-solid fa-face-grin-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/about_link/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about_page/"><i class="fa-fw fa-solid fa-house"></i><span> 本站</span></a></li></ul></div></div></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa-solid fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa-solid fa-rotate-right"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa-solid fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa-solid fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('#search-button .search').click()" data-pjax-state="external"><i class="fa-solid fa-search"></i><span>站内搜索</span></a><a class="rightMenu-item" href="/tags/"><i class="fa-solid fa-tag"></i><span>文章标签</span></a><a class="rightMenu-item" href="/categories/"><i class="fa-solid fa-bars"></i><span>博客分类</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa-regular fa-copy"></i><span>复制</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('.aplayer-pic').click()"><i class="fa-solid fa-headphones"></i><span>音乐开关</span></a><a class="rightMenu-item" href="javascript:rmf.switchDarkMode();"><i class="fa-regular fa-lightbulb"></i><span>昼夜切换</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="/about_page/"><i class="fa-solid fa-house-user"></i><span>关于本站</span></a></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/config/default_img2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="霪霖笙箫的博客"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg"/><span class="site-name">霪霖笙箫的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fa-solid fa-camera-retro"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa-brands fa-steam"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-star"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about_me/"><i class="fa-fw fa-solid fa-face-grin-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/about_link/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about_page/"><i class="fa-fw fa-solid fa-house"></i><span> 本站</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Vue】vue-i18n踩坑记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2017-09-05T07:49:03.000Z" title="发表于 2017-09-05 15:49:03">2017-09-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-08T16:03:17.822Z" title="更新于 2024-02-09 00:03:17">2024-02-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/code/">代码相关</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Vue】vue-i18n踩坑记录"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>跟着官网来看着并不难，放项目里，这出错那不行的… 慢慢看文档一边整理一边尝试，最终得到了我想要的效果。暂时记下来写成博客，可能不是最好的，但目前先把问题解决了来后面再谈细节和优化的事儿吧</p>
+</blockquote>
+<span id="more"></span>
+
+<p>折腾了一上午，犯了很多错… 最终捣鼓出来，算是完成了需求。这里说下自己的理解。Vue里的国际化，其实只是把 所谓的静态内容，标题，文字段落，提示说明等等用vue的响应式data来存储，再根据我们的配置，动态改变这些data，从而实现无刷新语言切换，这和vue自身的响应式数据是一个道理。</p>
+<h2 id="渲染原理"><a href="#渲染原理" class="headerlink" title="渲染原理"></a>渲染原理</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">VueI18</span>n.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">_t</span> = <span class="keyword">function</span> <span class="title function_">_t</span> (key, _locale, messages, host) &#123;</span><br><span class="line">  <span class="keyword">var</span> values = [], len = <span class="variable language_">arguments</span>.<span class="property">length</span> - <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">while</span> ( len-- &gt; <span class="number">0</span> ) values[ len ] = <span class="variable language_">arguments</span>[ len + <span class="number">4</span> ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!key) &#123; <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> parsedArgs = parseArgs.<span class="title function_">apply</span>(<span class="keyword">void</span> <span class="number">0</span>, values);</span><br><span class="line">  <span class="keyword">var</span> locale = parsedArgs.<span class="property">locale</span> || _locale;</span><br><span class="line">  <span class="keyword">var</span> ret = <span class="variable language_">this</span>.<span class="title function_">_translate</span>(</span><br><span class="line">    messages, locale, <span class="variable language_">this</span>.<span class="property">fallbackLocale</span>, key,</span><br><span class="line">    host, <span class="string">&#x27;string&#x27;</span>, parsedArgs.<span class="property">params</span></span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="title function_">_isFallbackRoot</span>(ret)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;development&quot;</span> !== <span class="string">&#x27;production&#x27;</span> &amp;&amp; !<span class="variable language_">this</span>.<span class="property">_silentTranslationWarn</span>) &#123;</span><br><span class="line">      <span class="title function_">warn</span>((<span class="string">&quot;Fall back to translate the keypath &#x27;&quot;</span> + key + <span class="string">&quot;&#x27; with root locale.&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">_root</span>) &#123; <span class="keyword">throw</span> <span class="title class_">Error</span>(<span class="string">&#x27;unexpected error&#x27;</span>) &#125;</span><br><span class="line">    <span class="keyword">return</span> (ref = <span class="variable language_">this</span>.<span class="property">_root</span>).<span class="property">t</span>.<span class="title function_">apply</span>(ref, [ key ].<span class="title function_">concat</span>( values ))</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">_warnDefault</span>(locale, key, ret, host)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> ref;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$t</span> = <span class="keyword">function</span> (<span class="params">key</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> values = [], len = <span class="variable language_">arguments</span>.<span class="property">length</span> - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> ( len-- &gt; <span class="number">0</span> ) values[ len ] = <span class="variable language_">arguments</span>[ len + <span class="number">1</span> ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> i18n = <span class="variable language_">this</span>.<span class="property">$i18n</span>;</span><br><span class="line">  <span class="keyword">return</span> i18n.<span class="property">_t</span>.<span class="title function_">apply</span>(i18n, [ key, i18n.<span class="property">locale</span>, i18n.<span class="title function_">_getMessages</span>(), <span class="variable language_">this</span> ].<span class="title function_">concat</span>( values ))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这是目前用到的一个重要函数，从源码里复制出来。这里Vue原型里添加了一个$t方法，它可传入一个key参数，最后连同信息一起返回。</p>
+<p>我们使用的$t即将想要的key 拿到写好的 locale目录下的data中查询，返回对应value这样一个过程，理解了这个思路后后面的就要好办多了。</p>
+<hr>
+<h2 id="项目运用"><a href="#项目运用" class="headerlink" title="项目运用"></a>项目运用</h2><p>首先安装依赖 npm install vue-i18n -D</p>
+<p>先贴一下我的配置，然后慢慢说：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VueI18</span>n <span class="keyword">from</span> <span class="string">&#x27;vue-i18n&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./index&#x27;</span>;</span><br><span class="line"><span class="comment">// import router from &#x27;../../router/edrPage&#x27;;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;../../store/index&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;../../router/edrPage/index&#x27;</span>;</span><br><span class="line"><span class="comment">// 依赖包</span></span><br><span class="line"><span class="keyword">import</span> iView <span class="keyword">from</span> <span class="string">&#x27;iview&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> en <span class="keyword">from</span> <span class="string">&#x27;locale/local/en_US&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> zh <span class="keyword">from</span> <span class="string">&#x27;locale/local/zh_CN&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> zhLocale <span class="keyword">from</span> <span class="string">&#x27;locale/iviewLocale/zh-CN&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> enLocale <span class="keyword">from</span> <span class="string">&#x27;locale/iviewLocale/en-US&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;iview/dist/styles/iview.css&#x27;</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">productionTip</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">lang</span> = <span class="string">&#x27;en&#x27;</span>;  <span class="comment">// 语言控制的开关</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">VueI18</span>n);        <span class="comment">// Vue实例中注册</span></span><br><span class="line"><span class="comment">// 定义数据</span></span><br><span class="line"><span class="keyword">const</span> messages = &#123;</span><br><span class="line">    <span class="attr">en</span>: <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, en, enLocale),  <span class="comment">// 这里浅拷贝也可</span></span><br><span class="line">    <span class="attr">zh</span>: <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, zh, zhLocale)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 新生成i18n实例，并写入相应配置</span></span><br><span class="line"><span class="keyword">const</span> i18n = <span class="keyword">new</span> <span class="title class_">VueI18</span>n(&#123;</span><br><span class="line">    <span class="attr">locale</span>: <span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">lang</span>, <span class="comment">// 语言</span></span><br><span class="line">    <span class="attr">fallbackLocale</span>: <span class="string">&#x27;en&#x27;</span>,    <span class="comment">// 这是iView用到的</span></span><br><span class="line">    messages                 <span class="comment">// 把上面定义好的数据传入i18n</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 注册iView的同时，把i18n的配置一同传入</span></span><br><span class="line"><span class="comment">// 这样就可以在vue中无缝使用i18n和iView的国际化组件了, element同理</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(iView, &#123;</span><br><span class="line">    <span class="title function_">i18n</span>(<span class="params">path, options</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> value = i18n.<span class="title function_">t</span>(path, options);</span><br><span class="line">      <span class="keyword">if</span> (value !== <span class="literal">null</span> &amp;&amp; value !== <span class="literal">undefined</span>) <span class="keyword">return</span> value;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">/* eslint-disable no-new */</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  <span class="comment">// i18n已有上面定义的messages了，这里在Vue实例中注入</span></span><br><span class="line">  <span class="comment">// 就可以在组件中 this.$i18n 这样来用了(这一步是i18n已帮我们做的)</span></span><br><span class="line">  i18n,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">&#x27;&lt;App/&gt;&#x27;</span>,</span><br><span class="line">  <span class="attr">components</span>: &#123; <span class="title class_">App</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>我用的iView 2.2版本i18n版本只支持到5.0+明显不成，各种问了之后看到了一个解决方案挺不错，就是上面这个。思路很简单，就是本地创建自己的语言包，然后与iView提供的包合并，其他流程走i18n自己的流程即可</p>
+<hr>
+<p>在单文件组件的模版中:  (用来测试的随便写了)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;login&quot;</span> <span class="attr">class</span>=<span class="string">&quot;bg&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;switchLang&quot;</span>&gt;</span>切换语言<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;$t(&#x27;edr.footer.copyright&#x27;)&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">name</span>: <span class="string">&#x27;page-login&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">locale</span>: <span class="string">&#x27;en&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">locale</span> = <span class="variable language_">this</span>.<span class="property">$i18n</span>.<span class="property">locale</span> = <span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;language&#x27;</span>) <span class="comment">// 从 localStorage 中获取语言状态</span></span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">switchLang</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">locale</span> === <span class="string">&#x27;en&#x27;</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">this</span>.<span class="property">locale</span> = <span class="variable language_">this</span>.<span class="property">$i18n</span>.<span class="property">locale</span> = <span class="string">&#x27;zh&#x27;</span></span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;language&#x27;</span>, <span class="string">&#x27;zh&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">this</span>.<span class="property">locale</span> = <span class="variable language_">this</span>.<span class="property">$i18n</span>.<span class="property">locale</span> = <span class="string">&#x27;en&#x27;</span></span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;language&#x27;</span>, <span class="string">&#x27;en&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在，点击切换按钮，语言就可实时更改了~ </p>
+<p>好了，其他的同理，在locale目录下，把我们需要切换的中英文数据管理好即可~ 如果内容多拆开来管理更好</p>
+<hr>
+<p>但感觉很麻烦的是，以后写静态数据都不能直接写在模版里了… 也算是长姿势了<br>至于后端返回的数据…… 暂时不知道，让后端自己先折腾吧</p>
+<p>还有一个问题…  整个template里， 全是$t()这样的…  也不知道写了什么，占位符谁是谁… 于是，之前写好的最好还是来一层注释，或者利用良好的class命名来避免开发时的尴尬… 不然拿到同事手中只有两眼懵比了…</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2017/09/05/a37fcd30-af8f-11ee-afca-a154cc9cc56d/">http://blog.fridolph.top/2017/09/05/a37fcd30-af8f-11ee-afca-a154cc9cc56d/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vue/">Vue</a><a class="post-meta__tags" href="/tags/vue-i18n/">vue-i18n</a><a class="post-meta__tags" href="/tags/locale/">国际化</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="wechat, qq, weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2017/10/14/cff15d70-af8f-11ee-8dd9-a9f70086acad/" title="【Vue】iview按需引入相关配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Vue】iview按需引入相关配置</div></div></a></div><div class="next-post pull-right"><a href="/2017/08/24/b78d77f0-af8f-11ee-9d17-0129dcec5983/" title="【Vue】vue-cli改多页配置及踩坑笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Vue】vue-cli改多页配置及踩坑笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2018/05/01/621e2c00-af90-11ee-ae03-510b5eb8604b/" title="【TS】使用vuex-class"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-02-09</div><div class="title">【TS】使用vuex-class</div></div></a></div><div><a href="/2018/04/25/1cc3f5e0-af90-11ee-87d1-11afd3d83f2c/" title="【TS】vue与typescript集成"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-02-09</div><div class="title">【TS】vue与typescript集成</div></div></a></div><div><a href="/2018/04/26/46df8830-af90-11ee-9c6b-3368a08d2284/" title="【TS】装饰模式与vue-property-decorator"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-02-09</div><div class="title">【TS】装饰模式与vue-property-decorator</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Fridolph</div><div class="author-info__description">阳光宅男，在成都，Web前端工程师<br/>喜欢羽毛球、棒球、唱K，ACG爱好者，愿世界和平！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fridolph"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2024年博客重新启动，加油！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">渲染原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%BF%90%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">项目运用</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/config/footer_bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2024 By Fridolph</div><div class="footer_custom_text"><div class="footer-copyright"><mark class="hl-label blue"><a target="_blank" href="https://fridolph.top"><i class="fa-solid fa-star"></i>2018-2024 By Fridolph</a></mark><mark class="hl-label default"><a target="_blank" title="非转载内容的CC声明：署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0)" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"><i class="fa-solid fa-closed-captioning"></i>BY-NC-ND 4.0</a></mark><mark class="hl-label default"><i class="fa-solid fa-registered"></i>Copyright © 2020-2024</mark><mark class="hl-label orange"><a target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index"><i class="fa-solid fa-registered"></i>黔ICP备2024018754号</a></mark><mark class="hl-label blue"><a target="_blank" href="https://hexo.io/zh-cn/"><i class="fa-solid fa-power-off"></i>Hexo</a></mark><mark class="hl-label purple"><a target="_blank" href="https://butterfly.js.org/"><i class="fa-solid fa-palette"></i>Butterfly</a></mark><mark class="hl-label red"><a target="_blank" href="https://www.jsdelivr.com/"><i class="fa-solid fa-wifi"></i>jsDelivr</a></mark></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://my-blog-waline-eta.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !true) {
+    if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><div id="page-bottom-aplayer" class="aplayer no-destroy" data-id="9115784260" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-autoplay="false"></div><script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script><script src="/js/fridolph/right-menu.js"></script><script src="/js/fridolph/print.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>

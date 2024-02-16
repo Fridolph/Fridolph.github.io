@@ -1,0 +1,470 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【学习】什么是Accessibility - 无障碍 | 霪霖笙箫的博客</title><meta name="author" content="Fridolph"><meta name="copyright" content="Fridolph"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="最近在学习TailWindCSS，读和整理文档准备拿去做个项目（就决定拿来重构之前的简历项目了）了解到了无障碍 Accessibility 这个概念，很多指导性概念值得学习，就写篇文章了  Accessibility - 无障碍当有人将一个网站描述为“无障碍”时，他们的意思是，任何用户都可以使用其所有的功能和内容，无论用户是如何访问网络的——甚至特别是有身体或精神障碍的用户。 默认情况下，HTM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习】什么是Accessibility - 无障碍">
+<meta property="og:url" content="http://blog.fridolph.top/2024/01/26/32647990-bc5d-11ee-b11d-1ddb3fe7683d/index.html">
+<meta property="og:site_name" content="霪霖笙箫的博客">
+<meta property="og:description" content="最近在学习TailWindCSS，读和整理文档准备拿去做个项目（就决定拿来重构之前的简历项目了）了解到了无障碍 Accessibility 这个概念，很多指导性概念值得学习，就写篇文章了  Accessibility - 无障碍当有人将一个网站描述为“无障碍”时，他们的意思是，任何用户都可以使用其所有的功能和内容，无论用户是如何访问网络的——甚至特别是有身体或精神障碍的用户。 默认情况下，HTM">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.fridolph.top/img/avatar.jpg">
+<meta property="article:published_time" content="2024-01-26T15:11:35.000Z">
+<meta property="article:modified_time" content="2024-02-08T16:03:17.848Z">
+<meta property="article:author" content="Fridolph">
+<meta property="article:tag" content="Accessibility">
+<meta property="article:tag" content="WAI-ARIA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.fridolph.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://blog.fridolph.top/2024/01/26/32647990-bc5d-11ee-b11d-1ddb3fe7683d/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?5509b55ca488c2e0dd2885e9cc969290";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Fridolph","link":"链接: ","source":"来源: 霪霖笙箫的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【学习】什么是Accessibility - 无障碍',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-09 00:03:17'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="霪霖笙箫的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="霪霖笙箫的博客" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fa-solid fa-camera-retro"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa-brands fa-steam"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-star"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about_me/"><i class="fa-fw fa-solid fa-face-grin-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/about_link/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about_page/"><i class="fa-fw fa-solid fa-house"></i><span> 本站</span></a></li></ul></div></div></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa-solid fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa-solid fa-rotate-right"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa-solid fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa-solid fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('#search-button .search').click()" data-pjax-state="external"><i class="fa-solid fa-search"></i><span>站内搜索</span></a><a class="rightMenu-item" href="/tags/"><i class="fa-solid fa-tag"></i><span>文章标签</span></a><a class="rightMenu-item" href="/categories/"><i class="fa-solid fa-bars"></i><span>博客分类</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa-regular fa-copy"></i><span>复制</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('.aplayer-pic').click()"><i class="fa-solid fa-headphones"></i><span>音乐开关</span></a><a class="rightMenu-item" href="javascript:rmf.switchDarkMode();"><i class="fa-regular fa-lightbulb"></i><span>昼夜切换</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="/about_page/"><i class="fa-solid fa-house-user"></i><span>关于本站</span></a></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/config/default_img2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="霪霖笙箫的博客"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg"/><span class="site-name">霪霖笙箫的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fa-solid fa-camera-retro"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa-brands fa-steam"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-star"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about_me/"><i class="fa-fw fa-solid fa-face-grin-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/about_link/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about_page/"><i class="fa-fw fa-solid fa-house"></i><span> 本站</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【学习】什么是Accessibility - 无障碍</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-26T15:11:35.000Z" title="发表于 2024-01-26 23:11:35">2024-01-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-08T16:03:17.848Z" title="更新于 2024-02-09 00:03:17">2024-02-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/note/">读书笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【学习】什么是Accessibility - 无障碍"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>最近在学习TailWindCSS，读和整理文档准备拿去做个项目（就决定拿来重构之前的简历项目了）了解到了无障碍 Accessibility 这个概念，很多指导性概念值得学习，就写篇文章了</p>
+</blockquote>
+<h1 id="Accessibility-无障碍"><a href="#Accessibility-无障碍" class="headerlink" title="Accessibility - 无障碍"></a>Accessibility - 无障碍</h1><p>当有人将一个网站描述为“无障碍”时，他们的意思是，任何用户都可以使用其所有的功能和内容，无论用户是如何访问网络的——甚至特别是有身体或精神障碍的用户。</p>
+<p>默认情况下，HTML 在使用正确的时候是可以实现无障碍的。Web 无障碍涉及确保内容保持无障碍，无论访问 web 的人员或方式。</p>
+<p>无障碍是一种让尽可能多的用户可以使用你的网站的做法。传统上我们认为这只与残疾人士有关，但提升网站的无障碍也可以让其他用户群体受益。比如使用移动设备的人群，那些使用低速网络连接的人群。</p>
+<p>你也可以把无障碍看成是同等地对待每一个人，给他们平等的机会，无论他们的能力或所处的环境如何。就像不能让坐轮椅的人可以进入大楼是错误的 (现代公共建筑通常有轮椅坡道或电梯)；不能让视觉有障碍的人士可以浏览我们的网站同样不正确。我们都是不同的，但我们都是人，因此享有同等的人权。</p>
+<p>使网站具备无障碍才是正确的做法。它也是一些国家法律的一部分，它打开了一些重要的市场，否则那些市场的用户无法使用你的服务或者购买你的产品。</p>
+<p>建立可访问的网站能让每个人都受益</p>
+<p><strong>无障碍 API</strong></p>
+<p>不同的操作系统有不同的无障碍 API：</p>
+<ul>
+<li>Windows: MSAA&#x2F;IAccessible, UIAExpress, IAccessible2</li>
+<li>Mac OS X: NSAccessibility</li>
+<li>Linux: AT-SPI</li>
+<li>Android: Accessibility framework</li>
+<li>iOS: UIAccessibility</li>
+</ul>
+<p>在 WAI-ARIA basics 文章中了解有关 WAI-ARIA 的更多详细信息。 </p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/WAI-ARIA_basics">https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/WAI-ARIA_basics</a></p>
+<h2 id="HTML-无障碍的良好基础"><a href="#HTML-无障碍的良好基础" class="headerlink" title="HTML 无障碍的良好基础"></a>HTML 无障碍的良好基础</h2><ul>
+<li>良好的语义 （HTML 结构）<ul>
+<li>更便于开发 — 如上所述，你可以使 HTML 更易于理解，并且可以毫不费力的获得一些功能。</li>
+<li>更适配移动端 — 语义化的 HTML 文件比非语义化的 HTML 文件更加轻便，并且更易于响应式开发。</li>
+<li>更便于 SEO 优化 — 比起使用非语义化的<code>&lt;div&gt;</code>标签，搜索引擎更加重视在“标题、链接等”里面的关键字，使用语义化可使网页更容易被用户搜索到。</li>
+</ul>
+</li>
+<li>使用通俗易懂的语言</li>
+<li>页面布局（同上，HTML5 新标签 - 语义化）</li>
+<li>UI 控制<ul>
+<li>重新建立键盘的无障碍</li>
+</ul>
+</li>
+<li>有意义的文字标签</li>
+<li>可访问的表格<ul>
+<li>表头使用 <code>&lt;th&gt;</code>元素定义 - 你还可以使用 scope 属性指定它们是行还是列的标题。这提供给了屏幕阅读器可以理解的完整数据组。</li>
+<li><code>&lt;caption&gt;</code> 元素和 <code>&lt;table&gt;</code> summary 属性都执行类似的工作 - 它们充当表格的替代文本，为屏幕阅读器用户提供有用的表格内容快速摘要。<code>&lt;caption&gt;</code>通常是首选，因为它使内容可供视力良好的用户访问，而且他们也可能会发现它很有用。你并不需要两者都使用！。</li>
+</ul>
+</li>
+<li>图片拥有可替代文本<ul>
+<li>title</li>
+<li>alt</li>
+</ul>
+</li>
+</ul>
+<p>你现在应该精通编写大多数场合可访问的 HTML。我们的 WAI-ARIA 基础知识文章也将填补这些知识中的一些空白，但本文已经关注了此基础知识。接下来，我们将探索 CSS 和 JavaScript，以及无障碍如何受其好坏影响。</p>
+<h2 id="CSS-无障碍"><a href="#CSS-无障碍" class="headerlink" title="CSS 无障碍"></a>CSS 无障碍</h2><ul>
+<li><p>正确的语义和用户期望，对<code>h1</code> <code>span</code>等</p>
+</li>
+<li><p>选择合理的字体大小、行高、字母间距等，使文本具有逻辑性、清晰性和阅读舒适性。</p>
+</li>
+<li><p>确保标题从正文文本中脱颖而出，通常像默认样式一样大而粗壮。你的列表应类似于列表。</p>
+</li>
+<li><p>文本颜色应与背景颜色形成良好对比。</p>
+</li>
+<li><p>强调的文本</p>
+</li>
+<li><p><code>b</code> <code>strong</code> <code>i</code></p>
+</li>
+<li><p>缩写</p>
+<ul>
+<li><code>&lt;abbr&gt;</code></li>
+</ul>
+</li>
+<li><p>超链接 a</p>
+</li>
+<li><p>表单元素</p>
+</li>
+<li><p>表格</p>
+</li>
+<li><p>颜色和颜色对比度</p>
+<ul>
+<li>为网站选择配色方案时，请确保文本（前景）颜色与背景颜色对比度良好。你的设计可能看起来很酷，但如果有视觉障碍（如色盲）的人无法阅读你的内容，则设计就无一好可做。</li>
+</ul>
+</li>
+<li><p>接受用户覆盖样式</p>
+</li>
+</ul>
+<h2 id="JavaScript-无障碍"><a href="#JavaScript-无障碍" class="headerlink" title="JavaScript 无障碍"></a>JavaScript 无障碍</h2><p>JavaScript 还可能会中断无障碍，具体取决于其使用方式。简单的内容和功能可以说是很容易使访问——例如文本，图像，表格，窗体和按钮，激活功能。正如我们在 HTML：辅助功能的良好基础一文中提到的，主要注意事项包括：</p>
+<ul>
+<li>良好的语义：为正确的工作使用正确的元素。例如，确保你使用标题和段落，以及 <code>&lt;button&gt;</code> 和 <code>&lt;a&gt;</code> 元素</li>
+<li>确保内容以文本形式提供，要么直接作为文本内容、表单元素的良好文本标签，也可以确保替代文本（例如图像的 alt 文本）。</li>
+</ul>
+<h3 id="太多-JavaScript-导致的问题"><a href="#太多-JavaScript-导致的问题" class="headerlink" title="太多 JavaScript 导致的问题"></a>太多 JavaScript 导致的问题</h3><p>过于依赖 JavaScript 会导致许多问题。有时你会看到一个网站，其中一切都已经用 JavaScript 完成——JavaScript 生成 HTML，CSS 等等。随之而来的会是各种访问性问题，因此这样做是不建议的。</p>
+<h3 id="保持别抢眼"><a href="#保持别抢眼" class="headerlink" title="保持别抢眼"></a>保持别抢眼</h3><p>在创建内容时，应牢记不唐突的（unobtrusive）JavaScript 原则。不唐突的 JavaScript 的想法是，它应该尽可能用于增强功能，而不是完全构建它——基本功能最好在没有 JavaScript 的情况下正常工作，尽管人们认识到，这并不总是一个选项。但同样，它的大部分是尽可能使用内置的浏览器功能。</p>
+<ul>
+<li>提供客户端表单验证，它快速提醒用户表单条目出现的问题，而无需等待服务器检查数据。如果表单不可用，则窗口仍然有效，但验证速度可能较慢。</li>
+<li>为 HTML5 <code>&lt;video&gt;</code> 提供自定义控件，这些控件仅供键盘用户访问，以及如果 JavaScript 不可用 (默认 <code>&lt;video&gt;</code> 浏览器控件在大多数浏览器中无法使用键盘访问)，就直接通过链接访问视频。</li>
+</ul>
+<blockquote>
+<p>在实现 JavaScript 和考虑无障碍时，还有其他需要注意的事项。一旦发现将会添加更多。</p>
+</blockquote>
+<p>正如你所知，客户端 JavaScript 使用事件处理程序，实现大多数用户交互，它允许我们运行函数以响应某些事件的发生。某些事件可能有辅助功能问题。你将遇到的主要示例是鼠标特定的事件，如鼠标悬停（mouseover (en-US)）、鼠标划出（mouseout）、双击（dblclick）等。使用其他机制（如键盘控件）无法访问为这些事件而运行的功能。</p>
+<p>为了缓解此类问题，你应该将这些事件与可以通过其他方式（所谓的设备独立事件处理程序）激活的类似事件相结合——focus 和 blur 将为键盘用户提供无障碍。</p>
+<p>Click 事件很有趣——听起来它依赖于鼠标，但是大多数的浏览器，在有焦点的链接或者表单元素上，按下 enter&#x2F;return 之后，或者在触屏设备上点击一个元素，都将会激活 onclick 事件处理程序。但是，当你允许非默认可聚焦事件使用 tabindex 进行焦点处理时，默认情况下不起作用，在这种情况下，你需要在按下确切键时进行专门检测</p>
+<h2 id="何为-WAI-ARIA"><a href="#何为-WAI-ARIA" class="headerlink" title="何为 WAI-ARIA"></a>何为 WAI-ARIA</h2><p>WAI-ARIA 是 W3C 编写的规范，定义了一组可用于其他元素的 HTML 特性，用于提供额外的语义化以及改善缺乏的无障碍。以下是规范中三个主要的特性：</p>
+<ul>
+<li><p>角色 — 这定义了元素是干什么的。许多「标志性的角色」，其实重复了 HTML5 的结构元素的语义价值。例如 role&#x3D;”navigation” (<code>&lt;nav&gt;</code>) 或者 role&#x3D;”complementary” (<code>&lt;aside&gt;</code>)，这也有一些描述其他页面结构的（角色），例如 role&#x3D;”banner”, role&#x3D;”search”, role&#x3D;”tabgroup”, role&#x3D;”tab” 等等。我们通常能从 UI 层面找到它们。</p>
+</li>
+<li><p>属性 — 我们能通过定义一些属性给元素，让他们具备更多的语义。例如： aria-required&#x3D;”true” 意味着元素在表单上是必填的。然而 aria-labelledby&#x3D;”label” 允许你在元素上设置一个 ID，用于 labelledby 引用作为屏幕阅读器指定的 label 内容，多个也可以。当然，下面这个代码是不行的： <code>&lt;label for=&quot;input&quot;&gt;</code></p>
+</li>
+<li><p>状态 — 用于表达元素当前的条件的特殊属性，例如 aria-disabled&#x3D;”true”，屏幕阅读器就会这个表单禁止输入。状态和属性的差异之处就是：属性在应用的生命周期中不会改变，而状态可以，通常我们用编程的方法改变它，例如 Javascript。</p>
+</li>
+</ul>
+<blockquote>
+<p>但还是要重申：当你需要的时候再使用无障碍特性！另外，请尝试确保你的真实用户来测试你的网站：普通人，使用屏幕阅读器的用户，使用键盘导航的人。他们会提供你更多的见解。</p>
+</blockquote>
+<h3 id="实用的-WAI-ARIA-实现"><a href="#实用的-WAI-ARIA-实现" class="headerlink" title="实用的 WAI-ARIA 实现"></a>实用的 WAI-ARIA 实现</h3><p>WAI-ARIA 给浏览器增加了 role 属性，这允许我们给站点中的元素增加我们想要的语义属性。第一个主要区域便是用于为屏幕阅读器提供信息，以便用户可以找到常见的页面元素。</p>
+<p>如果由于某种原因，你的网站仅使用<code>&lt;div&gt;</code> 构建，那么你肯定很需要用 ARIA 角色以提供所需的语义！</p>
+<h3 id="动态内容更新"><a href="#动态内容更新" class="headerlink" title="动态内容更新"></a>动态内容更新</h3><p>使用屏幕阅读器可以轻松访问读取到 DOM 中的内容，从文本内容到附加到图像的 alt 文本。所以具有大量文本内容的传统静态网站易于为视碍人士提供信息。</p>
+<p>WAI-ARIA 提供了一种有效的机制来发起提示——<code>aria-live</code>。将此应用于元素会让屏幕阅读器读出更新的内容。读取内容的紧急程度取决于属性值：</p>
+<ul>
+<li>off: 默认值，更新不会提醒。</li>
+<li>polite: 只有用户空闲的情况下提醒。</li>
+<li>assertive: 尽快提醒。</li>
+<li>rude: 会以打断用户操作的方式直接提醒。</li>
+</ul>
+<p>通常来说 assertive 设置足以让你的更新在显示时按时序读出，因此，如果改变多次，那么他只会念出最后一个改变。除非紧急程度高到需要覆盖其他的更新才选择使用 rude 。</p>
+<h3 id="优化键盘的无障碍操作"><a href="#优化键盘的无障碍操作" class="headerlink" title="优化键盘的无障碍操作"></a>优化键盘的无障碍操作</h3><p>正如上下文中其他几处讨论的，HTML 在无障碍方面的关键优势之一是按钮，表单控件和链接等功能的内置键盘无障碍。平时你可以使用 Tab 键在控件之间移动，使用 Enter &#x2F; Return 键选择或激活控件，偶尔也可以根据需要使用其他控件（例如上下光标在<code>&lt;select&gt;</code> 框中的选项之间移动）。</p>
+<p>但是在一些时候，你最终还是得编写代码去使用非语义元素作为按钮（或其他类型的控件），或者使用可聚焦控件来达到错误的目的。你可能正在尝试修复一些你之前的错误代码，或者你可能正在构建某种需要它的复杂小部件。</p>
+<p>在让不可聚焦代码可聚焦这一方面，WAI-ARIA 用一些新的值来扩展了 tabindex 的属性：</p>
+<ul>
+<li>tabindex&#x3D;”0” — 如上所述，这个值让不能被 tab 的元素变得 tabbable。这是 tabindex 最有用的值。</li>
+<li>tabindex&#x3D;”-1” — 这允许通常不可列表的元素以编程方式来接收 focus。例如用：JavaScript，或者作为链接的目标。</li>
+</ul>
+<h3 id="非语义控件的无障碍"><a href="#非语义控件的无障碍" class="headerlink" title="非语义控件的无障碍"></a>非语义控件的无障碍</h3><p>当一系列嵌套的 <code>&lt;div&gt;</code> 与 CSS &#x2F; JavaScript 一起用于创建复杂的 UI 功能，或者通过 JavaScript 大大地增强或者更改原生的控件，不仅键盘无障碍受损。而且如果没有语义或其他线索，屏幕阅读器用户会发现很难弄清楚该功能的作用。在这种情况下，ARIA 可以帮助提供那些缺失的语义。</p>
+<p>你可以在这里看这个在线完成的例子 <a target="_blank" rel="noopener" href="https://mdn.github.io/learning-area/accessibility/aria/form-validation-updated.html">form-validation-updated.html</a></p>
+<h3 id="描述非语义的-button-是个-button"><a href="#描述非语义的-button-是个-button" class="headerlink" title="描述非语义的 button 是个 button"></a>描述非语义的 button 是个 button</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-message</span>=<span class="string">&quot;This is from the first button&quot;</span> <span class="attr">tabindex</span>=<span class="string">&quot;0&quot;</span> <span class="attr">role</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Click me!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>备注： 别忘了无论如何用正确的语义化元素是最佳选择。如果你想创建一个按钮，你可用 <code>&lt;button&gt;</code> 元素，你应该用 <code>&lt;button&gt;</code> 元素！</p>
+</blockquote>
+<h3 id="通过复杂的小部件做引导用户"><a href="#通过复杂的小部件做引导用户" class="headerlink" title="通过复杂的小部件做引导用户"></a>通过复杂的小部件做引导用户</h3><p>还有许多其他 roles 可以将非语义元素结构识别为常见的 UI 功能，这些功能超出了标准 HTML 中可用的功能，例如 combobox, slider, tabpanel, tree。</p>
+<p>以下刚刚用上的新特性：</p>
+<ul>
+<li><p>新角色 — tablist, tab, tabpanel — 这些确定几个 tab 表界面的重要区域——tabs 的容器，tabs 自身，还有他们的一致性 tabpanels。</p>
+</li>
+<li><p>aria-selected — 定义了 tab 当前正在被选中。和 tabs 被用户选中不同，这种值一般是由 JavaScript 修改。</p>
+</li>
+<li><p>aria-hidden — 对屏幕阅读器隐藏一些元素，和 tabs 被用户选中不同，这种值一般是由 JavaScript 修改。</p>
+</li>
+<li><p>tabindex&#x3D;”0” — 当我们删除链接时，我们需要为列表项提供此属性，以便为其提供键盘焦点。（为没有 tabindex 特性的元素也提供 tabindex 特性）</p>
+</li>
+<li><p>aria-setsize — 此属性允许你指定屏幕阅读器元素是某个系列的一部分，以及该系列具有多少项。</p>
+</li>
+<li><p>aria-posinset — 这个属性允许你设置一个元素在一个系列中的位置，随着 aria-setsize，他告诉屏幕阅读器（用于设置文件目录树视图）足够的信息去告诉你现在在 item “1 of 3” 位置等。</p>
+</li>
+</ul>
+<blockquote>
+<p>如果你有不想让屏幕阅读器读出来的东西，你可以给它一个 aria-hidden&#x3D;”true” 属性。</p>
+</blockquote>
+<h2 id="多媒体无障碍"><a href="#多媒体无障碍" class="headerlink" title="多媒体无障碍"></a>多媒体无障碍</h2><p>可能导致无障碍（accessibility）问题的另一类内容是多媒体——视频、音频和图像内容需要提供适当的文本替代方式，以便辅助技术及其用户能够理解它们</p>
+<h3 id="简单图像"><a href="#简单图像" class="headerlink" title="简单图像"></a>简单图像</h3><p>简而言之，应确保在可能的情况下，视觉内容具有替代文本，供屏幕阅读器拾取和读取给其用户。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;白雪公主.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;您正在看的是《白雪公主和七个小矮人》绘图本，白雪公主的图片&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="可访问的音频和视频控件"><a href="#可访问的音频和视频控件" class="headerlink" title="可访问的音频和视频控件"></a>可访问的音频和视频控件</h3><p>HTML5 视频和音频实例甚至附带一组内置控件，允许你直接在盒子控制媒体。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;viper.mp3&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mp3&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;viper.ogg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/ogg&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    Your browser doesn&#x27;t support HTML5 audio. Here is a</span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;viper.mp3&quot;</span>&gt;</span>link to the audio<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    instead.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;rabbit320.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;rabbit320.webm&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    Your browser doesn&#x27;t support HTML5 video. Here is a</span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;rabbit320.mp4&quot;</span>&gt;</span>link to the video<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    instead.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，这些控件存在问题：</p>
+<ul>
+<li>浏览器中，它们不可通过键盘访问。</li>
+<li>不同的浏览器为原生控件提供了不同的样式和功能，且不可赋予它们样式，这意味着它们难以遵从网站样式指南。</li>
+</ul>
+<p>这里是推荐我们根据上文自行实现 role 和 控件细节，补充描述和键盘事件等，这里就不展开了</p>
+<h2 id="移动端无障碍"><a href="#移动端无障碍" class="headerlink" title="移动端无障碍"></a>移动端无障碍</h2><p>如今，移动设备一般都可以处理特性齐全的网站了，同时，为了能够让盲人成功的使用网站，主流平台甚至还内置了屏幕阅读器。移动设备也倾向于对“WAI-ARIA”有很好的支持。</p>
+<p>你只要需要遵守良好的 web 设计规范和最佳的无障碍实践，就可以让你的网站在手机上无障碍地使用。</p>
+<p>移动设备需要特别考虑一些例外情况；主要是：</p>
+<ul>
+<li>控件交互——确保类似于按钮的 UI 控件可以在移动端（主要是触摸屏）和台式机&#x2F;笔记本电脑（主要是鼠标&#x2F;键盘）无障碍地使用</li>
+<li>用户输入——在移动端尽可能的减少用户输入的要求（例如在表单中，尽量少打字）。</li>
+<li>响应式设计——确保移动端布局正常的情况下，节省需要下载的图片大小，并考虑为高分辨率的屏幕提供图片。</li>
+</ul>
+<h3 id="响应式设计"><a href="#响应式设计" class="headerlink" title="响应式设计"></a>响应式设计</h3><p>响应式设计是根据屏幕大小和分辨率等因素动态更改你的应用程序的布局和其他功能的做法，因此对于不同设备类型的用户来说，它们是可用且无障碍的。</p>
+<p>特别是，移动端设备需要解决的最常见的问题是：</p>
+<ul>
+<li><p>移动端设备布局的适用性。例如，在窄屏上多列布局不能很好的工作，需要增加文字大小以提高可读性。这些问题可以通过媒体查询、视口、弹性盒子来解决。</p>
+</li>
+<li><p>节省下载的图片大小。一般来说，小屏幕设备不需要与桌面设备一样大的图像，而且它们将更可能在慢速网络连接上。因此，适当地缩小屏幕设备以缩小图像是明智的。你可以使用响应式图像技术处理此问题。</p>
+</li>
+<li><p>考虑高分辨率。许多移动设备具有高分辨率屏幕，因此需要更高分辨率的图像，使得显示器可以继续看起来清晰和锐利。再次，你可以使用响应式图像技术来适当地提供图像。此外，使用 SVG 矢量图像格式可以满足许多图像要求，这些格式在目前的浏览器中得到了很好的支持。SVG 文件较小，且不论以何种大小显示，它都会保持清晰</p>
+</li>
+</ul>
+<h3 id="具体的需要注意的点"><a href="#具体的需要注意的点" class="headerlink" title="具体的需要注意的点"></a>具体的需要注意的点</h3><ul>
+<li>不禁用缩放 使用视口可能会禁用缩放。要始终启用缩放，请在 <code>&lt;head&gt;</code> 中将宽度设置为设备宽度：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width; user-scalable=yes&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但国内行情一般都是禁用这项的。至于具体怎么使用，仁者见仁智者见智吧</p>
+<ul>
+<li>保持菜单无障碍</li>
+</ul>
+<p>因为移动设备上的屏幕非常窄，所以使用媒体查询和其他技术使得导航菜单缩小到显示屏顶部的一个小图标，只有在需要的时候才展示菜单，这种方式在移动设备上很常见的。这通常由“三横线”图标表示，并且设计模式因此被称为“汉堡菜单”。</p>
+<ul>
+<li>用户输入</li>
+</ul>
+<p>在移动设备上，输入数据往往比在台式计算机上的同等体验更令用户恼火。使用桌面或笔记本电脑键盘输入文本到表单输入比触摸屏虚拟键盘或微小的移动物理键盘更方便。</p>
+<p>出于这个原因，值得尽量减少所需的输入量。例如，与其让用户每次使用常规文本输入来填写他们的工作标题，而是可以提供一个 <code>&lt;select&gt;</code> 菜单，其中包含最常见的选项（这也有助于数据输入的一致性），并提供一个“其他”选项，显示一个文本字段来输入任何异常值。</p>
+<p>也值得考虑在移动平台上使用 HTML 格式输入类型（如日期），因为它们可以得到很好的处理。例如，Android 和 iOS 都会显示可用于设备体验的可用控件。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在本文中，介绍了什么是无障碍，为什么需要无障碍，在HTML、CSS、JavaScript中我们能为无障碍做哪些事情以及移动端下的表现，添加响应式设计。WAI-ARIA为W3C的规范，在使用多媒体元素时，我们可做的事情。</p>
+<p>需了解更多可查看官方文档，这里大致做一个了解即可</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2024/01/26/32647990-bc5d-11ee-b11d-1ddb3fe7683d/">http://blog.fridolph.top/2024/01/26/32647990-bc5d-11ee-b11d-1ddb3fe7683d/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Accessibility/">Accessibility</a><a class="post-meta__tags" href="/tags/WAI-ARIA/">WAI-ARIA</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="wechat, qq, weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/13/b202fc40-cbc5-11ee-bcb5-e38cb038f43c/" title="【ICU 指南】发发牢骚，生活还得继续"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【ICU 指南】发发牢骚，生活还得继续</div></div></a></div><div class="next-post pull-right"><a href="/2024/01/24/f23ba680-bc5d-11ee-a7e9-c70c4914cb61/" title="【项目总结】Vite+Vue3+TS组件库my-element-plus"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【项目总结】Vite+Vue3+TS组件库my-element-plus</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Fridolph</div><div class="author-info__description">阳光宅男，在成都，Web前端工程师<br/>喜欢羽毛球、棒球、唱K，ACG爱好者，愿世界和平！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fridolph"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2024年博客重新启动，加油！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Accessibility-%E6%97%A0%E9%9A%9C%E7%A2%8D"><span class="toc-number">1.</span> <span class="toc-text">Accessibility - 无障碍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-%E6%97%A0%E9%9A%9C%E7%A2%8D%E7%9A%84%E8%89%AF%E5%A5%BD%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">HTML 无障碍的良好基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E6%97%A0%E9%9A%9C%E7%A2%8D"><span class="toc-number">1.2.</span> <span class="toc-text">CSS 无障碍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-%E6%97%A0%E9%9A%9C%E7%A2%8D"><span class="toc-number">1.3.</span> <span class="toc-text">JavaScript 无障碍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%AA%E5%A4%9A-JavaScript-%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.1.</span> <span class="toc-text">太多 JavaScript 导致的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8C%81%E5%88%AB%E6%8A%A2%E7%9C%BC"><span class="toc-number">1.3.2.</span> <span class="toc-text">保持别抢眼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA-WAI-ARIA"><span class="toc-number">1.4.</span> <span class="toc-text">何为 WAI-ARIA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%94%A8%E7%9A%84-WAI-ARIA-%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">实用的 WAI-ARIA 实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%86%85%E5%AE%B9%E6%9B%B4%E6%96%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">动态内容更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E9%94%AE%E7%9B%98%E7%9A%84%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.3.</span> <span class="toc-text">优化键盘的无障碍操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E8%AF%AD%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%9A%84%E6%97%A0%E9%9A%9C%E7%A2%8D"><span class="toc-number">1.4.4.</span> <span class="toc-text">非语义控件的无障碍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E9%9D%9E%E8%AF%AD%E4%B9%89%E7%9A%84-button-%E6%98%AF%E4%B8%AA-button"><span class="toc-number">1.4.5.</span> <span class="toc-text">描述非语义的 button 是个 button</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%A4%8D%E6%9D%82%E7%9A%84%E5%B0%8F%E9%83%A8%E4%BB%B6%E5%81%9A%E5%BC%95%E5%AF%BC%E7%94%A8%E6%88%B7"><span class="toc-number">1.4.6.</span> <span class="toc-text">通过复杂的小部件做引导用户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E6%97%A0%E9%9A%9C%E7%A2%8D"><span class="toc-number">1.5.</span> <span class="toc-text">多媒体无障碍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%9B%BE%E5%83%8F"><span class="toc-number">1.5.1.</span> <span class="toc-text">简单图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%AE%BF%E9%97%AE%E7%9A%84%E9%9F%B3%E9%A2%91%E5%92%8C%E8%A7%86%E9%A2%91%E6%8E%A7%E4%BB%B6"><span class="toc-number">1.5.2.</span> <span class="toc-text">可访问的音频和视频控件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%97%A0%E9%9A%9C%E7%A2%8D"><span class="toc-number">1.6.</span> <span class="toc-text">移动端无障碍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.6.1.</span> <span class="toc-text">响应式设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E7%9A%84%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E7%82%B9"><span class="toc-number">1.6.2.</span> <span class="toc-text">具体的需要注意的点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.7.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/config/footer_bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2024 By Fridolph</div><div class="footer_custom_text"><div class="footer-copyright"><mark class="hl-label blue"><a target="_blank" href="https://fridolph.top"><i class="fa-solid fa-star"></i>2018-2024 By Fridolph</a></mark><mark class="hl-label default"><a target="_blank" title="非转载内容的CC声明：署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0)" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"><i class="fa-solid fa-closed-captioning"></i>BY-NC-ND 4.0</a></mark><mark class="hl-label default"><i class="fa-solid fa-registered"></i>Copyright © 2020-2024</mark><mark class="hl-label orange"><a target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index"><i class="fa-solid fa-registered"></i>黔ICP备2024018754号</a></mark><mark class="hl-label blue"><a target="_blank" href="https://hexo.io/zh-cn/"><i class="fa-solid fa-power-off"></i>Hexo</a></mark><mark class="hl-label purple"><a target="_blank" href="https://butterfly.js.org/"><i class="fa-solid fa-palette"></i>Butterfly</a></mark><mark class="hl-label red"><a target="_blank" href="https://www.jsdelivr.com/"><i class="fa-solid fa-wifi"></i>jsDelivr</a></mark></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://my-blog-waline-eta.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !true) {
+    if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><div id="page-bottom-aplayer" class="aplayer no-destroy" data-id="9115784260" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-autoplay="false"></div><script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script><script src="/js/fridolph/right-menu.js"></script><script src="/js/fridolph/print.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>

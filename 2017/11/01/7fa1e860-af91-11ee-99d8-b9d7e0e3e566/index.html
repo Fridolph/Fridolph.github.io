@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【JS】面向对象相关设计模式 | 霪霖笙箫的博客</title><meta name="author" content="Fridolph"><meta name="copyright" content="Fridolph"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="面向对象应该是一种思想，而不是代码的组织形式。  面向对象的特点：  封装 继承 多态  子类继承了父类的函数，同时覆盖实现了父类的某些行为。上面的setProgress函数即体现了多态又体现了继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【JS】面向对象相关设计模式">
+<meta property="og:url" content="http://blog.fridolph.top/2017/11/01/7fa1e860-af91-11ee-99d8-b9d7e0e3e566/index.html">
+<meta property="og:site_name" content="霪霖笙箫的博客">
+<meta property="og:description" content="面向对象应该是一种思想，而不是代码的组织形式。  面向对象的特点：  封装 继承 多态  子类继承了父类的函数，同时覆盖实现了父类的某些行为。上面的setProgress函数即体现了多态又体现了继承">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.fridolph.top/img/avatar.jpg">
+<meta property="article:published_time" content="2017-11-01T14:59:03.000Z">
+<meta property="article:modified_time" content="2024-02-08T16:03:17.819Z">
+<meta property="article:author" content="Fridolph">
+<meta property="article:tag" content="OOP">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.fridolph.top/img/avatar.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://blog.fridolph.top/2017/11/01/7fa1e860-af91-11ee-99d8-b9d7e0e3e566/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?5509b55ca488c2e0dd2885e9cc969290";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Fridolph","link":"链接: ","source":"来源: 霪霖笙箫的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【JS】面向对象相关设计模式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-09 00:03:17'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="霪霖笙箫的博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="霪霖笙箫的博客" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fa-solid fa-camera-retro"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa-brands fa-steam"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-star"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about_me/"><i class="fa-fw fa-solid fa-face-grin-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/about_link/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about_page/"><i class="fa-fw fa-solid fa-house"></i><span> 本站</span></a></li></ul></div></div></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa-solid fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa-solid fa-rotate-right"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa-solid fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa-solid fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('#search-button .search').click()" data-pjax-state="external"><i class="fa-solid fa-search"></i><span>站内搜索</span></a><a class="rightMenu-item" href="/tags/"><i class="fa-solid fa-tag"></i><span>文章标签</span></a><a class="rightMenu-item" href="/categories/"><i class="fa-solid fa-bars"></i><span>博客分类</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa-regular fa-copy"></i><span>复制</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:document.querySelector('.aplayer-pic').click()"><i class="fa-solid fa-headphones"></i><span>音乐开关</span></a><a class="rightMenu-item" href="javascript:rmf.switchDarkMode();"><i class="fa-regular fa-lightbulb"></i><span>昼夜切换</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="/about_page/"><i class="fa-solid fa-house-user"></i><span>关于本站</span></a></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/config/default_img2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="霪霖笙箫的博客"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg"/><span class="site-name">霪霖笙箫的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fa-regular fa-image"></i><span> 时光相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 图书推荐</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa-solid fa-music"></i><span> 享受音乐</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fa-solid fa-camera-retro"></i><span> 视频分享</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa-brands fa-steam"></i><span> 游戏世界</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fa-solid fa-star"></i><span> 我的追番</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about_me/"><i class="fa-fw fa-solid fa-face-grin-wink"></i><span> 我</span></a></li><li><a class="site-page child" href="/about_link/"><i class="fa-fw fa-solid fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about_page/"><i class="fa-fw fa-solid fa-house"></i><span> 本站</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【JS】面向对象相关设计模式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2017-11-01T14:59:03.000Z" title="发表于 2017-11-01 22:59:03">2017-11-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-08T16:03:17.819Z" title="更新于 2024-02-09 00:03:17">2024-02-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/js/">编程学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【JS】面向对象相关设计模式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>面向对象应该是一种思想，而不是代码的组织形式。</p>
+</blockquote>
+<p>面向对象的特点：</p>
+<ul>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+<p>子类继承了父类的函数，同时覆盖实现了父类的某些行为。上面的setProgress函数即体现了多态又体现了继承</p>
+<span id="more"></span>
+
+<h3 id="继承和组合"><a href="#继承和组合" class="headerlink" title="继承和组合"></a>继承和组合</h3><p>集成商为了实现复用，组合其实也是为了实现复用。继承是is-a的关系，而组合是has-a的关系。</p>
+<p>可以把上面的ProgressBar改成组合的方式。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ProgressBar</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">$container</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">fullWidth</span> = $container.<span class="title function_">width</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$bar</span> = <span class="literal">null</span></span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="comment">// 设置宽度</span></span><br><span class="line">  <span class="title function_">setProgress</span>(<span class="params">percentage</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$bar</span>.<span class="title function_">animate</span>(&#123;</span><br><span class="line">      <span class="attr">width</span>: <span class="variable language_">this</span>.<span class="property">fullWidth</span> * percentage + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 完成</span></span><br><span class="line">  <span class="title function_">finished</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$bar</span>.<span class="title function_">hide</span>()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 失败</span></span><br><span class="line">  <span class="title function_">failed</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">addFailedText</span>()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">addFailedText</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ProgressBarWithNumber</span> <span class="keyword">extends</span> <span class="title class_ inherited__">ProgressBar</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">$container</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>($container)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 多态</span></span><br><span class="line">  <span class="title function_">setProgress</span>(<span class="params">percentage</span>) &#123;</span><br><span class="line">    <span class="comment">// 先借助继承父类的函数</span></span><br><span class="line">    <span class="variable language_">super</span>.<span class="title function_">setProgress</span>(percentage)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">showPercentageText</span>(percentage)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">showPercentageText</span>(<span class="params">percentage</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在构造函数里面组合了一个progressBar的实例，然后在setProgress函数里面利用这个实例去设置进度条的百分比。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ProgressBarWithNumber</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">$container</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">progressBar</span> = <span class="keyword">new</span> <span class="title class_">ProgressBar</span>($container)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">setProgress</span>(<span class="params">percentage</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">progressBar</span>.<span class="title function_">setProgress</span>(percentage)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">showPercentageText</span>(percentage)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">showPercentageText</span>(<span class="params">percentage</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>偏向于使用组合而非继承</strong></p>
+<p>因为继承的耦合性要大于组合，组合更加灵活。继承是编译阶段就决定了关系，而组合是运行阶段才决定关系。</p>
+<h3 id="面向对象编程原则和设计模式"><a href="#面向对象编程原则和设计模式" class="headerlink" title="面向对象编程原则和设计模式"></a>面向对象编程原则和设计模式</h3><ol>
+<li>单例模式</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> taskWorker = &#123;</span><br><span class="line">  <span class="attr">tasks</span>: [],</span><br><span class="line">  <span class="title function_">draw</span>(<span class="params"></span>) &#123;&#125;,</span><br><span class="line">  <span class="title function_">addTask</span>(<span class="params">task</span>) &#123;</span><br><span class="line">    <span class="title class_">Task</span>.<span class="property">tasks</span>.<span class="title function_">push</span>(task)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mapTask = &#123;</span><br><span class="line">  <span class="attr">add</span>: <span class="keyword">function</span>(<span class="params">task</span>) &#123;</span><br><span class="line">    taskWorker.<span class="title function_">addTask</span>(task)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每次get的时候先判断mapTask有没有Task的新实例，如果没有则为第一次。先去实例化一个，并做些初始化工作，如果有则直接返回。然后执行mapTask.get()的时候就能够保证获取到的是一个单例。</p>
+<ul>
+<li><p>破坏单例</p>
+<pre><code>  mapTask.aTask = null
+</code></pre>
+</li>
+</ul>
+<ol start="2">
+<li>策略模式</li>
+</ol>
+<p>场景：注册弹框，不同的弹框文字。把文案当做一个个的策略，使用时根据不同类型，映射到不同的策略。<br>这样比写if-else或者switch的好处在于：如果以后要增加或删除某种类型，只需要增删一个type就可以了，而不用去改动if-else逻辑。这就叫做开放封闭原则——对修改是封闭的，而对扩展是开放的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> popType = &#123;</span><br><span class="line">  <span class="attr">userReg</span>: &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;Create your account&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">favHouse</span>: &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;Add home to favorite&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">saveSearch</span>: &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;Save this search&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> tpl = <span class="string">`&lt;section&gt;&lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;&lt;/section&gt;`</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Mustache</span>.<span class="title function_">render</span>(tpl, popType[<span class="string">&#x27;userReg&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把回调操作封装成一个策略</span></span><br><span class="line"><span class="keyword">var</span> popCallback = &#123;</span><br><span class="line">  <span class="attr">userReg</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;&#125;,</span><br><span class="line">  <span class="attr">favHouse</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;&#125;,</span><br><span class="line">  <span class="attr">saveSearch</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">util.<span class="title function_">ajax</span>(<span class="string">&#x27;/register&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> popType = <span class="string">&#x27;favHouse&#x27;</span> <span class="comment">// 获取popType</span></span><br><span class="line">  popCallback[popType]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>观察者模式</li>
+</ol>
+<p>观察者向消息的接受者订阅消息，一旦接受者收到消息后就把消息下发给它的观察者们。在一个回执搜索的应用里面，单击最后一个点关闭路径，要触发搜索。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Input</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">inputDom</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">inputDom</span> = inputDom</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">visitors</span> = &#123;</span><br><span class="line">      <span class="attr">click</span>: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加访问者</span></span><br><span class="line">  <span class="title function_">on</span>(<span class="params">eventType, visitor</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">visitors</span>.<span class="title function_">push</span>(visitor)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 收到消息，把消息分发给访问者</span></span><br><span class="line">  <span class="title function_">trigger</span>(<span class="params">type, event</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">visitors</span>[type]) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">visitors</span>[type]; i++) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">visitors</span>[type]()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>适配器模式</li>
+</ol>
+<p>在一个响应式的页面里，假设小屏和大屏显示的分页样式不同，它们初始化和更新状态的函数都不同，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 小屏</span></span><br><span class="line"><span class="keyword">var</span> pagination = <span class="keyword">new</span> <span class="title function_">jqPagination</span>(&#123;</span><br><span class="line">&#125;)</span><br><span class="line">pagination.<span class="property">showPage</span> = <span class="keyword">function</span>(<span class="params">curPage, totalPage</span>) &#123;</span><br><span class="line">  pagination.<span class="title function_">setPage</span>(curPage, totalPage)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 大屏</span></span><br><span class="line"><span class="keyword">var</span> pagination = <span class="keyword">new</span> <span class="title class_">Pagination</span>(&#123;</span><br><span class="line">&#125;)</span><br><span class="line">pagination.<span class="property">showPage</span> = <span class="keyword">function</span>(<span class="params">curPage, totalPage</span>) &#123;</span><br><span class="line">  pagination.<span class="title function_">showItem</span>(curPage, totalPage)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果每次调用都得判断一下不同的屏幕大小然后调用不同函数就很麻烦，所以用一个适配器，对外提供统一的接口：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> screen = $(<span class="variable language_">window</span>).<span class="title function_">width</span>() &lt; <span class="number">800</span> ? <span class="string">&#x27;small&#x27;</span> : <span class="string">&#x27;large&#x27;</span></span><br><span class="line"><span class="keyword">var</span> paginationAdapter = &#123;</span><br><span class="line">  <span class="attr">init</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pagination</span> = screen === <span class="string">&#x27;small&#x27;</span> ? <span class="keyword">new</span> <span class="title function_">jqPagination</span>() : <span class="keyword">new</span> <span class="title class_">Pagination</span>()</span><br><span class="line">    <span class="keyword">if</span> (screen === <span class="string">&#x27;large&#x27;</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">pagination</span>.<span class="property">showItem</span> = <span class="variable language_">this</span>.<span class="property">pagination</span>.<span class="property">setPage</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">showPage</span>: <span class="keyword">function</span>(<span class="params">curPage, totalPage</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pagination</span>.<span class="title function_">showItem</span>(curPage, totalPage)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用者只要调用 <code>paginationAdapter.showPage</code> 就可以更新分页状态，它不需要去关心当前是大屏还是小屏，由适配器去处理这些细节</p>
+<ol start="5">
+<li>工厂模式</li>
+</ol>
+<p>工厂模式是把创建交给一个工厂，使用者无需要关心创建细节，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> taskCreator = &#123;</span><br><span class="line">  <span class="attr">createTask</span>: <span class="keyword">function</span>(<span class="params">type</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span>(type) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;map&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MapTask</span>()</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;search&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SearchTask</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mapTask = taskCreator.<span class="title function_">createTask</span>(<span class="string">&#x27;map&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>需要哪种类型的Task时就传一个类型或者name给以个工厂，工厂根据名字去生产相应的产品，不用关心它是怎么创建的，要不要单例之类。</p>
+<ol start="6">
+<li>外观&#x2F;门面模式</li>
+</ol>
+<p>在一个搜索逻辑里，为了显示搜索结果需要执行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">hideNoResult</span>() <span class="comment">// 隐藏没有结果的显示</span></span><br><span class="line"><span class="title function_">removeOldResult</span>() <span class="comment">// 删除老的结果</span></span><br><span class="line"><span class="title function_">showNewResult</span>() <span class="comment">// 显示新结果</span></span><br><span class="line"><span class="title function_">showPageItem</span>() <span class="comment">// 更新分页</span></span><br><span class="line"><span class="title function_">resizePhoto</span>() <span class="comment">// 结果图片大小重置</span></span><br></pre></td></tr></table></figure>
+
+<p>于是考虑用一个模块把它包起来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">showResult</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">hideNoResult</span>() <span class="comment">// 隐藏没有结果的显示</span></span><br><span class="line">  <span class="title function_">removeOldResult</span>() <span class="comment">// 删除老的结果</span></span><br><span class="line">  <span class="title function_">showNewResult</span>() <span class="comment">// 显示新结果</span></span><br><span class="line">  <span class="title function_">showPageItem</span>() <span class="comment">// 更新分页</span></span><br><span class="line">  <span class="title function_">resizePhoto</span>() <span class="comment">// 结果图片大小重置</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 需要时调用 showResult()</span></span><br></pre></td></tr></table></figure>
+
+<p>把多个操作封装成一个模块，对外只提供一个门面叫showResult，使用者只要调一下该函数即可</p>
+<ol start="7">
+<li>状态模式</li>
+</ol>
+<p>实现一个类似微博的消息框，要求是当数字为0或者超过140时，发推按钮可单击，且剩余数字会跟着变</p>
+<p>可用一个state来保存当前的状态，然后当用户输入时，这个state的数据会跟着变，同时更新按钮状态</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tweetBox = &#123;</span><br><span class="line">  <span class="title function_">init</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 初始化一个state</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;&#125;</span><br><span class="line">    tweetBox.<span class="title function_">bindEvent</span>()</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">setState</span>(<span class="params">key, val</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span>[key] = val</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">changeSubmit</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 通过获取当前的state</span></span><br><span class="line">    $(<span class="string">&#x27;#submit&#x27;</span>)[<span class="number">0</span>].<span class="property">disabled</span> = tweeetBox.<span class="property">state</span>.<span class="property">text</span>.<span class="property">length</span> === <span class="number">0</span></span><br><span class="line">      || tweetBox.<span class="property">state</span>.<span class="property">text</span>.<span class="property">length</span> &gt; <span class="number">140</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">showLeftTextCount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&#x27;#text-count&#x27;</span>).<span class="title function_">text</span>(<span class="number">140</span> - <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">text</span>.<span class="property">length</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">bindEvent</span>(<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&#x27;.tweet-textarea&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;input&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// 改变当前的state</span></span><br><span class="line">      tweetBox.<span class="title function_">setState</span>(<span class="string">&#x27;text&#x27;</span>, <span class="variable language_">this</span>.<span class="property">value</span>)</span><br><span class="line">      tweetBox.<span class="title function_">changeSubmit</span>()</span><br><span class="line">      tweetBox.<span class="title function_">showLeftTextCount</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用一个state保存当前状态，通过获取当前state进行下一步操作。</p>
+<p>当然，上面的还有优化空间，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tweetBox = &#123;</span><br><span class="line">  <span class="title function_">setState</span>(<span class="params">key, val</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span>[key] = val</span><br><span class="line">    <span class="title function_">renderDom</span>($(<span class="string">&#x27;.tweet&#x27;</span>))</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">renderDom</span>(<span class="params">$currentDom</span>) &#123;</span><br><span class="line">    <span class="title function_">diffAndChange</span>($currentDom, <span class="title function_">renderVirtualDom</span>(tweetBox.<span class="property">state</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// `&lt;input type=&quot;submit&quot; disabled=&#123;&#123;this.state.text.length === 0 || this.state.text.length &gt; 140&#125;&#125; /&gt;`</span></span><br></pre></td></tr></table></figure>
+
+<p>这其实就是React的原型，不同的状态有不同的表现行为，所以可以认为是一个状态模式，并且通过状态去驱动DOM更改</p>
+<ol start="8">
+<li>代理模式</li>
+</ol>
+<p>其实React不直接操作DOM，而是把数据给state，然后委托给state和虚拟DOM去操作真实DOM，所以它是一个代理模式</p>
+<p>eventHandler -&gt; state -&gt; renderDom()</p>
+<ol start="9">
+<li>状态模式的另一个例子</li>
+</ol>
+<p>改变一个房源的状态：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (newState === <span class="string">&#x27;sold&#x27;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (currentState === <span class="string">&#x27;building&#x27;</span> || currentState === <span class="string">&#x27;dold&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;error&#x27;</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentState === <span class="string">&#x27;ready&#x27;</span>) &#123;</span><br><span class="line">    currentState = <span class="string">&#x27;sold&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ok&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (newState === <span class="string">&#x27;ready&#x27;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (currentState === <span class="string">&#x27;building&#x27;</span>) &#123;</span><br><span class="line">    currentState = <span class="string">&#x27;toBeSold&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ok&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更改一个房源的状态之前先要判断一下当前的状态，如果当前状态不支持那么不允许修改。对上面的代码我们可以用代理模式重构一下，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stateChange = &#123;</span><br><span class="line">  <span class="attr">ready</span>: &#123;</span><br><span class="line">    <span class="attr">building</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">    <span class="attr">ready</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">    <span class="attr">sold</span>: <span class="string">&#x27;ok&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">building</span>: &#123;</span><br><span class="line">    <span class="attr">building</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">    <span class="attr">ready</span>: <span class="string">&#x27;ok&#x27;</span>,</span><br><span class="line">    <span class="attr">sold</span>: <span class="string">&#x27;error&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (stateChange[currentState][newState] !== <span class="string">&#x27;error&#x27;</span>) &#123;</span><br><span class="line">  currentState = newState</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> stateChange[currentState][newState]</span><br></pre></td></tr></table></figure>
+
+<p>你会发现状态模式和策略模式是孪生兄弟，它们形式相同，只是目的不同。</p>
+<p>策略模式封装成策略，状态模式封装成状态。这样的代码就比写很多个if-else强多了，特别是当切换关系比较复杂的时候</p>
+<ol start="10">
+<li>装饰者模式</li>
+</ol>
+<p>要实现一个贷款的计算器，点计算按钮后，除了要计算结果，还要把结果发给后端做一个埋点。所以写了一个calculateResult函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">calculateResult</span>(<span class="params">form</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> data = $(form).<span class="title function_">serializeForm</span>()</span><br><span class="line">  <span class="keyword">var</span> l = data.<span class="property">rate</span> / <span class="number">1200</span></span><br><span class="line">  <span class="keyword">var</span> o = <span class="title class_">Math</span>.<span class="title function_">pow</span>(<span class="number">1</span> + l, data.<span class="property">term</span> * <span class="number">12</span>)</span><br><span class="line">  <span class="keyword">var</span> e = data.<span class="property">price</span> * (<span class="number">1</span> - data.<span class="property">payment</span> / <span class="number">100</span>)</span><br><span class="line">  <span class="keyword">var</span> result = (e * l * o / (o - <span class="number">1</span>))</span><br><span class="line">  <span class="keyword">var</span> formatResult = util.<span class="title function_">formatMoney</span>(result).<span class="title function_">toFixed</span>(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> $calResult = $(<span class="string">&#x27;.loan-cal .cal-result-con&#x27;</span>)</span><br><span class="line">  $calResult.<span class="title function_">find</span>(<span class="string">&#x27;.pi-result&#x27;</span>).<span class="title function_">text</span>(formatResult)</span><br><span class="line">  <span class="comment">// 这个函数包含了两个功能，一个计算结果，一个改变DOM</span></span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 计算按钮click回调</span></span><br><span class="line"><span class="keyword">var</span> result = <span class="title function_">calculateResult</span>(form)</span><br><span class="line"><span class="comment">// 发送一个埋点请求</span></span><br><span class="line">util.<span class="title function_">ajax</span>(<span class="string">&#x27;/cal-load&#x27;</span>, &#123;result&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>因为要把结果返回出来，所以这个函数有两个功能，一个是计算结果，第二个是改变DOM，这样写在一起感觉不太好。<br>于是我们把函数拆了，首先有一个LoanCalculator的类专门负责计算小数结果： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算结果</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LoanCalculator</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">form</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">form</span> = form</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">calResult</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">result</span> = result</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">getResult</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">result</span>) <span class="variable language_">this</span>.<span class="property">result</span> = <span class="variable language_">this</span>.<span class="title function_">calResult</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它还提供了一个getResult的函数，如果结果没算过那先算一下保存起来，如果已经计算过了那就直接用算好的结果。<br>然后再写一个<code>NumberFormater</code>，它负责把小数结果格式化成带逗号的形式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NumberFormater</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">calculator</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">calculator</span> = calculator</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">calResult</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="property">calculator</span>.<span class="title function_">calResult</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">result</span> = result</span><br><span class="line">    <span class="keyword">return</span> util.<span class="title function_">formatMoney</span>(result)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在它的构造函数里传一个calculator给它，这个calculator可以是上面的LoanCalculator，获取到它的计算结果然后格式化。<br>接着写一个DOMRenderer的类，它负责把结果下显示出来：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示结果</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DOMRenderer</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">calculator</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">calculator</span> = calculator</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">calResult</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="variable language_">this</span>.<span class="property">calculator</span>.<span class="title function_">calResult</span>()</span><br><span class="line">    $(<span class="string">&#x27;.pi-result&#x27;</span>).<span class="title function_">text</span>(result)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后代码调用如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> loadCalculator = <span class="keyword">new</span> <span class="title class_">LoanCalculator</span>(form)</span><br><span class="line"><span class="keyword">let</span> numberFormator = <span class="keyword">new</span> <span class="title class_">NumberFormator</span>(loadCalculator)</span><br><span class="line"><span class="keyword">let</span> domRenderer = <span class="keyword">new</span> <span class="title class_">DOMRenderer</span>(numberFormator)</span><br><span class="line">domRenderer.<span class="title function_">calResult</span>()</span><br><span class="line">util.<span class="title function_">ajax</span>(<span class="string">&#x27;/cal-loan&#x27;</span>, &#123;<span class="attr">result</span>: loadCalculator.<span class="title function_">getResult</span>()&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到它就是一个装饰的过程，一层一层地装饰：</p>
+<p>DOMRenderer -&gt; NumberFormator -&gt; LoanCalculator</p>
+<p>下一个装饰者调用上一个calResult函数，对它的结果进一步地装饰。如果这些装饰者的返回结果类型比较平行时，可以一层层地装饰下去。</p>
+<p>使用装饰者模式，逻辑是清晰了，但是系统的复杂性增加了，有时候能用简单方式实现还是用简单方式。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下上文提到的面向对象的编程原则：</p>
+<ol>
+<li>把共性和特性或者会变和不变的部分分离出来</li>
+<li>少用继承，多用组合</li>
+<li>低耦合高聚合</li>
+<li>开放封闭原则（对修改封闭，对扩展开放）</li>
+<li>单一职责原则</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top">Fridolph</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://blog.fridolph.top/2017/11/01/7fa1e860-af91-11ee-99d8-b9d7e0e3e566/">http://blog.fridolph.top/2017/11/01/7fa1e860-af91-11ee-99d8-b9d7e0e3e566/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.fridolph.top" target="_blank">霪霖笙箫的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OOP/">OOP</a><a class="post-meta__tags" href="/tags/design-mode/">设计模式</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="wechat, qq, weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2017/12/13/54a81920-af93-11ee-b66c-4dae10829f86/" title="【设计模式】初识IOC"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【设计模式】初识IOC</div></div></a></div><div class="next-post pull-right"><a href="/2017/10/14/cff15d70-af8f-11ee-8dd9-a9f70086acad/" title="【Vue】iview按需引入相关配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Vue】iview按需引入相关配置</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2018/06/13/2409cf20-af93-11ee-a3ea-ab0d390a17b0/" title="【设计模式】从订阅发布模式说起"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-02-09</div><div class="title">【设计模式】从订阅发布模式说起</div></div></a></div><div><a href="/2017/12/13/54a81920-af93-11ee-b66c-4dae10829f86/" title="【设计模式】初识IOC"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-02-09</div><div class="title">【设计模式】初识IOC</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Fridolph</div><div class="author-info__description">阳光宅男，在成都，Web前端工程师<br/>喜欢羽毛球、棒球、唱K，ACG爱好者，愿世界和平！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">58</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fridolph"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2024年博客重新启动，加油！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%92%8C%E7%BB%84%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">继承和组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%8E%9F%E5%88%99%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">面向对象编程原则和设计模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number"></span> <span class="toc-text">总结</span></a></div></div></div></div></main><footer id="footer" style="background-image: url('/img/config/footer_bg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2024 By Fridolph</div><div class="footer_custom_text"><div class="footer-copyright"><mark class="hl-label blue"><a target="_blank" href="https://fridolph.top"><i class="fa-solid fa-star"></i>2018-2024 By Fridolph</a></mark><mark class="hl-label default"><a target="_blank" title="非转载内容的CC声明：署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0)" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"><i class="fa-solid fa-closed-captioning"></i>BY-NC-ND 4.0</a></mark><mark class="hl-label default"><i class="fa-solid fa-registered"></i>Copyright © 2020-2024</mark><mark class="hl-label orange"><a target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index"><i class="fa-solid fa-registered"></i>黔ICP备2024018754号</a></mark><mark class="hl-label blue"><a target="_blank" href="https://hexo.io/zh-cn/"><i class="fa-solid fa-power-off"></i>Hexo</a></mark><mark class="hl-label purple"><a target="_blank" href="https://butterfly.js.org/"><i class="fa-solid fa-palette"></i>Butterfly</a></mark><mark class="hl-label red"><a target="_blank" href="https://www.jsdelivr.com/"><i class="fa-solid fa-wifi"></i>jsDelivr</a></mark></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://my-blog-waline-eta.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.css')
+      await getScript('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.min.js')
+      initWaline()
+    }
+  }
+
+  if ('Waline' === 'Waline' || !true) {
+    if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><div id="page-bottom-aplayer" class="aplayer no-destroy" data-id="9115784260" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-autoplay="false"></div><script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script><script src="/js/fridolph/right-menu.js"></script><script src="/js/fridolph/print.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
