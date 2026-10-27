@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#745a65"/><stop offset=".6" stop-color="#c19470"/><stop offset="1" stop-color="#384d4b"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#987e6a"/><stop offset="1" stop-color="#283e40"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h1600v1000H0z"/><circle cx="440" cy="355" r="120" fill="#ebcb9b"/><path d="M0 590q180-160 390-20t410-30 800 20v440H0z" fill="#5b6660"/><path d="M0 640h1600v360H0z" fill="url(#water)"/>
+  <g stroke="#dcc29b" opacity=".4"><path d="M330 665h230m-270 35h320m-360 40h400m-450 50h490m-560 70h620m-700 90h790"/></g>
+  <g stroke="#223d3c" stroke-width="5"><path d="M180 1000q15-210-40-430m85 430q-30-220 20-380m-130 380q-15-160-65-245m1280 245q-20-300 40-480m-5 480q-20-210 55-350m-150 350q-10-170-50-260"/></g>
+  <g fill="#334c43"><ellipse cx="139" cy="597" rx="13" ry="60" transform="rotate(-12 139 597)"/><ellipse cx="244" cy="640" rx="12" ry="52" transform="rotate(10 244 640)"/><ellipse cx="1365" cy="560" rx="14" ry="65" transform="rotate(12 1365 560)"/></g><path d="m950 240 22-10 25 10m40-34 18-8 20 8" stroke="#454a4b" stroke-width="3"/>
+</svg>

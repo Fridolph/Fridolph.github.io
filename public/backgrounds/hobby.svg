@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#c28c67"/><stop offset=".65" stop-color="#edd5a3"/><stop offset="1" stop-color="#757f63"/></linearGradient><linearGradient id="hill" x2="0" y2="1"><stop stop-color="#6d8264"/><stop offset="1" stop-color="#263f3c"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h1600v1000H0z"/><circle cx="450" cy="300" r="125" fill="#f7e5b9"/>
+  <path d="M0 630q250-320 520-90t530-80 550 100v440H0z" fill="#92916e"/><path d="M0 700q240-260 550-40t480-60 570 30v370H0z" fill="url(#hill)"/>
+  <path d="M0 880q430-240 950-40t650 60v100H0z" fill="#294b40"/><path d="M690 1000q-160-160 10-245t70-150q150 150 0 220t160 175z" fill="#c4b08b"/>
+  <g stroke="#d5dbb9" opacity=".6"><path d="M60 730h390v210H60z M255 730v210 M60 835h390 M60 780h390 M60 890h390"/><path d="M35 835h440" stroke-width="3"/></g>
+  <g fill="#203f36"><path d="m1000 600-90 260h180zm100 60-85 240h170zm380-90-110 330h220z"/><path d="M990 800h20v200h-20zm105 20h15v180h-15zm275-20h20v200h-20z"/></g>
+  <path d="m675 210 22-10 24 10m40-35 18-8 20 8" stroke="#76644d" stroke-width="3"/>
+</svg>

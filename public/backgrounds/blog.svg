@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#bd8164"/><stop offset="1" stop-color="#493a38"/></linearGradient><linearGradient id="wall" x2="1" y2="1"><stop stop-color="#b2654d"/><stop offset="1" stop-color="#713e37"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h1600v1000H0z"/><circle cx="400" cy="280" r="150" fill="#ebc28c"/>
+  <path d="M0 680Q270 490 600 660t1000-30v370H0z" fill="#795044"/><path d="M0 790q400-140 800-20t800-30v260H0z" fill="#583e39"/>
+  <path fill="url(#wall)" fill-rule="evenodd" d="M130 110h640v790H130zm120 790V410a200 200 0 0 1 400 0v490z"/><path d="M770 110h65v790h-65z" fill="#633c34"/>
+  <path fill="#d49a71" fill-rule="evenodd" opacity=".6" d="M190 900V410a260 260 0 0 1 520 0v490h-18V410a242 242 0 0 0-484 0v490z"/>
+  <path d="M0 900h1600v100H0z" fill="#a16e55"/><path d="m650 900 550 100h400L835 900z" fill="#523a35" opacity=".65"/><g stroke="#d4aa7e" opacity=".4"><path d="M0 934h1600M0 978h1600M150 900 0 1000m420-100-40 100m270-100 60 100m210-100 170 100"/></g>
+</svg>

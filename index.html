@@ -1,99 +1,87 @@
-<html>
+<!doctype html>
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="X-UA-Compatible"
-      content="ie=edge" />
-    <title>Fridolph的个人网站 - Fridolph's Personal Website</title>
-    <meta
-      name="description"
-      content="付寅生 - 一个阳光开朗积极,爱棒球的热血运动技术型青年,大成都的前端工程师" />
-    <meta
-      name="keywords"
-      content="付寅生,简历,个人简历,前端简历,前端工程师简历,fridolph,霪霖笙箫,高级前端," />
-    <meta
-      name="author"
-      content="付寅生" />
-    <meta
-      name="copyright"
-      content="付寅生" />
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#101c1c" />
+    <meta name="description" content="Fridolph 的个人收藏架：技术博客、全栈简历、生活爱好、开源项目、读书写作与 AI 学习。" />
+    <title>Fridolph — 个人收藏架</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="https://fridolph.github.io/" />
   </head>
-
   <body>
-    <a
-      style="z-index: 1000;position: absolute; top: 0; right: 0; border: 0"
-      href="https://github.com/Fridolph/my-program"
-      ><img
-        src="https://fridolph.github.io/my-program/views/img/forkme.png"
-        alt="Fork me on GitHub"
-        data-canonical-src="https://fridolph.github.io/my-program/views/img/forkme.png"
-    /></a>
-    <div class="bg-layer"></div>
-    <div
-      id="container"
-      class="box-container">
-      <div class="container-inner">
-        <div class="inner-header">
-          <div class="title">
-            <h1>Fridolph的个人网站</h1>
-            <sub>Fridolph's Personal Website</sub>
+    <div class="backdrop" aria-hidden="true"></div>
+    <header class="masthead">
+      <a class="wordmark" href="/" aria-label="Fridolph 主页">Fridolph<span>自有天地，慢慢成集。</span></a>
+      <div class="edition"><span class="status-dot"></span> A PERSONAL COLLECTION <span>VOL. 01 / 2026</span></div>
+    </header>
+    <main>
+      <section class="collection" aria-labelledby="collection-title">
+        <div class="intro">
+          <p class="eyebrow">CODE · NOTES · STORIES</p>
+          <h1 id="collection-title">所学、所做，<em>与所思。</em></h1>
+          <p>我是 Fridolph，一名热爱创造的全栈工程师。<br />这里收藏着我的代码、文章，以及正在走的路。</p>
+        </div>
+        <div id="scene" class="scene" aria-hidden="true"></div>
+        <p id="scene-note" class="scene-note">六个入口，一点关于我的线索。</p>
+        <div class="shelf-caption" aria-hidden="true"><span>THE PERSONAL SHELF</span><span>SELECT A VOLUME TO EXPLORE ↗</span></div>
+        <div class="collection-controls" aria-label="浏览收藏架">
+          <div class="selected-summary" aria-live="polite" aria-atomic="true">
+            <span id="selected-number" class="eyebrow">01 / 06</span>
+            <div><h2 id="selected-title">Blog</h2><p id="selected-summary">技术文章、实践记录与随笔</p></div>
           </div>
+          <div class="browse-controls">
+            <button id="previous" class="arrow-button" aria-label="上一张卡片">←</button>
+            <button id="inspect" class="inspect-button" aria-haspopup="dialog">展开 Blog <span>↗</span></button>
+            <button id="next" class="arrow-button" aria-label="下一张卡片">→</button>
+          </div>
+          <nav id="volume-nav" class="volume-nav" aria-label="六张导航卡片"></nav>
         </div>
-        <div class="inner-content">
-          <ul class="list">
-            <li class="list-item l2r-item item-1">
-              <a
-                target="_blank"
-                href="https://github.com/fridolph"
-                >» Github</a
-              >
-            </li>
-            <li class="list-item l2r-item item-2">
-              <a
-                target="_blank"
-                href="https://blog.fridolph.top"
-                >» Blog</a
-              >
-            </li>            
-            <li class="list-item l2r-item item-4">
-              <a
-                target="_blank"
-                href="https://resume.fridolph.top"
-                >» Resume</a
-              >
-            </li>
-            <li class="list-item l2r-item item-5">
-              <a
-                target="_blank"
-                href="https://fridolph.github.io/FE-prepare-interview/"
-                >» Learning</a
-              >
-            </li>
-            <li class="list-item item-3">
-              <div class="box">
-                <a
-                  target="_blank"
-                  href="https://github.com/Fridolph/my-program"
-                  class="layer"
-                  >» Program</a
-                >
-                <div class="over-layer">
-                  <a
-                    target="_blank"
-                    href="https://github.com/Fridolph/my-program"
-                    >» Program</a
-                  >
-                </div>
-              </div>
-            </li>
-          </ul>
+      </section>
+      <section id="fallback" class="fallback" aria-label="收藏入口"></section>
+      <noscript>
+        <nav class="noscript-links" aria-label="网站入口">
+          <a href="https://fridolph.github.io/fridolph-blog/">Blog</a>
+          <a href="https://resume.fridolph.top">Resume</a>
+          <span>Hobby · 羽毛球、棒球、摄影、旅行、音乐、阅读与传统文化</span>
+          <a href="https://github.com/Fridolph">GitHub · 项目与源码</a>
+          <a href="https://www.zhihu.com/people/fridolph/columns">Writing</a>
+          <a href="https://fridolph.github.io/AI-Journey-Fighting/">Learning · 在线阅读</a>
+          <a href="https://github.com/Fridolph/AI-Journey-Fighting">Learning · 源码仓库</a>
+        </nav>
+      </noscript>
+    </main>
+    <footer class="footer"><span>© <span id="year">2026</span> Fridolph</span><span>保持好奇，持续创造。</span><button id="view-toggle" aria-pressed="false">切换为列表视图</button></footer>
+    <dialog id="detail" class="detail" aria-labelledby="detail-title" aria-describedby="detail-description">
+      <div id="detail-background" class="detail-background" aria-hidden="true"></div>
+      <button id="close-detail" class="close-button" aria-label="关闭详情">×</button>
+      <section class="reader" aria-label="书本阅读区">
+        <div class="reader-heading"><span class="eyebrow">THE READING ROOM</span><span id="reader-status" role="status" aria-live="polite"></span></div>
+        <div id="reader-stage" class="reader-stage" aria-hidden="true"></div>
+        <div id="reader-fallback" class="reader-fallback" hidden><img id="detail-cover" alt="" /><div id="reader-paper"></div></div>
+        <p id="reader-hint" class="reader-hint">点击封面翻开书本</p>
+        <div class="reader-controls" aria-label="翻阅书本">
+          <button id="page-previous" aria-label="翻到上一页">← 上一页</button>
+          <button id="reader-toggle">翻开书本</button>
+          <button id="page-next" aria-label="翻到下一页">下一页 →</button>
         </div>
-        <div class="inner-footer">Contact | fridolph.top</div>
-      </div>
-    </div>
+        <div class="reader-directory"><label for="reader-chapter">本册目录</label><select id="reader-chapter" aria-label="选择书本章节"></select></div>
+        <div id="reader-links" class="reader-links" aria-label="本章相关入口" hidden></div>
+        <details id="reader-transcript-panel" class="reader-transcript"><summary>阅读本页文字</summary><div id="reader-transcript" aria-live="polite"></div></details>
+      </section>
+      <article id="detail-copy" class="detail-copy">
+        <div id="detail-icon" class="detail-icon" aria-hidden="true"></div>
+        <p id="detail-eyebrow" class="eyebrow"></p>
+        <h2 id="detail-title"></h2>
+        <p id="detail-subtitle" class="detail-subtitle"></p>
+        <p id="detail-description" class="detail-description"></p>
+        <img id="detail-image" class="detail-image" alt="" hidden />
+        <dl class="detail-meta"><div><dt>收藏主题</dt><dd id="detail-category"></dd></div><div><dt>这一站</dt><dd id="detail-note"></dd></div></dl>
+        <div id="detail-links" class="detail-links"></div>
+        <p class="external-note" id="external-note">链接将在新标签页中打开 ↗</p>
+        <div class="detail-pagination"><button id="detail-previous" aria-label="查看上一张卡片">← 上一册</button><span id="detail-index"></span><button id="detail-next" aria-label="查看下一张卡片">下一册 →</button></div>
+      </article>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
