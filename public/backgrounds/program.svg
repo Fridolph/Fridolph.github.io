@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+  <defs><radialGradient id="space" cx=".35" cy=".4" r=".85"><stop stop-color="#636a97"/><stop offset="1" stop-color="#17283f"/></radialGradient><linearGradient id="planet" x2="1" y2="1"><stop stop-color="#b6b0ce"/><stop offset="1" stop-color="#424d76"/></linearGradient><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M100 0H0v100" stroke="#b0bbd1" stroke-opacity=".12"/></pattern></defs>
+  <path fill="url(#space)" d="M0 0h1600v1000H0z"/><path fill="url(#grid)" d="M0 0h1600v1000H0z"/>
+  <circle cx="470" cy="445" r="215" fill="url(#planet)"/><g stroke="#c8c8dd" opacity=".55"><ellipse cx="470" cy="445" rx="360" ry="110" transform="rotate(-28 470 445)"/><ellipse cx="470" cy="445" rx="295" ry="320" transform="rotate(35 470 445)"/><ellipse cx="470" cy="445" rx="100" ry="215"/><path d="M260 420h420M280 535h385M300 320h340"/></g>
+  <circle cx="770" cy="255" r="23" fill="#e8cba0"/><circle cx="195" cy="605" r="12" fill="#d2d8d1"/><g fill="#d5daec"><circle cx="170" cy="130" r="2"/><circle cx="790" cy="105" r="3"/><circle cx="1050" cy="300" r="2"/><circle cx="1370" cy="190" r="3"/><circle cx="1210" cy="660" r="2"/><circle cx="850" cy="810" r="3"/></g>
+  <path d="m0 1000 480-250 1120 250M0 870h1600M0 930h1600M480 750l-90 250m90-250 370 250m-370-250 750 250" stroke="#919bb6" opacity=".3"/>
+</svg>
